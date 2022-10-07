@@ -1,0 +1,10 @@
+@import url(components/button.css);
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../assets/Fonts/OpenSans-Regular.ttf);
+}
+
+* {
+    font-family: OpenSans;
+}
