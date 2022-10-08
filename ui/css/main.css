@@ -1,5 +1,6 @@
 @import url(components/button.css);
 @import url(components/checkbox.css);
+@import url(components/icon.css);
 
 @font-face {
     font-family: OpenSans;

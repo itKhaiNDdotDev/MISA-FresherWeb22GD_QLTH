@@ -1,0 +1,27 @@
+.m-icon {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.icon-edit {
+    background-image: url(/assets/Icons/ic_Edit.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-delete {
+    background-image: url(/assets/Icons/ic_delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-more {
+    background-image: url(/assets/Icons/ic_More.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-icon:focus {
+    background-color: #E9E9E9;
+}
