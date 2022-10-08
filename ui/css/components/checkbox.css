@@ -1,0 +1,47 @@
+.m-checkbox {
+    margin-right: 8px;
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+    user-select: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.m-checkbox .m-checkbox-real {
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.m-checkbox .m-checkbox-pseudo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    z-index: 0;
+    background-image: url(/assets/Icons/ic_Checkbox_Inactive.png);
+}
+
+.m-checkbox-real:hover~.m-checkbox-pseudo {
+    background-image: url(/assets/Icons/ic_Checkbox_Hover.png);
+}
+.m-checkbox-real:checked~.m-checkbox-pseudo {
+    background-image: url(/assets/Icons/ic_Checkbox_Active.png);
+}
+.m-checkbox-real:disabled~.m-checkbox-pseudo {
+    cursor: not-allowed;
+    background-image: url(/assets/Icons/ic_Checkbox_Inactive_Disable.png);
+}
+.m-checkbox-real:checked:disabled~.m-checkbox-pseudo {
+    cursor: not-allowed;
+    background-image: url(/assets/Icons/ic_Checkbox_Active_Disable.png);
+}
+.m-checkbox-real:disabled {
+    cursor: not-allowed;
+}
+
