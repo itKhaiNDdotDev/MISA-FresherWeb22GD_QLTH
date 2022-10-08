@@ -25,3 +25,8 @@
 .m-icon:focus {
     background-color: #E9E9E9;
 }
+
+.icon-search {
+    background-image: url(/assets/Icons/Ic_seerch.png);
+    background-repeat: no-repeat;
+}
