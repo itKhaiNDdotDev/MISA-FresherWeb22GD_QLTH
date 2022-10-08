@@ -13,6 +13,8 @@
 .m-checkbox .m-checkbox-real {
     opacity: 0;
     position: absolute;
+    width: 24px;
+    height: 24px;
     z-index: 1;
     cursor: pointer;
 }
