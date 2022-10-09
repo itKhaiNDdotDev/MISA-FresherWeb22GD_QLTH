@@ -48,10 +48,9 @@
     height: 32px;
     margin: 0px 0px 0px 8px;
     border-radius: 4px;
-    filter: grayscale(100%);
     cursor: pointer;
+    background-position: center;
 }
-
 .m-btn-style4:hover {
     background-color: #F8F8F8;
 }
