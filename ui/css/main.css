@@ -2,6 +2,7 @@
 @import url(components/checkbox.css);
 @import url(components/icon.css);
 @import url(components/dropdowns.css);
+@import url(components/tag.css);
 
 @font-face {
     font-family: OpenSans;

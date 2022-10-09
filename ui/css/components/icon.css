@@ -2,7 +2,7 @@
     width: 28px;
     height: 28px;
     border: none;
-    background-color: inherit;
+    /* background-color: inherit; */
     cursor: pointer;
 }
 
@@ -22,6 +22,7 @@
     background-repeat: no-repeat;
 }
 .icon-edit:hover, .icon-edit:focus {
+    background-color: #E9E9E9;
     background-image: url(/assets/Icons/ic_Edit.png);
 }
 .icon-remove {
@@ -30,6 +31,7 @@
     background-repeat: no-repeat;
 }
 .icon-remove:hover, .icon-remove:focus {
+    background-color: #E9E9E9;
     background-image: url(/assets/Icons/ic_Remove_Hover.png);
 }
 .m-icon:focus {
@@ -128,8 +130,14 @@
     background-size: cover;
 }
 
-.icon-x {
+.icon-close {
     background-image: url(/assets/Icons/ic_X_2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-x {
+    background-image: url(/assets/Icons/ic_X.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
