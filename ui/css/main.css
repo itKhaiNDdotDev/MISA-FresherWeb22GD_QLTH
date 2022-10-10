@@ -4,6 +4,7 @@
 @import url(components/dropdowns.css);
 @import url(components/tag.css);
 @import url(components/inputs.css);
+@import url(components/toasts.css);
 
 @font-face {
     font-family: OpenSans;

@@ -112,7 +112,7 @@
 .icon-toast-fail {
     background-image: url(/assets/Icons/ic_ToastMessage_Fail.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: cover; */
 }
 .icon-toast-info {
     background-image: url(/assets/Icons/ic_ToastMessage_Info.png);
