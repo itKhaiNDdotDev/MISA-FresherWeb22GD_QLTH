@@ -8,6 +8,7 @@
     border: 1px solid #CCCCCC;
     margin-right: 16px;
     margin-bottom: 12px;
+    background-color: #FFFFFF;
 }
 .m-input:disabled {
     background-color: #F5F5F5;;
@@ -51,6 +52,7 @@
 .m-error-text {
     position: relative;
     z-index: 1;
+    background-color: inherit;
 }
 
 .m-input-search {

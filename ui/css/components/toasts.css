@@ -17,15 +17,19 @@
     border-left: 8px solid;
     box-shadow: 0px 0px 10px #D5D5D5;
     display: grid;
-    grid-template-columns: 76px calc(100%-76px);
-    grid-template-rows: 34px calc(100%-32px);
+    grid-template-columns: 76px auto;
+    grid-template-rows: 34px auto;
     margin: 0px 18px 18px 0px;
+    background-color: #FFFFFF;
 }
 .m-toast .toast-icon {
     grid-row-start: 1;
     grid-row-end: 3;
-    background-size:auto;
     background-position: center;
+    justify-self: center;
+    align-self: center;
+    width: 40px;
+    height: 40px;
 }
 .m-toast .toast-title {
     font-size: 16px;

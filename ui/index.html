@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Test Page</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
     <script src="https://kit.fontawesome.com/4960595244.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="my-component">
-        <label for="">1. Buuttons:</label>
+    <div style="padding: 32px;" class="nav-page">
+        <a href="views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a>
+        <br>
+        <!-- <a href="/views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a> -->
+    </div>
+    <div class="my-component" style="background-color: #EAECEF;">
+        <label for=""><b> 1. Buuttons:</b></label>
         <div style="margin: 15px 0px;">
             <button class="m-button m-btn-style1">Thêm</button>
             <button class="m-button m-btn-style1">Nhập khẩu</button>
@@ -24,7 +30,7 @@
             <button class="m-btn-style4 icon-more"></button>
         </div>
         <br>
-        <label for="">2. Checkbox:</label>
+        <label for=""><b> 2. Checkbox:</b></label>
         <div style="margin: 15px 0px;">
             <div class="m-checkbox">
                 <input class="m-checkbox-real" type="checkbox" checked="checked">
@@ -55,7 +61,7 @@
             <label for="" style="margin-right: 20px;">Disable Inactive</label>
         </div>
         <br>
-        <label for="">3. Icons:</label>
+        <label for=""><b> 3. Icons:</b></label>
         <div style="margin: 15px 0px; display: flex; flex-wrap: wrap;">
             <div class="m-icon icon-edit"></div>
             <div class="m-icon icon-remove"></div>
@@ -88,7 +94,7 @@
             <div class="m-icon icon-hethong"></div>
         </div>
         <br>
-        <label for="">4. Dropdown:</label>
+        <label for=""><b> 4. Dropdown:</b></label>
         <div style="margin: 15px 0px;">
             <select name="" id="" class="m-dropdown">
                 <option value="">Hà Nội</option>
@@ -106,7 +112,7 @@
             </select>
         </div>
         <br>
-        <label for="">5. Thẻ (tag):</label>
+        <label for=""><b> 5. Thẻ (tag):</b></label>
         <div style="margin: 15px 0px; display: flex; flex-wrap: wrap;">
             <div class="m-tag">
                 <span class="m-tag-text">Nguyễn Duy Khai</span>
@@ -118,7 +124,7 @@
             </div>
         </div>
         <br>
-        <label for="">6. Inputs:</label>
+        <label for=""><b> 6. Inputs:</b></label>
         <div style="margin: 15px 0px;">
             <input type="text" class="m-input">
             <input type="text" class="m-input" disabled value="Minh">
@@ -136,7 +142,7 @@
             </div>
         </div>
         <br>
-        <label for="">7. Toast:</label>
+        <label for=""><b> 7. Toast:</b></label>
         <div style="margin: 15px 0px;">
             <div class="toasts-container">
                 <div class="m-toast toast-message-fail">
@@ -161,6 +167,7 @@
                 </div>
             </div>
         </div>
+        <img width="40px" src="assets/Images/KhaiND.JPG" alt="avt" class="avt">
     </div>
 </body>
 </html>
