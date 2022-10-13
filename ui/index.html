@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Test Page</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
+    <script src="https://kit.fontawesome.com/4960595244.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div style="padding: 32px;" class="nav-page">
+        <a href="views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a>
+        <br>
+        <!-- <a href="/views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a> -->
+    </div>
+    <div class="my-component" style="background-color: #EAECEF;">
+        <label for=""><b> 1. Buuttons:</b></label>
+        <div style="margin: 15px 0px;">
+            <button class="m-button m-btn-style1">Thêm</button>
+            <button class="m-button m-btn-style1">Nhập khẩu</button>
+            <button class="m-button m-btn-style1" disabled>Nhập khẩu</button>
+        </div>
+        <div style="margin: 15px 0px;">
+            <button class="m-button m-btn-style2">Xuất khẩu</button>
+            <button class="m-button m-btn-style2" disabled>Xuất khẩu</button>
+        </div>
+        <div style="margin: 15px 0px;">
+            <button class="m-btn-style4 icon-more"></button>
+        </div>
+        <br>
+        <label for=""><b> 2. Checkbox:</b></label>
+        <div style="margin: 15px 0px;">
+            <div class="m-checkbox">
+                <input class="m-checkbox-real" type="checkbox" checked="checked">
+                <div class="m-checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Active</label>
+            <div class="m-checkbox">
+                <input class="m-checkbox-real" type="checkbox">
+                <div class="m-checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Inactive</label>
+            <div class="m-checkbox">
+                <input class="m-checkbox-real" type="checkbox">
+                <div class="m-checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Hover</label>
+        </div>
+        <div style="margin: 15px 0px;">
+            <div class="m-checkbox">
+                <input class="m-checkbox-real" type="checkbox" checked disabled>
+                <div class="m-checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Disable Active</label>
+            <div class="m-checkbox">
+                <input class="m-checkbox-real" type="checkbox" disabled>
+                <div class="m-checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Disable Inactive</label>
+        </div>
+        <br>
+        <label for=""><b> 3. Icons:</b></label>
+        <div style="margin: 15px 0px; display: flex; flex-wrap: wrap;">
+            <div class="m-icon icon-edit"></div>
+            <div class="m-icon icon-remove"></div>
+            <div class="m-icon icon-delete"></div>
+            <div class="m-icon icon-search"></div>
+            <div class="m-icon icon-chonanh"></div>
+            <div class="m-icon icon-alert"></div>
+            <div class="m-icon icon-avatar"></div>
+            <div class="m-icon icon-logo-thietbi"></div>
+            <div class="m-icon icon-back"></div>
+            <div class="m-icon icon-next"></div>
+            <div class="m-icon icon-movetofirst"></div>
+            <div class="m-icon icon-movetolast"></div>
+            <div class="m-icon icon-check"></div>
+            <div class="m-icon icon-dropdown"></div>
+            <div class="m-icon icon-notification"></div>
+            <div class="m-icon icon-toast-fail"></div>
+            <div class="m-icon icon-toast-info"></div>
+            <div class="m-icon icon-toast-success"></div>
+            <div class="m-icon icon-toast-warning"></div>
+            <div class="m-icon icon-close"></div>
+            <div class="m-icon icon-x"></div>
+            <!-- SP -->
+            <div class="m-icon icon-help"></div>
+            <button class="m-icon icon-sidebar"><div></div><div></div><div></div></button>
+            <div class="m-icon icon-tongquan"></div>
+            <div class="m-icon icon-thietbi"></div>
+            <div class="m-icon icon-muontra"></div>
+            <div class="m-icon icon-baocao"></div>
+            <div class="m-icon icon-hethong"></div>
+        </div>
+        <br>
+        <label for=""><b> 4. Dropdown:</b></label>
+        <div style="margin: 15px 0px;">
+            <select name="" id="" class="m-dropdown">
+                <option value="">Hà Nội</option>
+                <option value="">TP Hồ Chí Minh</option>
+                <option value="">An Giang</option>
+                <option value="">Bắc Ninh</option>
+                <option value="">Đồng Nai</option>
+                <option value="">Nghệ An</option>
+                <option value="">Hà Nội</option>
+                <option value="">TP Hồ Chí Minh</option>
+                <option value="">An Giang</option>
+                <option value="">Bắc Ninh</option>
+                <option value="">Đồng Nai</option>
+                <option value="">Nghệ An</option>
+            </select>
+        </div>
+        <br>
+        <label for=""><b> 5. Thẻ (tag):</b></label>
+        <div style="margin: 15px 0px; display: flex; flex-wrap: wrap;">
+            <div class="m-tag">
+                <span class="m-tag-text">Nguyễn Duy Khai</span>
+                <div class="m-icon icon-x"></div>
+            </div>
+            <div class="m-tag">
+                <span class="m-tag-text">Toán</span>
+                <div class="m-icon icon-x"></div>
+            </div>
+        </div>
+        <br>
+        <label for=""><b> 6. Inputs:</b></label>
+        <div style="margin: 15px 0px;">
+            <input type="text" class="m-input">
+            <input type="text" class="m-input" disabled value="Minh">
+            <div class="m-input-error-container">
+                <input type="text" class="m-input m-input-error">
+                <div class="m-error-message">
+                    <div class="m-error-text">Họ và tên không được bỏ trống.</div>
+                    <div class="m-error-arrow"></div>
+                </div>
+            </div>
+            <div class="m-input-search m-input">
+                <input type="text">
+                <div class="hor-line"></div>
+                <button class="icon-search"></button>
+            </div>
+        </div>
+        <br>
+        <label for=""><b> 7. Toast:</b></label>
+        <div style="margin: 15px 0px;">
+            <div class="toasts-container">
+                <div class="m-toast toast-message-fail">
+                    <div class="toast-icon icon-toast-fail"></div>
+                    <div class="toast-title">Lỗi</div>
+                    <div class="toast-content">Error Message</div>
+                </div>
+                <div class="m-toast toast-message-success">
+                    <div class="toast-icon icon-toast-success"></div>
+                    <div class="toast-title">Thành công</div>
+                    <div class="toast-content">Đã gửi thông báo cho phụ huynh</div>
+                </div>
+                <div class="m-toast toast-message-info">
+                    <div class="toast-icon icon-toast-info"></div>
+                    <div class="toast-title">Thông báo</div>
+                    <div class="toast-content">Notification Message</div>
+                </div>
+                <div class="m-toast toast-message-warning">
+                    <div class="toast-icon icon-toast-warning"></div>
+                    <div class="toast-title">Cảnh báo</div>
+                    <div class="toast-content">Warning Message</div>
+                </div>
+            </div>
+        </div>
+        <img width="40px" src="assets/Images/KhaiND.JPG" alt="avt" class="avt">
+    </div>
+</body>
+</html>

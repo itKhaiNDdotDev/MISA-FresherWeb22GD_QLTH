@@ -1,0 +1,61 @@
+.m-button {
+    padding-left: 0px 12px;
+    margin: 0px 0px 0px 8px;
+    height: 32px;
+    min-width: 96px;
+    font-weight: 600;   /* SemiBold */
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.m-btn-style1 {
+    background-color: #03AE66;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+.m-btn-style1:hover {
+    background-color: #02BF70;
+}
+.m-btn-style1:disabled {
+    background-color: #E0E0E0;
+    color: #A6A6A6;
+    cursor: not-allowed;
+}
+
+.m-btn-style2 {
+    background-color: #FFFFFF;
+    color: #3D3F4E;
+    border: 1px solid #CECECE;
+    cursor: pointer;
+}
+.m-btn-style2:hover {
+    background-color: #EAECEF;
+    color: #3D3F4E;
+}
+.m-btn-style2:disabled {
+    background-color: #FFFFFF;
+    color: #A6A6A6;
+    cursor: not-allowed;
+}
+
+.m-btn-style4 {
+    background-color: #FFFFFF;
+    color: #3D3F4E;
+    border: 1px solid #CECECE;
+    width: 32px;
+    height: 32px;
+    margin: 0px 0px 0px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-position: center;
+}
+.m-btn-style4:hover {
+    background-color: #F8F8F8;
+}
+.m-btn-style4:disabled {
+    background-color: #CECECE/*#FFFFFF*/;
+    color: #A6A6A6;
+    cursor: not-allowed;
+}
+

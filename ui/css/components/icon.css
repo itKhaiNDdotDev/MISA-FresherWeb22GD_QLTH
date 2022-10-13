@@ -1,0 +1,208 @@
+.m-icon {
+    width: 28px;
+    height: 28px;
+    border: none;
+    /* background-color: inherit; */
+    cursor: pointer;
+    background-color: inherit;
+}
+
+.icon-more {
+    background-image: url(../../assets/Icons/ic_More.png);
+    background-repeat: no-repeat;
+}
+
+.icon-delete {
+    background-image: url(../../assets/Icons/ic_delete.png);
+    background-repeat: no-repeat;
+}
+
+.icon-edit {
+    border-radius: 50%;
+    background-image: url(../../assets/Icons/ic_edit_2.png);
+    background-repeat: no-repeat;
+}
+.icon-edit:hover, .icon-edit:focus {
+    background-color: #E9E9E9;
+    background-image: url(../../assets/Icons/ic_Edit.png);
+}
+.icon-remove {
+    border-radius: 50%;
+    background-image: url(../../assets/Icons/ic_Remove.png);
+    background-repeat: no-repeat;
+}
+.icon-remove:hover, .icon-remove:focus {
+    background-color: #E9E9E9;
+    background-image: url(../../assets/Icons/ic_Remove_Hover.png);
+}
+.m-icon:focus {
+    background-color: #E9E9E9;
+}
+
+.icon-search {
+    background-image: url(../../assets/Icons/Ic_seerch.png);
+    background-repeat: no-repeat;
+}
+
+.icon-chonanh {
+    background-image: url(../../assets/Icons/bg_chonanh.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-alert {
+    background-image: url(../../assets/Icons/ic_Alert.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-avatar {
+    background-image: url(../../assets/Icons/ic_Avatar_36.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-logo-thietbi {
+    background-image: url(../../assets/Icons/ic_IconThietBi.svg);
+    background-repeat: no-repeat;
+}
+
+.icon-back {
+    background-image: url(../../assets/Icons/ic_Back.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-next {
+    background-image: url(../../assets/Icons/ic_Next.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-movetofirst {
+    background-image: url(../../assets/Icons/ic_MoveToFirst.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-movetolast {
+    background-image: url(../../assets/Icons/ic_MoveToLast.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-check {
+    background-image: url(../../assets/Icons/ic_Check.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-dropdown {
+    background-image: url(../../assets/Icons/ic_Chevron.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-notification {
+    background-image: url(../../assets/Icons/ic_Notification_32.png);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    width: 32px;
+    height: 32px;
+}
+
+.icon-toast-fail {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Fail.png);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+}
+.icon-toast-info {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Info.png);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+}
+.icon-toast-success {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Success.png);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+}
+.icon-toast-warning {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Warning.png);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+}
+
+.icon-close {
+    background-image: url(../../assets/Icons/ic_X_2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-x {
+    background-image: url(../../assets/Icons/ic_X.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-help {
+    background-image: url(../../assets/Icons/ic_Help.png);
+    background-repeat: no-repeat;
+    /* background-position: -929px -488px;
+    background-size: 1990px; */
+    background-size: cover;
+}
+.icon-sidebar { /******************Chua co*******************/
+    background-color: inherit;
+    border: none;
+    width: 28px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+    /* box-sizing: border-box; */
+}
+.icon-sidebar div:nth-child(1) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 5px;
+    background-color: #FFFFFF;
+}
+.icon-sidebar div:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%,-50%);
+    left: 0px;
+    right: 0px;
+    height: 5px;
+    background-color: #FFFFFF;
+}
+.icon-sidebar div:nth-child(3) {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 5px;
+    background-color: #FFFFFF;
+} /********************************************/
+.icon-tongquan {
+    background-image: url(../../assets/Icons/ic_TongQuan.svg);
+    background-repeat: no-repeat;
+}
+.icon-thietbi {
+    background-image: url(../../assets/Icons/ic_ThietBi.svg);
+    background-repeat: no-repeat;
+}
+.icon-muontra {
+    background-image: url(../../assets/Icons/ic_MuonTra.svg);
+    background-repeat: no-repeat;
+}
+.icon-baocao {
+    background-image: url(../../assets/Icons/ic_BaoCao.svg);
+    background-repeat: no-repeat;
+}
+.icon-hethong {
+    background-image: url(../../assets/Icons/ic_HeThong.svg);
+    background-repeat: no-repeat;
+}
+

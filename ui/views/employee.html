@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý cán bộ/Giáo viên</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/employee.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-head">
+                <div class="m-logo icon-logo-thietbi"></div>
+                <div class="m-title">Thiết bị</div>
+                <button class="icon-sidebar"><div></div><div></div><div></div></button>
+            </div>
+            <div class="sidebar-menu">
+                <button class="menu-item">
+                    <div class="menu-item-icon icon-tongquan"></div>
+                    <div class="menu-item-text">Tổng quan</div>
+                </button>
+                <button class="menu-item">
+                    <div class="menu-item-icon icon-thietbi"></div>
+                     <div class="menu-item-text">Thiết bị</div>
+                </button>
+                    
+                <button class="menu-item">
+                    <div class="menu-item-icon icon-muontra"></div>
+                    <div class="menu-item-text">Mượn trả</div>
+                </button>
+                <button class="menu-item">
+                    <div class="menu-item-icon icon-baocao"></div>
+                    <div class="menu-item-text">Báo cáo</div>
+                </button>
+                <button class="menu-item">
+                    <div class="menu-item-icon icon-hethong"></div>
+                    <div class="menu-item-text">Hệ thống</div>
+                </button>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header-left">
+                <div class="header-title">Cán bộ giáo viên</div>
+                <div class="m-icon icon-help"></div>
+            </div>
+            <div class="header-right">
+                <div class="icon-notification"><div class="m-red-new-noti"></div></div>
+                <div class="hor-line"></div>
+                <div class="m-account">
+                    <div class="acc-name">Admin</div>
+                    <button class="icon-dropdown"></button>
+                    <img src="../assets/Images/KhaiND.JPG" alt="anh đại diện" class="acc-avatar">
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <div class="m-input-search m-input">
+                        <input type="text">
+                        <div class="hor-line"></div>
+                        <button class="icon-search"></button>
+                    </div>
+                </div>
+                <div class="toolbar-right">
+                    <button class="m-button m-btn-style1">Thêm</button>
+                    <button class="m-button m-btn-style2">Xuất khẩu</button>
+                    <button class="m-btn-style4 icon-more"></button>
+                </div>
+            </div>
+            <div class="table-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="m-checkbox">
+                                    <input class="m-checkbox-real" type="checkbox">
+                                    <div class="m-checkbox-pseudo"></div>
+                                </div>
+                            </th>
+                            <th>Số hiệu cán bộ</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Tổ chuyên môn</th>
+                            <th>QL theo môn</th>
+                            <th>QL kho, phòng</th>
+                            <th>Đào tọa QLTB</th>
+                            <th>Đang làm việc</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-checkbox">
+                                        <input class="m-checkbox-real" type="checkbox">
+                                        <div class="m-checkbox-pseudo"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="m-a-left">MS15001</td>
+                            <td class="m-a-left">Nguyễn Lê Phương Anh</td>
+                            <td class="m-a-left">0360368999</td>
+                            <td class="m-a-left">Tổ Toán - Tin</td>
+                            <td class="m-a-left">Lý</td>
+                            <td class="m-a-left">Phòng Tin, phòng TN Hóa, ...</td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="m-a-center-item-cell">
+                                    <div class="m-icon icon-check"></div>
+                                </div>
+                            </td>
+                            <td class="m-a-center">
+                                <div class="tb-feat-icon m-a-center-item-cel">
+                                    <div class="m-icon icon-edit"></div>
+                                    <div class="m-icon icon-remove"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer">
+                <button class="m-icon icon-movetofirst"></button>
+                <button class="m-icon icon-back"></button>
+                <div class="m-page-number">1</div>
+                <button class="m-icon icon-next"></button>
+                <button class="m-icon icon-movetolast"></button>
+                <div class="-m-total-page">1/2 trang &nbsp; &nbsp; (56 giáo viên)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
