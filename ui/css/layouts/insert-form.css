@@ -1,0 +1,11 @@
+.m-insert-form {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: fit-content;
+    max-width: 600px;
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 999;
+}

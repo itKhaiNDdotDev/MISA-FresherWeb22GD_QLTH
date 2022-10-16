@@ -17,16 +17,22 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: center; /**/
+    position: relative;
+    box-sizing: border-box;
 }
 .content .toolbar .toolbar-left {
     padding: 16px;
     /* align-content: center; */
+    position: absolute;
+    left: 0px;
 }
 .content .toolbar .toolbar-left .m-input {
 }
 .content .toolbar .toolbar-right {
     display: flex;
     padding: 16px;
+    position: absolute;
+    right: 0px;
 }
 
 .content .footer {
@@ -64,6 +70,7 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    box-sizing: border-box;
 }
 .content .table-content table {
     border-collapse: collapse;
