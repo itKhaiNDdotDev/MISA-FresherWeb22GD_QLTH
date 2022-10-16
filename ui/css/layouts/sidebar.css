@@ -1,41 +1,37 @@
 .sidebar {
-    width: 220px;
-    height: 100%;
     background-color: #24344B;;
-    flex-shrink: 0;
     color: #FFFFFF;
-    /* box-sizing: border-box; */
+    display: flex;
+    flex-direction: column;
 }
 
-.sidebar-head {
-    width: 100%;
+.sidebar .sidebar-head {
+    flex-shrink: 0;
     height: 48px;
     display: flex;
     align-items: center;
     position: relative;
-    font-size: 16px;
-    font-weight: 600;
     padding: 0px 12px;
-    box-sizing: border-box;
 }
-.sidebar .sidebar-head .m-logo {
+.sidebar-head .m-logo {
     width: 40px; /*56*/
     height: 40px; /*56*/
 }
-.sidebar .sidebar-head .m-title {
-    margin-left: 8px;
+.sidebar-head .m-title {
+    margin: 0px 8px;
+    font-size: 16px;
+    font-weight: 600;
 }
-.sidebar .sidebar-head .icon-sidebar {
+.sidebar-head .icon-sidebar {
     position: absolute;
     right: 12px;
 }
 
 .sidebar .sidebar-menu {
+    flex: 1;
     margin-top: 10px;
-    font-size: 13px;
-    font-weight: 600;
 }
-.sidebar .sidebar-menu .menu-item {
+.sidebar-menu .menu-item {
     padding: 14px;
     cursor: pointer;
     display: flex;
@@ -45,16 +41,16 @@
     background-color: inherit;
     color: #FFFFFF;
 }
-.sidebar .sidebar-menu .menu-item:hover {
+.sidebar-menu .menu-item:hover {
     background-color: #404F64;
 }
-.sidebar .sidebar-menu .menu-item:focus {
+.sidebar-menu .menu-item:focus {
     background-color: #404F64;
     border-left: 4px solid #0DD469;
     padding-left: 10px;
     color: #0DD469;
 }
-.sidebar .sidebar-menu .menu-item .menu-item-text {
+.sidebar-menu .menu-item .menu-item--text {
     margin-left: 8px;
     box-sizing: border-box;
 }

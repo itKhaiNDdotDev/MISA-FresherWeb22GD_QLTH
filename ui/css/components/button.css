@@ -45,6 +45,7 @@
     border-radius: 4px;
     cursor: pointer;
     background-position: center;
+    padding: 0px;
 }
 .m-btn-style4:hover {
     background-color: #F8F8F8;

@@ -11,6 +11,7 @@
 @import url(layouts/sidebar.css);
 @import url(layouts/content.css);
 @import url(layouts/insert-form.css);
+@import url(layouts/table.css);
 
 @font-face {
     font-family: OpenSans;
@@ -23,4 +24,5 @@
 }
 body {
     margin: 0px;
+    background-color: #EAECEF;
 }

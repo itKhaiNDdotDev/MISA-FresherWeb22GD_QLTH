@@ -17,15 +17,20 @@
     height: 40px;
 }
 
-.m-icon--data-action {
+.button-icon {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.icon--data-action {
     width: 28px;
     height: 28px;
-    border: none;
-    cursor: pointer;
     border-radius: 50%;
     background-position: center;
 }
-.m-icon--data-action:hover, .m-icon--data-action:focus {
+.icon--data-action:hover, .icon--data-action:focus {
     background-color: #E9E9E9;
 }
 
@@ -98,7 +103,7 @@
     background-image: url(../../assets/Icons/ic_Check.png);
 }
 
-.icon-dropdown {
+.icon-down {
     background-image: url(../../assets/Icons/ic_Chevron.png);
 }
 
@@ -134,8 +139,8 @@
 
 .icon-sidebar { 
     background-image: url(../../assets/Icons/ic_sprites.svg);
-    background-position: -27px -25px;
-    background-size: 2800px;
+    background-position: -25px -23px;
+    background-size: 2600px;
 }
 
 .icon-tongquan {
