@@ -1,0 +1,58 @@
+table {
+    border-collapse: collapse;
+    position: absolute;
+    left: 16px;
+    right: 16px;
+}
+
+th, td {
+    border: 1px solid #D5D8E6;
+    /* white-space: nowrap; */
+    vertical-align: middle;
+    padding: 0px 16px;
+}
+th:nth-child(1), td:nth-child(1) {
+    border-left: none;
+}
+th:nth-last-child(1), td:nth-last-child(1) {
+    border-right: none;
+}
+
+tr {
+    height: 40px;
+}
+
+th {
+    background-color: #F5F6FA;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    border-top: none;
+}
+
+td {
+    background-color: #FFFFFF;
+}
+
+tbody tr:hover {
+    background-color: #E5F3FF; /*forcus: CCE8FF*/
+}
+
+tbody tr td .tb-feat-icon {
+    display: flex;
+    background-color: aqua;
+}
+
+tbody tr td.m-a-left {
+    text-align: left;
+}
+tbody tr td.m-a-center {
+    text-align: center;
+}
+tbody tr td.m-a-right {
+    text-align: right;
+}
+table .m-icon, table .m-checkbox {
+    /* width: 100%;
+    height: 100%; */
+}

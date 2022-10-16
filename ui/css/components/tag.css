@@ -1,0 +1,13 @@
+.m-tag {
+    padding-left: 12px;
+    margin: 0px 0px 0px 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0E0E0;
+}
+
+.m-tag .m-tag-text {
+    margin-right: 3px;
+}

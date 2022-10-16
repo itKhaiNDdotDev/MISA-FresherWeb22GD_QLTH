@@ -1,0 +1,28 @@
+@import url(components/button.css);
+@import url(components/checkbox.css);
+@import url(components/icon.css);
+@import url(components/dropdown.css);
+@import url(components/tag.css);
+@import url(components/input.css);
+@import url(components/toast.css);
+
+@import url(layouts/layout.css);
+@import url(layouts/header.css);
+@import url(layouts/sidebar.css);
+@import url(layouts/content.css);
+@import url(layouts/insert-form.css);
+@import url(layouts/table.css);
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../assets/Fonts/OpenSans-Regular.ttf);
+}
+
+* {
+    font-family: OpenSans;
+    font-size: 13px;
+}
+body {
+    margin: 0px;
+    background-color: #EAECEF;
+}
