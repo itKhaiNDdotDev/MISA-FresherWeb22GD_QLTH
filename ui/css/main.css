@@ -12,10 +12,19 @@
 @import url(layouts/content.css);
 @import url(layouts/insert-form.css);
 @import url(layouts/table.css);
+@import url(layouts/dialog.css);
 
 @font-face {
     font-family: OpenSans;
-    src: url(../assets/Fonts/OpenSans-Regular.ttf);
+    src: url(../assets/Fonts/OpenSans-Regular.woff2);
+}
+@font-face {
+    font-family: OpenSansSemiBold;
+    src: url(../assets/Fonts/OpenSans-SemiBold.woff2);
+}
+@font-face {
+    font-family: OpenSansBold;
+    src: url(../assets//Fonts/OpenSans-Bold.woff2);
 }
 
 * {

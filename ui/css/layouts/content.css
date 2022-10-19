@@ -4,10 +4,12 @@
     flex-wrap: wrap;
     position: relative;
     box-sizing: border-box;
+    min-width: 480px;
+    /* overflow: auto; */
 }
 
 .content .toolbar {
-    background-color: aqua;
+    /* background-color: aqua; */
     height: 64px;
     padding: 16px;
     display: flex;
@@ -34,6 +36,7 @@
     /* padding: 0px 16px; */
     position: relative;
     box-sizing: border-box;
+    /* overflow: auto; */
 }
 
 .content .footer {

@@ -3,7 +3,7 @@
     margin: 0px 0px 0px 8px;
     height: 32px;
     min-width: 96px;
-    font-weight: 600;   /* SemiBold */
+    font-family: OpenSansSemibold;
     border-radius: 4px;
     cursor: pointer;
 }

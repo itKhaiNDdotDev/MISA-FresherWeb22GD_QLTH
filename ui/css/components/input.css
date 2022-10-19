@@ -2,11 +2,11 @@
     position: relative;
     padding-bottom: 12px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: max-content;
-    background-color: aqua;
-    margin: 4px;
-    z-index: 0;
+    /* margin: 4px;
+    z-index: 0; */
 }
 .m-input-container:nth-child(1) {
     z-index: 3;

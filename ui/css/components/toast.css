@@ -3,7 +3,6 @@
     bottom: 40px;
     right: 80px;
     z-index: 3;
-    background-color: aqua;
 }
 
 .m-toast {
@@ -28,8 +27,8 @@
     align-self: center;
 }
 .m-toast .toast-title {
+    font-family: OpenSansSemiBold;
     font-size: 16px;
-    font-weight: 600; /*SemiBold*/
     padding-top: 18px;
     padding-right: 18px;
 }

@@ -30,17 +30,20 @@ th {
     border-top: none;
 }
 
-td {
+tbody {
     background-color: #FFFFFF;
 }
 
-tbody tr:hover {
+tbody tr:hover, tbodytr:focus {
     background-color: #E5F3FF; /*forcus: CCE8FF*/
 }
 
+tbody tr td:nth-child(3) {
+    color: #03AE66;;
+}
 tbody tr td .tb-feat-icon {
     display: flex;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 tbody tr td.m-a-left {

@@ -19,8 +19,8 @@
 }
 .sidebar-head .m-title {
     margin: 0px 8px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 20px;
+    font-family: OpenSansBold;
 }
 .sidebar-head .icon-sidebar {
     position: absolute;
@@ -40,6 +40,8 @@
     border: none;
     background-color: inherit;
     color: #FFFFFF;
+    font-size: 16px;
+    font-family: OpenSansSemiBold;
 }
 .sidebar-menu .menu-item:hover {
     background-color: #404F64;
