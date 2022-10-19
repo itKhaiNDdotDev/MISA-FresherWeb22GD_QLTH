@@ -1,0 +1,131 @@
+.m-popup-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #0000006a;
+    z-index: 2;
+    display: none;
+}
+
+.m-insert-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 877px;
+    /* min-width:870px; */
+    /* overflow: scroll; */
+    height: 400px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* box-shadow: 4px 0px 10px #D5D5D5; */
+}
+
+.insert-form--left {
+    height: 100%;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.insert-form--left .upload-avatar {
+    background-image: url(../../assets/Images/no_avatar.png);
+    background-color: #CCCCCC;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    width: 180px;
+    height: 220px;
+}
+.insert-form--left .upload-avatar--text {
+    background-color: #03AE66;
+    color: #FFFFFF;
+    height: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+}
+.insert-form--left .upload-avatar:hover > .upload-avatar--text {
+    background-color: #02BF70;
+}
+
+.insert-form--left .form--fullname {
+    margin: 12px 0px 4px 0px;
+    font-size: 16px;
+}
+/* .insert-form--left .form--e-id {
+} */
+
+.m-insert-form .hor-line {
+    width: 1px;
+    height: 90%;
+    background-color: #CCCCCC;
+}
+
+.insert-form--right {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.form__header {
+    /* background-color: yellow; */
+    height: 56px;
+    font-size: 18px;
+    font-family: OpenSansSemiBold;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+}
+
+.form__content {
+    flex: 1;
+    padding: 16px 0px 4px 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.form__content .m-checkbox, .form__content label {
+    align-self: center;
+    /* padding-bottom: 12px; */
+}
+.form__content .m-input-container, .form__content .m-dropdown-container {
+    width: 50%;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+.form__content .m-date-input {
+    width: fit-content;
+}
+.form__content .check--quit-date .checkbox-real:checked:target-within:target-within + .quit-date {
+    display: flex; /*Check selector*/
+}
+.form__content .quit-date {
+    /* display: none; */
+}
+
+.form__footer {
+    /* background-color: red; */
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right:  20px;
+}
+
+.m-insert-form .icon-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}

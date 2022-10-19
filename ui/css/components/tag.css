@@ -1,12 +1,12 @@
 .m-tag {
     padding-left: 12px;
     margin: 0px 0px 0px 8px;
-    font-size: 13px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #E0E0E0;
+    height: 24px;
 }
 
 .m-tag .m-tag-text {

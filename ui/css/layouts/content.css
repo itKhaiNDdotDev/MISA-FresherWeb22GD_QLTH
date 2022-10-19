@@ -1,32 +1,42 @@
 .content {
-    /* background-color: yellow; */
-    /* flex: 1; */
-    width: calc(100% - 220px);
-    height: calc(100% - 48px);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     position: relative;
     box-sizing: border-box;
+    min-width: 480px;
+    /* overflow: auto; */
 }
 
 .content .toolbar {
-    width: 100%;
+    /* background-color: aqua; */
     height: 64px;
+    padding: 16px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-content: center; /**/
+    align-items: center;
+    /* position: relative; */
+    box-sizing: border-box;
 }
-.content .toolbar .toolbar-left {
-    padding: 16px;
-    /* align-content: center; */
-}
-.content .toolbar .toolbar-left .m-input {
+/* .toolbar .toolbar-left {
+} */
+.toolbar .toolbar-left .m-input {
+    margin-left: 0px;   /*De bo di margin left 12px cua input*/
 }
 .content .toolbar .toolbar-right {
     display: flex;
-    padding: 16px;
+}
+
+.content .table-content {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow: auto;
+    /* padding: 0px 16px; */
+    position: relative;
+    box-sizing: border-box;
+    /* overflow: auto; */
 }
 
 .content .footer {
@@ -40,77 +50,21 @@
     align-items: center;
     box-sizing: border-box;
     background-color: #FFFFFF;
-    font-size: 13px;
+    box-shadow: 4px 0px 10px #D5D5D5; /*Tu them vao theo UI*/
 }
-.content .footer div,button {
-    margin-right: 20px;
+.footer .m-icon  {
+    margin: 0px 10px;
 }
-.content .footer .m-page-number {
-    border: 1px solid #D5D8E6;
+.footer .m-page-number {
+    border: 1px solid #CECECE;
     width: 64px;
     height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    margin: 0px 10px;
 }
-
-.content .table-content {
-    /* flex: 1; */
-    width: 100%;
-    height: calc(100% - 120px);
-    overflow: auto;
-    padding: 0px 16px;
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-}
-.content .table-content table {
-    border-collapse: collapse;
-    font-size: 13px;
-    position: absolute;
-}
-.content .table-content tr {
-    height: 40px;
-}
-.content .table-content th,td {
-    border: 1px solid #D5D8E6;
-    /* white-space: nowrap; */
-    vertical-align: middle;
-    padding: 0px 16px;
-}
-.content .table-content tr th {
-    background-color: #F5F6FA;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-    border-top: none;
-}
-.content .table-content th:nth-child(1),td:nth-child(1) {
-    border-left: none;
-}
-.content .table-content th:nth-last-child(1),td:nth-last-child(1) {
-    border-right: none;
-}
-.content .table-content tbody tr:hover {
-    cursor: pointer;
-    background-color: #E5F3FF; /*forcus: CCE8FF*/
-}
-.content .table-content tbody tr td .tb-feat-icon {
-    display: flex;
-}
-.content .table-content tbody tr td .m-a-center-item-cell {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-}
-.content .table-content tbody tr td.m-a-left {
-    text-align: left;
-}
-.content .table-content tbody tr td.m-a-center {
-    text-align: center;
-}
-.content .table-content tbody tr td.m-a-right {
-    text-align: right;
+.footer .m-total-page {
+    margin: 0px 20px 0px 10px;
 }
