@@ -5,6 +5,7 @@
 @import url(components/tag.css);
 @import url(components/input.css);
 @import url(components/toast.css);
+@import url(components/loading.css);
 
 @import url(layouts/layout.css);
 @import url(layouts/header.css);
@@ -13,6 +14,7 @@
 @import url(layouts/insert-form.css);
 @import url(layouts/table.css);
 @import url(layouts/dialog.css);
+@import url(layouts/no-data.css);
 
 @font-face {
     font-family: OpenSans;
@@ -30,6 +32,20 @@
 * {
     font-family: OpenSans;
     font-size: 13px;
+}
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+*::-webkit-scrollbar-track {
+    background-color: #FFFFFF;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #F5F5F5;
+    border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #8F8F8F;
 }
 body {
     margin: 0px;

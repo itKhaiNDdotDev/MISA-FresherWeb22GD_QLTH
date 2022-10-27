@@ -4,15 +4,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: max-content;
-    /* margin: 4px;
-    z-index: 0; */
-}
-.m-input-container:nth-child(1) {
-    z-index: 3;
-}
-.m-input-container:nth-child(2) {
-    z-index: 2;
 }
 
 /* .m-input-container label {
@@ -22,12 +13,14 @@
 .m-input {
     height: 32px;
     border-radius: 4px;
-    padding: 0px 12px;
     border: 1px solid #CCCCCC;
     margin: 0px 16px 0px 12px;
     outline: none;
     box-sizing: border-box;
     /* flex: 1; */
+}
+input.m-input {
+    padding: 0px 12px;
 }
 .m-input:disabled {
     background-color: #F5F5F5;;
@@ -77,6 +70,7 @@
 }
 .m-input--search input {
     flex: 1; /*Co the set chung cho m-input va bo dong nay di*/
+    padding: 0px 53px 0px 12px;
 }
 .m-input--search .icon-search {
     width: 40px;
@@ -88,7 +82,7 @@
     background-color: inherit;
     cursor: pointer;
     position: absolute;
-    right: 17px;
+    right: 1px;
     border-radius: 4px;
 }
 .m-input--search .icon-search:hover {
@@ -99,6 +93,6 @@
     height: 22px;
     background-color: #CCCCCC;
     position: absolute;
-    right: 57px;
+    right: 41px;
     z-index: 1;
 }

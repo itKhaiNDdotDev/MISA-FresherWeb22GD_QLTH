@@ -1,6 +1,7 @@
 .m-checkbox-container {
     display: flex;
-    padding-bottom: 12px;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .m-checkbox {
@@ -24,6 +25,7 @@
     bottom: 0px;
     z-index: 1;
     cursor: pointer;
+    margin: 0px;
 }
 
 .m-checkbox .checkbox-pseudo {
