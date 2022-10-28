@@ -7,6 +7,9 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.m-button:first-child {
+    margin-left: 0px;
+}
 
 .m-btn-style1 {
     background-color: #03AE66;
