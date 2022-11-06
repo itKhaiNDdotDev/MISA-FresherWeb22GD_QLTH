@@ -1,0 +1,36 @@
+.m-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+}
+
+.dialog__header {
+    height: 56px;
+    font-size: 16px;
+    font-family: OpenSansSemiBold;
+    padding: 18px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.dialog__content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.dialog__footer {
+    height: 56px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 16px;
+}
+
+.m-dialog .icon-close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}

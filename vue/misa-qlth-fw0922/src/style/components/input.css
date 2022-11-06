@@ -1,0 +1,103 @@
+.m-input-container {
+    position: relative;
+    padding-right: 26px;
+    margin-bottom: 12px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.m-input-container label {
+    min-width: 100px;
+}
+
+.m-input {
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    /* margin: 0px 16px 0px 12px; */
+    outline: none;
+    box-sizing: border-box;
+    /* flex: 1; */
+}
+input.m-input {
+    padding: 0px 12px;
+}
+.m-input:disabled {
+    background-color: #F5F5F5;;
+    cursor: not-allowed;
+}
+.m-input:focus { /*Tu them vao*/
+    border-color: #0DD469;
+}
+
+.m-input--error {
+    border-color: #FA3939;
+}
+.m-error-message {
+    background-color: #FA3939;
+    color: #FFFFFF;
+    opacity: 85%;
+    padding: 4px 8px;
+    width: max-content;
+    border-radius: 4px;
+    position: absolute;
+    left: calc(100% - 12px);
+    z-index: 1;
+}
+.m-error-message .error-arrow {
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    background-color: inherit;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 0;
+}
+.m-error-message .error-text {
+    position: relative;
+    z-index: 1;
+}
+.m-input--error:focus ~ .m-error-message {
+    display: none;
+}
+
+.m-input--search {
+    display: flex;
+    position: relative;
+    align-items: center;
+    z-index: 0;
+}
+.m-input--search input {
+    flex: 1; /*Co the set chung cho m-input va bo dong nay di*/
+    padding: 0px 53px 0px 12px;
+}
+.m-input--search .icon-search {
+    width: 40px;
+    height: 30px;
+    margin: 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
+    border-radius: 4px;
+}
+.m-input--search .icon-search:hover {
+    background-color: #E9E9E9;
+}
+.m-input--search .hor-line {
+    width: 1px;
+    height: 22px;
+    background-color: #CCCCCC;
+    position: absolute;
+    right: 41px;
+    z-index: 1;
+}
+
+::-webkit-calendar-picker-indicator {
+    background: url(./../../assets/Images/ic_date.svg) center/80% no-repeat;;
+}

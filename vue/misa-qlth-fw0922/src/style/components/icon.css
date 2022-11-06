@@ -1,0 +1,160 @@
+.m-icon {
+    background-repeat: no-repeat;
+}
+
+.m-icon-32 {
+    width: 32px;
+    height: 32px;
+}
+
+.m-icon-24 {
+    width: 24px;
+    height: 24px;
+}
+
+.toast-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.button-icon {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.icon--data-action {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-position: center;
+}
+.icon--data-action:hover, .icon--data-action:focus {
+    background-color: #E9E9E9;
+}
+
+.icon-edit {
+    background-image: url(../../assets/Icons/ic_edit_2.png);
+}
+.icon-edit:hover, .icon-edit:focus {
+    background-image: url(../../assets/Icons/ic_Edit.png);
+}
+.icon-remove {
+    background-image: url(../../assets/Icons/ic_Remove.png);
+}
+.icon-remove:hover, .icon-remove:focus { 
+    background-image: url(../../assets/Icons/ic_Remove_Hover.png);
+}
+
+.icon-search {
+    background-image: url(../../assets/Icons/Ic_seerch.png);
+}
+
+.icon-more {
+    background-image: url(../../assets/Icons/ic_More.png);
+}
+
+.icon-delete {
+    background-image: url(../../assets/Icons/ic_delete.png);
+}
+
+.icon-chonanh {
+    background-image: url(../../assets/Icons/bg_chonanh.png);
+    width: 181px;
+    height: 186px;
+}
+
+.icon-alert {
+    background-image: url(../../assets/Icons/ic_Alert.png);
+    width: 198px;
+    height: 198px;
+}
+
+.icon-avatar {
+    background-image: url(../../assets/Icons/ic_Avatar_36.png);
+    width: 36px;
+    height: 36px;
+}
+
+.icon-logo-thietbi {
+    background-image: url(../../assets/Icons/ic_IconThietBi.svg);
+    width: 56px;
+    height: 56px;
+}
+
+.icon-back {
+    background-image: url(../../assets/Icons/ic_Back.png);
+}
+
+.icon-next {
+    background-image: url(../../assets/Icons/ic_Next.png);
+}
+
+.icon-movetofirst {
+    background-image: url(../../assets/Icons/ic_MoveToFirst.png);
+}
+
+.icon-movetolast {
+    background-image: url(../../assets/Icons/ic_MoveToLast.png);
+}
+
+.icon-check {
+    background-image: url(../../assets/Icons/ic_Check.png);
+}
+
+.icon-down {
+    background-image: url(../../assets/Icons/ic_Chevron.png);
+}
+
+.icon-notification { /*32x32*/
+    background-image: url(../../assets/Icons/ic_Notification_32.png);
+}
+
+.icon-toast-fail {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Fail.png);
+}
+.icon-toast-info {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Info.png);
+}
+.icon-toast-success {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Success.png);
+}
+.icon-toast-warning {
+    background-image: url(../../assets/Icons/ic_ToastMessage_Warning.png);
+}
+
+.icon-close {
+    background-image: url(../../assets/Icons/ic_X_2.png);
+}
+
+.icon-x {
+    background-image: url(../../assets/Icons/ic_X.png);
+}
+
+.icon-help {
+    background-image: url(../../assets/Icons/ic_sprites.svg);
+    background-position: -804px -295px;
+}
+
+/* .icon-sidebar { 
+    background-image: url(../../assets/Icons/ic_sprites.svg);
+    background-position: -25px -23px;
+    background-size: 2600px;
+} */
+
+.icon-tongquan {
+    background-image: url(../../assets/Icons/ic_TongQuan.svg);
+}
+.icon-thietbi {
+    background-image: url(../../assets/Icons/ic_ThietBi.svg);
+}
+.icon-muontra {
+    background-image: url(../../assets/Icons/ic_MuonTra.svg);
+}
+.icon-baocao {
+    background-image: url(../../assets/Icons/ic_BaoCao.svg);
+}
+.icon-hethong {
+    background-image: url(../../assets/Icons/ic_HeThong.svg);
+}
