@@ -13,7 +13,7 @@ import EmployeeToolbar from "./../components/base/EmployeeToolbar.vue";
 import EmployeeTable from "./../components/base/EmployeeTable.vue";
 import EmployeePaging from "./../components/base/EmployeePaging.vue";
 import EmployeeForm from "./EmployeeForm.vue";
-import NoData from "./../components/base/NoData.vue"
+import NoData from "./../components/base/NoData.vue";
 export default {
   name: "EmployeeList",
   components: {
@@ -21,13 +21,13 @@ export default {
     EmployeeTable,
     EmployeePaging,
     EmployeeForm,
-    NoData
+    NoData,
   },
   data() {
     return {
       isShowPopup: false,
       employeeSelectedId: null,
-      employeeData: null
+      employeeData: null,
     };
   },
   // watch: {
@@ -37,8 +37,8 @@ export default {
   //   }
   // },
   mounted() {
-    console.log("---------------------------")
-    console.log(this.employeeData)
+    console.log("---------------------------");
+    console.log(this.employeeData);
   },
   methods: {
     /**
@@ -53,7 +53,7 @@ export default {
     },
     /**
      * Sự kiện bấm vào nút Đóng hoặc icon x trên Form - ẩn pop-up thêm mới employee
-     * Viết chung ở view EmployeeList, các components con call qua $emits   
+     * Viết chung ở view EmployeeList, các components con call qua $emits
      * Auth: KhaiND (29/10/2022)
      */
     onClickClosePopUp() {
@@ -73,8 +73,8 @@ export default {
     // }
     reloadEmployeeData() {
       this.$refs.tableData.loadData();
-    }
-  }
+    },
+  },
 };
 </script>
 
