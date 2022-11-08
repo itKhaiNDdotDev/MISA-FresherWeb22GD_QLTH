@@ -123,7 +123,7 @@
     /* background-color: lightslategrey; */
     /* z-index: 1; */
 }
-.form__content--right .m-input {
+.form__content--right .m-input, .form__content--right .m-dropdown {
     min-width: 240px;
 }
 

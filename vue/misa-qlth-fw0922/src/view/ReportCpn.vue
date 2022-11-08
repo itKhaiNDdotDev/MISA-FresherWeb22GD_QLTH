@@ -1,16 +1,17 @@
 <template lang="">
     <div>
         Report
-        <MSelect :options="mdata"/>
+        <!-- <MSelect :options="mdata" :selectedIds="checkList"/> -->
+        <button @click="changeCheck">Change</button>
     </div>
 </template>
 
 <script>
-import MSelect from "./../components/base/MSelect.vue";
+// import MSelect from "./../components/base/MSelect.vue";
 export default {
   name: "ReportCpn",
   components: {
-    MSelect,
+    // MSelect,
   },
   data() {
     return {
@@ -22,8 +23,17 @@ export default {
         { id: "5", name: "PHP" },
         { id: "6", name: "Elixir" },
       ],
+      checkList: [1, 2, 3]
     };
   },
+  methods: {
+    changeCheck() {
+      this.checkList = [1, 3, 5];
+    }
+  },
+  updated() {
+    console.log(this.checkList);
+  }
 };
 </script>
 

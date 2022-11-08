@@ -67,7 +67,7 @@ export default {
     showEmployeeForm(isShow) {
       this.isShowPopup = isShow;
     },
-    // //Get ELEMETN
+    // //Get ELEMENT
     // getSelectedId(event) {
     //   console.log(event.target.parentElement);
     // }

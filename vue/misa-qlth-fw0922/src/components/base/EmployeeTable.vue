@@ -1,14 +1,5 @@
 <template lang="">
     <div class="table-content">
-        <!-- <div id="tableDataLoader" class="m-loading-wrapper">
-           <div class="m-loading">
-                <div class="loading--circle"></div>
-                <div class="loading--circle"></div>
-                <div class="loading--circle"></div>
-                <div class="loading--circle"></div>
-                <div class="loading--text">Đang tải</div>
-            </div>
-        </div> -->
         <table>
             <thead>
                 <tr>
@@ -40,33 +31,35 @@
                     <td class="m-a-left"> {{employee.employeeCode}} </td>
                     <td class="m-a-left" @click="onClickEdit(employee)"> {{employee.employeeName}} </td>
                     <td class="m-a-left"> {{employee.employeePhoneNumber}} </td>
-                    <td class="m-a-left" v-if="employee.departmentId == 0"> Tổ Toán - Lý - Hóa </td>
-                    <td class="m-a-left" v-else-if="employee.departmentId == 1"> Tổ Toán - Tin </td>
-                    <td class="m-a-left" v-else-if="employee.departmentId == 2"> Tổ Hóa - Sinh </td>
-                    <td class="m-a-left" v-else-if="employee.departmentId == 3"> Tổ Anh văn </td>
-                    <td class="m-a-left" v-else-if="employee.departmentId == 4"> Tổ Sử - Địa - GDCD </td>
-                    <td class="m-a-left" v-else-if="employee.departmentId == 5"> Tổ Ngữ văm </td>
-                    <td class="m-a-left" v-else-if="employee.departmentId == 6"> Tổ Lái </td>
-                    <td class="m-a-left" v-else> </td>
-                    <td class="m-a-left">
+                    <td class="m-a-left" title="Tổ Toán - Lý - Hóa" v-if="employee.departmentId == 0"> Tổ Toán - Lý - Hóa </td>
+                    <td class="m-a-left" title="Tổ Toán - Tin" v-else-if="employee.departmentId == 1"> Tổ Toán - Tin </td>
+                    <td class="m-a-left" title="Tổ Hóa - Sinh" v-else-if="employee.departmentId == 2"> Tổ Hóa - Sinh </td>
+                    <td class="m-a-left" title="Tổ Anh văn" v-else-if="employee.departmentId == 3"> Tổ Anh văn </td>
+                    <td class="m-a-left" title="Tổ Sử - Địa - GDCD " v-else-if="employee.departmentId == 4"> Tổ Sử - Địa - GDCD </td>
+                    <td class="m-a-left" title="Tổ Ngữ văm" v-else-if="employee.departmentId == 5"> Tổ Ngữ văm </td>
+                    <td class="m-a-left" title="Tổ Lái" v-else-if="employee.departmentId == 6"> Tổ Lái </td>
+                    <td class="m-a-left" title="" v-else> </td>
+                    <td class="m-a-left" :title="employee.subjects.map((i) => {return i.subjectName})">
                         <span v-for="(subject, index) in employee.subjects" :key="index">
                              {{subject.subjectName}}
                              <span v-if="index < employee.subjects.length-1">, </span>
                         </span>
                         <!-- {{employee.subjects.join(", ")}} -->
                     </td>
-                    <td class="m-a-left">
+                    <td class="m-a-left" :title="employee.rooms.map((i) => {return i.roomName})">
                         <span v-for="(room, index) in employee.rooms" :key="index">
                              {{room.roomName}}
                              <span v-if="index < employee.rooms.length-1">, </span>
                         </span>
                     </td>
-                    <td class="m-a-center">
+                    <td class="m-a-center" v-if="employee.isDeviceManager">
                         <div class="m-icon m-icon-24 icon-check"></div>
                     </td>
-                    <td class="m-a-center">
+                    <td v-else></td>
+                    <td class="m-a-center" v-if="employee.workingStatus">
                         <div class="m-icon m-icon-24 icon-check"></div>
                     </td>
+                    <td v-else></td>
                     <td class="m-a-center">
                         <button @click="onClickEdit(employee)" class="m-icon button-icon icon--data-action icon-edit"
                             title="chỉnh sửa"></button>
