@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="m-popup-container" id="popupDialog">
+    <div class="m-popup-container">
         <div class="m-dialog">
             <div class="dialog__header">
                 Thông báo
@@ -17,9 +17,19 @@
 </template>
 <script>
 export default {
-    name: "MsDialog"
+    name: "MsDialog",
+    props: ["isShow"],
+    methods: {
+        onClickCfDel() {
+            return true;
+        },
+
+    },
 }
 </script>
-<style lang="">
-    
+
+<style>
+    .showD {
+        display: block !important;
+    }
 </style>

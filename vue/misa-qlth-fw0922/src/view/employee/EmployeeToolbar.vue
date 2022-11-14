@@ -1,10 +1,10 @@
 <template lang="">
     <div class="toolbar">
         <div class="toolbar-left">
-            <div id="searchEmployee" class="m-input--search">
-                <input type="text" class="m-input">
+            <div class="m-input--search">
+                <input v-model="searchText" type="text" class="m-input">
                 <div class="hor-line"></div>
-                <button class="icon-search" title="Tìm kiếm theo tên, số điện thoại,..."></button>
+                <button @click="searchEmployee" @keyup.enter="searchEmployee" class="icon-search" title="Tìm kiếm theo tên, số điện thoại,..."></button>
             </div>
         </div>
         <div class="toolbar-right">
@@ -18,6 +18,11 @@
 <script>
 export default {
     name: 'EmployeeToolbar',
+    data() {
+        return {
+            searchText: ""
+        }
+    },
     // props: ["isShowPopup"],
     methods: {
         /**
@@ -27,6 +32,13 @@ export default {
         onClickBtnAdd() {
             this.$emit('showPopup', 0)
             console.log('click Add');
+        },
+        /**
+         * Tính năng tìm kiếm
+         * Auth: KhaiND (09/11/2022)
+         */
+        searchEmployee() {
+            this.$emit('searchEmployee', this.searchText);
         }
     }
 }

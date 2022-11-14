@@ -73,14 +73,14 @@ tbody tr td:nth-child(4) {
     width: 100px;
 }
 tbody tr td:nth-child(5) {
-    width: 90px;
-    max-width: 90px;
+    width: 108px;
+    max-width: 108px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 tbody tr td:nth-child(6) {
-    max-width: 100px;
-    width: 90px;
+    max-width: 106px;
+    width: 106px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

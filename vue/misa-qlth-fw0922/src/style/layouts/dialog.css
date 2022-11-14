@@ -19,6 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 16px;
+    padding-top: 8px;
 }
 
 .dialog__footer {

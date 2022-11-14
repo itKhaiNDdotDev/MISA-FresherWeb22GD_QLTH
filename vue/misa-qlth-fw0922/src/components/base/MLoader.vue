@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="m-loading-wrapper" :class="{showLoader:isShow}">
+    <div class="m-loading-wrapper">
         <div class="m-loading">
             <div class="loading--circle"></div>
             <div class="loading--circle"></div>
@@ -13,12 +13,8 @@
 <script>
 export default {
     name: "MLoader",
-    props: ["isShow"]
 };
 </script>
 
 <style scoped>
-    .m-loading-wrapper.showLoader {
-        display: block !important;
-    }
 </style>

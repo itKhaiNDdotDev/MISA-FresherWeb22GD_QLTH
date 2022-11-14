@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import MsDialog from "./../components/base/MsDialog.vue"
+import MsDialog from "../components/base/MsDialog.vue"
 export default {
     name: "DeviceCpn",
     components: {

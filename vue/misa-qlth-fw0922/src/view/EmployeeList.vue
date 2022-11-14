@@ -1,19 +1,20 @@
 <template lang="">
     <!-- DS cán bộ -->
-    <employee-toolbar  @showPopup="onClickOpenForm"></employee-toolbar>
-    <employee-table ref="tableData" @showPopup="onClickOpenForm" v-model:employeeData="employeeList" v-if="true"></employee-table>
+    <employee-toolbar @searchEmployee="searchEmployee" @showPopup="onClickOpenForm"></employee-toolbar>
+    <employee-table :key="tableKey" @showToast="showToast" ref="tableData" @showPopup="onClickOpenForm" v-model:employeeData="employeeList" v-if="true"></employee-table>
     <no-data v-else @showPopup="onClickOpenForm"></no-data>
     <!-- @getId="getSelectedId" -->
-    <employee-paging></employee-paging>
-    <employee-form :isShow="isShowPopup" @hidePopup="onClickClosePopUp" @reloadData="reloadEmployeeData" :employeeSelectedId="employeeSelectedId"></employee-form>
+    <employee-paging ref="pagging" :totalRecord="totalRecord"></employee-paging>
+    <employee-form :key="formKey" @showToast="showToast" v-if="isShowForm" @hidePopup="onClickClosePopUp" @reloadData="reloadEmployeeData" :employeeSelectedId="employeeSelectedId"></employee-form>
 </template>
 
 <script>
-import EmployeeToolbar from "./../components/base/EmployeeToolbar.vue";
-import EmployeeTable from "./../components/base/EmployeeTable.vue";
-import EmployeePaging from "./../components/base/EmployeePaging.vue";
-import EmployeeForm from "./EmployeeForm.vue";
+import EmployeeToolbar from "./employee/EmployeeToolbar.vue";
+import EmployeeTable from "./employee/EmployeeTable.vue";
+import EmployeePaging from "./employee/EmployeePaging.vue";
+import EmployeeForm from "./employee/EmployeeForm.vue";
 import NoData from "./../components/base/NoData.vue";
+
 export default {
   name: "EmployeeList",
   components: {
@@ -25,9 +26,12 @@ export default {
   },
   data() {
     return {
-      isShowPopup: false,
+      isShowForm: false,
       employeeSelectedId: null,
       employeeData: null,
+      tableKey: 0,
+      formKey: 0,
+      totalRecord: null
     };
   },
   // watch: {
@@ -40,6 +44,7 @@ export default {
     console.log("---------------------------");
     console.log(this.employeeData);
   },
+
   methods: {
     /**
      * Sự kiện bấm vào nút Thêm - Hiển thị pop-up thêm mới employee
@@ -59,21 +64,39 @@ export default {
     onClickClosePopUp() {
       this.showEmployeeForm(false);
     },
+
     /**
      * Feat: Ẩn hiện pop-up Form chi tiết Employee
      * @param {Boolean} isShow - true: hiện pop-up Form, false: ẩn pop-up Form
      * Author: KhaiND (29/10/2022)
      */
     showEmployeeForm(isShow) {
-      this.isShowPopup = isShow;
+      this.isShowForm = isShow;
     },
+
     // //Get ELEMENT
     // getSelectedId(event) {
     //   console.log(event.target.parentElement);
     // }
     reloadEmployeeData() {
-      this.$refs.tableData.loadData();
+      this.$forceUpdate();
+      //this.$refs.tableData.loadData();
+      this.tableKey += 1;
+      this.formKey +=1;
+      this.employeeSelectedId = 0;
     },
+    
+  searchEmployee(keyword) {
+    console.log(keyword);
+    this.totalRecord = this.$refs.tableData.loadData(keyword);
+    //this.totalRecord = this.$refs.tableData.totalRecord;
+    console.log("TOTAL RC: " + this.totalRecord);
+  },
+
+    showToast(mes) {
+      this.$emit('showToast', mes);
+      // console.log("Tu FORM RA LIST");
+    }
   },
 };
 </script>

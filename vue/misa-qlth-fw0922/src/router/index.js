@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import EmployeeList from '../view/EmployeeList.vue'
-import ReportCpn from '../view/ReportCpn.vue'
-import DeviceCpn from '../view/DeviceCpn.vue'
+import ReportCpn from '../view/ReportList.vue'
+import DeviceCpn from '../view/DeviceList.vue'
 
 const routes = [
     // {   path: '/',  component: App    },

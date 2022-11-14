@@ -3,10 +3,10 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <the-sidebar></the-sidebar>
-    <the-header></the-header>
-    <the-content></the-content>
+    <the-header @click="showToast"></the-header>
+    <the-content @showToast="showToast"></the-content>
     <div class="toasts-container">
-      <ms-toast></ms-toast>
+      <ms-toast :isShow="isShowToast" :toastType="1" :toastMes="toastMes"></ms-toast>
     </div>
   </div>
 </template>
@@ -25,7 +25,24 @@ export default {
     TheSidebar,
     TheHeader,
     TheContent,
-    MsToast
+    MsToast,
+  },
+  data() {
+    return {
+      isShowToast: false,
+      toastMes: "Xóa thành công cán bộ, giáo viên"
+    }
+  },
+  methods: {
+    showToast(mes) {
+      var me = this;
+      me.isShowToast = true;
+      me.toastMes = mes;
+      setTimeout(function () {
+        me.isShowToast = false;
+        console.log("HIDE TOAST");
+    }, 3000);
+    }
   },
 };
 </script>

@@ -37,7 +37,8 @@
     z-index: 0;
     background-image: url(../../assets/Icons/ic_Checkbox_Inactive.png);
 }
-.checkbox-real:hover ~ .checkbox-pseudo {
+.checkbox-real:hover ~ .checkbox-pseudo,
+.checkbox-real:focus ~ .checkbox-pseudo {
     background-image: url(../../assets/Icons/ic_Checkbox_Hover.png);
 }
 .checkbox-real:checked ~ .checkbox-pseudo {

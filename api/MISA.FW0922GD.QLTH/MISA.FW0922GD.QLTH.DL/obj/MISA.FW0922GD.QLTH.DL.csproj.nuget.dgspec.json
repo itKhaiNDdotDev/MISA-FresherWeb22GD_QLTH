@@ -1,0 +1,142 @@
+{
+  "format": 1,
+  "restore": {
+    "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\MISA.FW0922GD.QLTH.DL.csproj": {}
+  },
+  "projects": {
+    "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj",
+        "projectName": "MISA.FW0922GD.QLTH.Common",
+        "projectPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj",
+        "packagesPath": "C:\\Users\\khain\\.nuget\\packages\\",
+        "outputPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\khain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\MISA.FW0922GD.QLTH.DL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\MISA.FW0922GD.QLTH.DL.csproj",
+        "projectName": "MISA.FW0922GD.QLTH.DL",
+        "projectPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\MISA.FW0922GD.QLTH.DL.csproj",
+        "packagesPath": "C:\\Users\\khain\\.nuget\\packages\\",
+        "outputPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\khain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj": {
+                "projectPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

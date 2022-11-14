@@ -1,7 +1,7 @@
 <template lang="">
     <div class="content">
         <!-- Content -->
-        <router-view></router-view>
+        <router-view @showToast="showToast"></router-view>
     </div>
 </template>
 
@@ -12,7 +12,12 @@ export default {
     name: 'TheContent',
     components: {
         // EmployeeList
-    }
+    },
+    methods: {
+        showToast(mes) {
+            this.$emit('showToast', mes);
+        }
+    },
 }
 </script>
 

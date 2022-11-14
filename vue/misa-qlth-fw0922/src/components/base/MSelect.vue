@@ -1,6 +1,6 @@
 <template>
   <div class="m-dropdown" @blur="isShow=false">
-    <input
+    <input :tabindex="tabindex"
       @click="toggleMe"
       type="text"
       class="m-icon icon-down m-input"
@@ -57,7 +57,8 @@ export default {
     isCheckAll: Boolean,
     checkSelected: {
       type: Function
-    }
+    },
+    tabindex: Number
   },
   data() {
     return {
@@ -166,6 +167,7 @@ export default {
 .m-dropdown {
   position: relative;
   height: 32px;
+  width: 100%;
 }
 
 input {
@@ -182,7 +184,7 @@ input {
   position: absolute;
   top: 0px;
   left: 0px;
-  right: 0px;
+  width: 100%;
   z-index: 0;
 }
 input:focus+.tag-list {

@@ -1,5 +1,5 @@
 .m-loading-wrapper {
-    display: none;
+    display: block;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -13,6 +13,7 @@
     position: absolute;
     top: 41px;
     bottom: 0px;
+    margin-right: 8px;
 }
 
 .m-loading {

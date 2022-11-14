@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="m-popup-container" :class="{isShowPopup:isShow}">
+    <div class="m-popup-container isShowPopup" @keyup.esc="onClickClose">
         <div class="m-insert-form">
             <div class="insert-form--left">
                 <button class="upload-avatar m-icon button-icon">
@@ -19,20 +19,21 @@
                     <div class="form__content--left">
                         <div class="m-input-container">
                             <label for="eId">Số hiệu cán bộ <span style="color: #FA3939;">*</span></label>
-                            <input v-model="employee.employeeCode" id="eId" type="text" class="m-input" mrequired>
-                            <div class="m-error-message" style="display: none;">
+                            <input @blur="onBlurEmpCode" tabindex="1" v-model="employee.employeeCode" id="eId" type="text"
+                            :class="{inputError:eCodeInvalid}" class="m-input" mrequired>
+                            <div class="m-error-message" v-if="eCodeInvalid" style="left: 280px">
                                 <div class="error-text">Mã cán bộ không được bỏ trống.</div>
                                 <div class="error-arrow"></div>
                             </div>
                         </div>
                         <div class="m-input-container">
                             <label for="">Số điện thoại</label>
-                            <input v-model="employee.employeePhoneNumber" type="text" class="m-input">
+                            <input tabindex="3" v-model="employee.employeePhoneNumber" type="text" class="m-input">
                         </div>
                         <div class="m-input-container m-dropdown-container">
                             <label>Tổ bộ môn</label>
-                            <div class="m-dropdown" @blur="isShowDepartment=false">
-                                <input @click="selectDepartment" 
+                            <div class="m-dropdown">
+                                <input tabindex="5" @click="selectDepartment"
                                 type="text" class="m-icon icon-down m-input"
                                 v-model="curDepName"
                                 readonly>
@@ -45,19 +46,20 @@
                     <div class="form__content--right">
                         <div class="m-input-container">
                             <label for="eName">Họ và tên <span style="color: #FA3939;">*</span></label>
-                            <input v-model="employee.employeeName" id="eName" type="text" class="m-input" mrequired>
-                            <div class="m-error-message" style="display: none;">
+                            <input @blur="onBlurEmpName" ref='empNameInput' tabindex="2" v-model="employee.employeeName" type="text"
+                            :class="{inputError:eNameInvalid}" class="m-input" mrequired />
+                            <div class="m-error-message" v-if="eNameInvalid" style="left: 314px">
                                 <div class="error-text">Họ và tên không được bỏ trống.</div>
                                 <div class="error-arrow"></div>
                             </div>
                         </div>
                         <div class="m-input-container">
                             <label for="">Email</label>
-                            <input v-model="employee.employeeEmail" type="text" class="m-input">
+                            <input tabindex="4" v-model="employee.employeeEmail" type="text" class="m-input">
                         </div>
                         <div class="m-input-container m-dropdown-container">
                             <label title="Quản lý theo môn">QL theo môn</label>
-                            <MSelect :options="subjectData" :selectedIds="employee.subjectIds" 
+                            <MSelect :tabindex="6" :options="subjectData" :selectedIds="employee.subjectIds" 
                               @selectOpt="selectSubject" @checkAll="selectAllSubject"
                               :checkSelected="checkSubjectIdSelected" :isCheckAll="checkAllSubject"/>
                         </div>
@@ -65,13 +67,13 @@
                     <div class="form__content--bottom">
                         <div class="m-input-container m-dropdown-container" style="width: 100%;">
                             <label title="Quản lý theo kho, phòng">QL kho, phòng</label>
-                            <MSelect :options="roomData" :selectedIds="employee.roomIds" 
+                            <MSelect :tabindex="7" :options="roomData" :selectedIds="employee.roomIds" 
                               @selectOpt="selectRoom" @checkAll="selectAllRoom"
                               :checkSelected="checkRoomIdSelected" :isCheckAll="checkAllRoom"/>
                         </div>
                         <div class="m-checkbox-container">
                             <div class="m-checkbox">
-                                <input v-model="employee.isDeviceManager" class="checkbox-real" type="checkbox">
+                                <input tabindex="8" v-model="employee.isDeviceManager" class="checkbox-real" type="checkbox">
                                 <div class="checkbox-pseudo"></div>
                             </div>
                             <label for="" style="margin-right: 20px;" title="Trình độ nghiệp vụ quản lý thiết bị">Trình độ
@@ -79,39 +81,39 @@
                         </div>
                         <div class="m-checkbox-container">
                             <div id="boxEheckQuit" class="m-checkbox check--quit-date">
-                                <input v-model="employee.workingStatus" class="checkbox-real" type="checkbox" checked>
+                                <input tabindex="9" v-model="employee.workingStatus" class="checkbox-real" type="checkbox" checked>
                                 <div class="checkbox-pseudo"></div>
                             </div>
                             <label for="" style="margin-right: 20px;">Đang làm việc</label>
                         </div>
-                        <div v-if="employee.workingStatus" id="eQuitDate" class="m-input-container m-date-input quit-date">
+                        <div v-if="!employee.workingStatus" id="eQuitDate" class="m-input-container m-date-input quit-date">
                             <label for="">Ngày nghỉ việc</label>
-                            <input type="date" class="m-input m-input-date" placeholder="dd-mm-yyyyy" name="date">
+                            <input tabindex="10" type="date" v-model="employee.quitDate" class="m-input m-input-date" placeholder="dd-mm-yyyyy" name="date">
                         </div>
                         <div v-else style="width: 240px; height: 32px;" class="m-input-container m-date-input quit-date"></div>
                     </div>
                 </div>
                 <div class="form__footer">
-                    <button @click="onClickClose" class="btn-close m-button m-btn-style2">Đóng</button>
-                    <button @click="onClickSave" class="btn-save m-button m-btn-style1">Lưu</button>
+                    <button tabindex="11" @click="onClickClose" class="btn-close m-button m-btn-style2">Đóng</button>
+                    <button tabindex="12" @click="onClickSave" class="btn-save m-button m-btn-style1">Lưu</button>
                 </div>
             </div>
             <button title="Đóng" @click="onClickClose" class="m-icon m-icon-24 button-icon icon-close"></button>
         </div>
-        <MLoader :isShow="loadingStatus"/>
+        <MLoader v-if="loadingStatus"/>
     </div>
 </template>
 
 <script>
 import axios from "axios";
-import MSelect from "./../components/base/MSelect.vue";
-import MLoader from "./../components/base/MLoader.vue";
+import MSelect from "../../components/base/MSelect.vue";
+import MLoader from "../../components/base/MLoader.vue";
 
 export default {
   name: "EmployeeForm",
   components: {
     MSelect,
-    MLoader
+    MLoader,
   },
   data() {
     return {
@@ -126,22 +128,29 @@ export default {
       postMode: 1,
       checkAllRoom: false,
       checkAllSubject: false,
-      loadingStatus: false
+      loadingStatus: false,
+      valid: false,
+      eCodeInvalid: false,
+      eNameInvalid: false
     };
   },
-  props: ["isShow", "employeeSelectedId"], //{isShow:Boolean},
-  watch: {
+  props: ["employeeSelectedId"],
+  watch: {  // CHƯA HOẠT ĐỘNG => Bỏ và mounted
+  },
+
+  methods: {
     /**
      * Theo dõi giá trị value tương ứng employeeId được chọn, nếu thay đổi thì hiện form tương ứng thông tin cán bộ
      * @params {int} Id của cán bộ tương ứng id của đối tượng khi click trong bảnh
      * Auth: KhaiND (29/10/2022)
      */
-    employeeSelectedId: async function (value) {
+    //employeeSelectedId: this.bindEmployee()
+    async bindEmployee(value) {
       var me = this;
       if (value != null) {
         me.formTitle = "Chỉnh sửa hồ sơ Cán bộ, giáo viên";
         // Hien thi Loader
-        this.loadingStatus = true;
+        me.loadingStatus = true;
         // Call API, nho check Status code va dua ra thong bao
         var url = "https://localhost:44344/api/Employees/" + value;
         console.log("Watching: " + value);
@@ -155,25 +164,31 @@ export default {
             //     me.curDpmName = item.departmentName;
             //   }
             // });
-            // console.log("+++++++++" + me.curDpmName);
             console.log(me.employee);
-            //An Loader
+            // Ẩn Loader
+            me.loadingStatus = false;
           })
           .catch(function (response) {
             console.log(response);
+            // Ẩn Loader
+            me.loadingStatus = false;
           });
-        //An Loader
-        this.loadingStatus = false;
         // Sửa dữ liệu
         me.postMode = 0;
       } else {
+        // Hien thi Loader
+        me.loadingStatus = true;
+        // Đổi form Title
         me.formTitle = "Thêm hồ sơ Cán bộ, giáo viên";
-        me.employee = {};
+        // Khởi tạo đối tượng rỗng employee
+        me.employee = { workingStatus: true, subjectIds: [], roomIds: [] };
         //Gợi ý Số hiệu CB mới
         await axios //DỂ TRONG MOUNTED
           .get("https://localhost:44344/api/Employees/newcode")
           .then(function (res) {
             me.employee.employeeCode = res.data;
+            // Ẩn Loader
+            me.loadingStatus = false;
           });
         //Thêm mới
         me.postMode = 1;
@@ -183,9 +198,36 @@ export default {
       //   me.checkAllRoom = true;
       // }
     },
-  },
 
-  methods: {
+    /**
+     * Sự kiện nhập xong EmployeeCode chuyển qua ô khác - kiểm tra rỗng
+     * Auth: KhaiND (08/11/2022)
+     */
+    onBlurEmpCode() {
+      if (!this.employee.employeeCode) {
+        this.eCodeInvalid = true;
+      } else {
+        this.eCodeInvalid = false;
+      }
+    },
+
+    /**
+     * Sự kiện nhập xong EmployeeName chuyển qua ô khác - kiểm tra rỗng
+     * Auth: KhaiND (09/11/2022)
+     */
+    onBlurEmpName() {
+      if (!this.employee.employeeName) {
+        this.eNameInvalid = true;
+      } else {
+        this.eNameInvalid = false;
+      }
+    },
+
+    onBlurDepartment() {
+      this.isShowDepartment = false;
+      console.log("Ẩn DEP");
+    },
+
     /**
      * Bắt giá trị roomId của các kho phòng được chọn khi check vào ô tương ứng
      * Auth: KhaiND (07/11/2022)
@@ -193,7 +235,7 @@ export default {
     selectRoom: function (value) {
       var rooms = this.employee.roomIds;
       // Nếu giá trị tương ứng đã được check (đã tồn tại trong danh sách chọn)
-      if (rooms.includes(parseInt(value))) {
+      if (rooms != undefined && rooms.includes(parseInt(value))) {
         // Loại bỏ nó đi (bấm vào thì uncheck)
         this.employee.roomIds = rooms.filter((x) => {
           return x != parseInt(value);
@@ -247,7 +289,7 @@ export default {
     selectSubject(value) {
       var subjects = this.employee.subjectIds;
       // Nếu giá trị tương ứng đã được check (đã tồn tại trong danh sách chọn)
-      if (subjects.includes(parseInt(value))) {
+      if (subjects != undefined && subjects.includes(parseInt(value))) {
         // Loại bỏ nó đi (bấm vào thì uncheck)
         this.employee.subjectIds = subjects.filter((x) => {
           return x != parseInt(value);
@@ -299,7 +341,7 @@ export default {
       console.log("CLICK CLOSE");
     },
     /**
-     * Sự kiện bấm nút Lưu trên form chi tiết Employee
+     * Sự kiện bấm nút Lưu trên form chi tiết Employee ============= CẦN XEM LẠI VALIDATE
      * Auth: KhaiND (30/10/2022)
      */
     async onClickSave() {
@@ -307,35 +349,53 @@ export default {
       // Hiển thị loader
       this.loadingStatus = true;
       // Validate dữ liệu
-      // Build object thông tin cán bộ
-      // Gọi API thực hiện lưu dữ liệu
-      if (this.postMode == 1) {
-        console.log("POST");
-        await axios
-          .post("https://localhost:44344/api/Employees", me.employee)
-          .then(function () {
-            console.log("SUCCESS");
-          })
-          .catch(function () {});
+      if (me.employee.employeeCode == "") {
+        // Hiển thị thông báo bắt buộc
+        me.eCodeInvalid = true;
+        this.loadingStatus = false;
+      } else if (me.employeeName == "") {
+        me.eNameInvalid = true;
+        // Ẩn Loader
+        this.loadingStatus = false;
       } else {
-        console.log("PUT");
-        var pUrl =
-          "https://localhost:44344/api/Employees/" + me.employeeSelectedId;
-        await axios
-          .put(pUrl, me.employee)
-          .then(function () {
-            console.log("PUT Ok");
-          })
-          .catch(function () {});
+        me.valid = true;
+        me.eCodeInvalid = false;
+        me.eNameInvalid = false;
       }
-      // Ẩn Loader
-      this.loadingStatus = false;
-      // Đưa ra thông báo hoàn thành và ẩn form
-      // Đóng form
-      this.$emit("hidePopup", null);
-      // Reload và toast
-      await this.$emit("reloadData", null);
+      // Build object thông tin cán bộ
+      if (me.valid) {
+        // Gọi API thực hiện lưu dữ liệu
+        if (this.postMode == 1) {
+          console.log("POST");
+          await axios
+            .post("https://localhost:44344/api/Employees", me.employee)
+            .then(function () {
+              console.log("SUCCESS");
+            })
+            .catch(function () {});
+          this.$emit("showToast", "Thêm mới thành công cán bộ, giáo viên");
+        } else {
+          console.log("PUT");
+          var pUrl =
+            "https://localhost:44344/api/Employees/" + me.employeeSelectedId;
+          await axios
+            .put(pUrl, me.employee)
+            .then(function () {
+              console.log("PUT Ok");
+            })
+            .catch(function () {});
+          this.$emit("showToast", "Cập nhật thành công cán bộ, giáo viên");
+        }
+        // Ẩn Loader
+        this.loadingStatus = false;
+        // Đưa ra thông báo hoàn thành và ẩn form
+        // Đóng form
+        this.$emit("hidePopup", null);
+        // Reload và toast
+        await this.$emit("reloadData", null);
+      }
     },
+    
     /**
      * Sự kiện khi click vào option tương ứng tổ bộ môn thì chọn tổ bộ môn đó (theo departmentId)
      * @param {int} depId - departmnemtId định danh tổ bộ môn
@@ -345,6 +405,14 @@ export default {
       this.employee.departmentId = depId;
       this.selectDepartment();
     },
+    /**
+     * Sự kiện ẩn hiện select cho Tổ bộ môn khi bấm vào input tương ứng
+     * AuthL KhaiND (02/11/2022)
+     */
+    selectDepartment() {
+      this.isShowDepartment = !this.isShowDepartment;
+    },
+
     /**
      * Gọi API lấy danh sách tổ bộ môn, môn học, kho phòng
      * Auth: KhaiND (30/10/2022)
@@ -427,17 +495,22 @@ export default {
         },
       ];
     },
-    /**
-     * ẩn hiện select cho Tổ bộ môn
-     */
-    selectDepartment() {
-      this.isShowDepartment = !this.isShowDepartment;
-    },
   },
+
   // Khi khởi tạo thì load luôn dữ liệu cần thiết
   created() {
+    // Hiện Loader => tắt khi đến các hàm xử lý tương ứng với mode thêm hoặc sửa ở watch
+    //this.loadingStatus = true;  //======================================= GIỮ
+    // Gọi hàm load dữ liệu
     this.onLoadDSR();
   },
+
+  mounted() {
+    this.bindEmployee(this.employeeSelectedId);
+    this.$nextTick(() => this.$refs.empNameInput.focus())
+    console.log(`this.$refs.empNameInput`, this.$refs.empNameInput);
+  },
+
   /**
    * Khi có thay đổi thì bắt giá trị của department được chọn và render tên tổ bộ môn tuuownng ứng
    * Auth: KhaiND (05/11/2022)
@@ -457,4 +530,123 @@ export default {
 </script>
 
 <style scoped>
+  .m-insert-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    display: flex;
+    color: #4D4F5C;
+}
+
+.insert-form--left {
+    height: 100%;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+.insert-form--left .upload-avatar {
+    background-image: url(../../assets/Images/no_avatar.png);
+    background-color: #CCCCCC;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    width: 140px;
+    height: 190px;
+}
+.insert-form--left .upload-avatar--text {
+    background-color: #03AE66;
+    color: #FFFFFF;
+    height: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+}
+.insert-form--left .upload-avatar:hover > .upload-avatar--text {
+    background-color: #02BF70;
+}
+.insert-form--left .form--fullname {
+    margin: 12px 0px 4px 0px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.m-insert-form .hor-line {
+    width: 1px;
+    height: 320px;
+    align-self: center;
+    background-color: #CCCCCC;
+}
+
+.insert-form--right {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__header {
+    font-size: 16px;
+    font-family: OpenSansSemiBold;
+    padding: 16px;
+}
+
+.form__content {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+
+.form__content .m-tag { /*Bor rieeg no ra */
+    color: #000000;
+}
+
+.form__content--left {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.form__content--left .m-input-container .m-input, .form__content--left .dropdown__option {
+    width: 160px;
+    margin-left: 16px;
+}
+
+.form__content--right .m-input, .form__content--right .m-dropdown {
+    min-width: 210px;
+}
+
+.form__content--bottom {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 16px;
+    justify-content: space-between;
+}
+
+.form__content--bottom .m-dropdown {
+    margin-left: 16px;
+}
+
+.form__footer {
+    height: 64px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right:  26px;
+}
+
+.m-insert-form .icon-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
 </style>
