@@ -1,0 +1,70 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    box-sizing: border-box;
+    color: #4D4F5C; /*404040 - 212...*/
+}
+
+.content .toolbar {
+    height: 64px;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    /* position: relative; */
+    box-sizing: border-box;
+}
+.toolbar .toolbar-left {
+    width: 336px;
+    box-sizing: border-box;
+}
+.toolbar .toolbar-left .m-input {
+    margin: 0px;   /*De bo di margin left 12px, right 16px cua input*/
+}
+.content .toolbar .toolbar-right {
+    display: flex;
+}
+
+.content .table-content {
+    /* width: 100%; */
+    height: calc(100% - 120px);
+    overflow: auto;
+    /* padding: 0px 16px; */
+    position: relative;
+    box-sizing: border-box;
+    margin: 0px 8px 0px 16px;
+}
+
+.content .footer {
+    position: absolute;
+    bottom: 0px;
+    left: 16px;
+    width: calc(100% - 16px);
+    height: 56px;
+    padding: 12px 16px 12px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 4px 0px 10px #D5D5D5; /*Tu them vao theo UI*/
+}
+.footer .m-icon  {
+    margin: 0px 4px;
+}
+.footer .m-page-number {
+    border: 1px solid #CECECE;
+    width: 64px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    margin: 0px 10px;
+}
+.footer .m-total-page {
+    margin: 0px 20px 0px 10px;
+}

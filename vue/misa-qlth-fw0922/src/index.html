@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Test Page</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
+    <script src="https://kit.fontawesome.com/4960595244.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div style="padding: 32px;" class="nav-page">
+        <a href="views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a>
+        <br>
+        <!-- <a href="/views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a> -->
+    </div>
+    <div class="my-component" style="background-color: #EAECEF; margin: 32px;">
+        <label for=""><b> 1. Buuttons:</b></label>
+        <div style="margin: 15px 0px;">
+            <button class="m-button m-btn-style1">Thêm</button>
+            <button class="m-button m-btn-style1">Nhập khẩu</button>
+            <button class="m-button m-btn-style1" disabled>Nhập khẩu</button>
+        </div>
+        <div style="margin: 15px 0px;">
+            <button class="m-button m-btn-style2">Xuất khẩu</button>
+            <button class="m-button m-btn-style2" disabled>Xuất khẩu</button>
+        </div>
+        <div style="margin: 15px 0px;">
+            <button class="m-btn-style2 m-btn-style4 icon-more" title="more"></button>
+            <button class="m-btn-style2 m-btn-style4 icon-more" disabled></button>
+        </div>
+        <br>
+        <label for=""><b> 2. Checkbox:</b></label>
+        <div style="margin: 15px 0px;">
+            <div class="m-checkbox">
+                <input class="checkbox-real" type="checkbox" checked="checked">
+                <div class="checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Active</label>
+            <div class="m-checkbox">
+                <input class="checkbox-real" type="checkbox">
+                <div class="checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Inactive</label>
+            <div class="m-checkbox">
+                <input class="checkbox-real" type="checkbox">
+                <div class="checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Hover</label>
+        </div>
+        <div style="margin: 15px 0px;">
+            <div class="m-checkbox">
+                <input class="checkbox-real" type="checkbox" checked disabled>
+                <div class="checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Disable Active</label>
+            <div class="m-checkbox">
+                <input class="checkbox-real" type="checkbox" disabled>
+                <div class="checkbox-pseudo"></div>
+            </div>
+            <label for="" style="margin-right: 20px;">Disable Inactive</label>
+        </div>
+        <br>
+        <label for=""><b> 3. Icons:</b></label>
+        <div style="margin: 15px 0px; display: flex; flex-wrap: wrap; background-color: cadetblue;">
+            <button class="m-icon button-icon icon--data-action icon-edit" title="chỉnh sửa"></button>
+            <button class="m-icon button-icon icon--data-action icon-remove" title="xóa"></button>
+            <div class="m-icon m-icon-24 icon-delete"></div>
+            <div class="m-icon m-icon-24 icon-search"></div>
+            <div class="m-icon icon-chonanh"></div>
+            <div class="m-icon icon-alert"></div>
+            <div class="m-icon icon-avatar"></div>
+            <div class="m-icon icon-logo-thietbi"></div>
+            <div class="m-icon m-icon-24 icon-back"></div>
+            <div class="m-icon m-icon-24 icon-next"></div>
+            <div class="m-icon m-icon-24 icon-movetofirst"></div>
+            <div class="m-icon m-icon-24 icon-movetolast"></div>
+            <div class="m-icon m-icon-24 icon-check"></div>
+            <div class="m-icon m-icon-24 icon-down"></div>
+            <div class="m-icon m-icon-32 icon-notification"></div>
+            <div class="m-icon toast-icon icon-toast-fail"></div>
+            <div class="m-icon toast-icon icon-toast-info"></div>
+            <div class="m-icon toast-icon icon-toast-success"></div>
+            <div class="m-icon toast-icon icon-toast-warning"></div>
+            <div class="m-icon m-icon-24 icon-close"></div>
+            <div class="m-icon m-icon-24 icon-x"></div>
+            <!-- SP -->
+            <div class="m-icon m-icon-24 icon-help"></div>
+            <div class="m-icon m-icon-32 icon-sidebar" style="background-color: red;"></div>
+            <div class="m-icon m-icon-32 icon-tongquan"></div>
+            <div class="m-icon m-icon-32 icon-thietbi"></div>
+            <div class="m-icon m-icon-32 icon-muontra"></div>
+            <div class="m-icon m-icon-32 icon-baocao"></div>
+            <div class="m-icon m-icon-32 icon-hethong"></div>
+        </div>
+        <br>
+        <label for=""><b> 4. Dropdown:</b></label>
+        <div style="margin: 15px 0px;">
+            <div class="m-dropdown-container">
+                <label>Dropdonw cua toi</label>
+                <div class="m-dropdown">
+                    <input type="text" class="m-icon icon-down m-input" readonly>
+                    <div class="dropdown__option">
+                        <div class="dropdown__option--item">Lua chon 1</div>
+                        <div class="dropdown__option--item">Lua chon 2</div>
+                        <div class="dropdown__option--item">Lua chon 3</div>
+                        <div class="dropdown__option--item">Lua chon 4</div>
+                        <div class="dropdown__option--item">Lua chon 5</div>
+                        <div class="dropdown__option--item">Lua chon 6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <label for=""><b> 5. Thẻ (tag):</b></label>
+        <div style="margin: 15px 0px; display: flex; flex-wrap: wrap;">
+            <div class="m-tag">
+                <span class="m-tag-text">Nguyễn Duy Khai</span>
+                <div class="m-icon m-icon-24 icon-x"></div>
+            </div>
+            <div class="m-tag">
+                <span class="m-tag-text">Toán</span>
+                <div class="m-icon m-icon-24 icon-x"></div>
+            </div>
+        </div>
+        <br>
+        <label for=""><b> 6. Input:</b></label>
+        <div sstyle="margin: 15px 0px; display: flex; flex-direction: row; flex-wrap: wrap;">
+            <div class="m-input-container">
+                <label for="soHieuCB">Số hiệu cán bộ</label>
+                <input type="text" class="m-input" id="soHieuCB">
+            </div>
+            <div class="m-input-container">
+                <label for="">Họ và tên</label>
+                <input type="text" class="m-input" disabled value="Minh">
+            </div>
+            <div class="m-input-container">
+                <label for="hoTen">Họ và tên</label>
+                <input type="text" class="m-input m-input--error" id="hoTen">
+                <div class="m-error-message">
+                    <div class="error-text">Họ và tên không được bỏ trống.</div>
+                    <div class="error-arrow"></div>
+                </div>
+            </div>
+            <div class="m-input-container">
+                <label for="">Số hiệu cán bộ</label>
+                <input type="text" class="m-input">
+            </div>
+            <div class="m-input--search">
+                <input type="text" class="m-input">
+                <div class="hor-line"></div>
+                <button class="icon-search" title="Tim kiem"></button>
+            </div>
+        </div>
+        <br>
+        <label for=""><b> 7. Toast:</b></label>
+        <div style="margin: 15px 0px; display: none;">
+            <div class="toasts-container">
+                <div class="m-toast toast-message-fail">
+                    <div class="toast-icon icon-toast-fail"></div>
+                    <div class="toast-title">Lỗi</div>
+                    <div class="toast-content">Error Message</div>
+                </div>
+                <div class="m-toast toast-message-success">
+                    <div class="toast-icon icon-toast-success"></div>
+                    <div class="toast-title">Thành công</div>
+                    <div class="toast-content">Đã gửi thông báo cho phụ huynh</div>
+                </div>
+                <div class="m-toast toast-message-info">
+                    <div class="toast-icon icon-toast-info"></div>
+                    <div class="toast-title">Thông báo</div>
+                    <div class="toast-content">Notification Message</div>
+                </div>
+                <div class="m-toast toast-message-warning">
+                    <div class="toast-icon icon-toast-warning"></div>
+                    <div class="toast-title">Cảnh báo</div>
+                    <div class="toast-content">Warning Message</div>
+                </div>
+            </div>
+        </div>
+        <img width="40px" src="assets/Images/KhaiND.JPG" alt="avt" class="avt">
+    </div>
+
+    <script src="lib/jslib/jquery-3.6.1.min.js"></script>
+    <script src="js/dropdown.js"></script>
+</body>
+
+</html>

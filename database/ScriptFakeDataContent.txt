@@ -1,0 +1,18 @@
+SHTBM001|SHTBM002|SHTBM003|SHTBM004|SHTBM005|SHTBM006|SHTBM007
+
+Tổ Toán - Lý - Hóa | Tổ Lý | Tổ Hóa - Sinh | Tổ Anh văn | Tổ Sử - Địa - GDCD | Tổ Ngữ Văn | Tổ văn phòng
+
+($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))
+
+SHMH0001|SHMH0002|SHMH0003|SHMH0004|SHMH0005|SHMH0006|SHMH0007|SHMH0008|SHMH0009|SHMH00010
+
+Toán|Lý|Hóa học|Sinh|Anh|Ngữ văn|GDCD|Sử|Địa lý|Tin
+
+SHKP0001|SHKP0002|SHKP0003|SHKP0004|SHKP0005|SHKP0006|SHKP0007|SHKP0008
+
+Kho phòng chung | Phòng thí nghiệm | Phòng Hóa Sinh | Phòng Tổ Toán | Phòng thí nghiệm Hóa | Phòng thí nghiệm Lý | Phòng họp | Kho sách
+
+SHCB\d{4}
+
+//Có dấu mất rồi
+(((((($"TenNam.txt")|($"TenNu.txt"))[_.]?)?($"Ho.txt"))|(($"Ho.txt")\C?)|(((($"TenNam.txt")|($"TenNu.txt"))[_.]?(\C[_.]?)?)?($"LastNames.txt")))(\D{,3})?|\c{4,8}(\d{1,4}|[_.]\c{4,10}))@(example$"7"|nowhere$"3").com
