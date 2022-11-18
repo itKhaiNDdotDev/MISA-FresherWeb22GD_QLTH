@@ -181,11 +181,15 @@ input {
 
 .tag-list {
   background-color: #ffffff;
-  position: absolute;
+  /* position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
-  z-index: 0;
+  z-index: 0; */
+  /* flex: 1; */
+  width: 100%;
+  min-height: 32px;
+  /* flex-wrap: nowrap; */
 }
 input:focus+.tag-list {
   border-color: #0DD469;

@@ -41,7 +41,8 @@
 .content .footer {
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    left: 16px;
+    width: calc(100% - 16px);
     height: 56px;
     padding: 12px 16px 12px 16px;
     display: flex;

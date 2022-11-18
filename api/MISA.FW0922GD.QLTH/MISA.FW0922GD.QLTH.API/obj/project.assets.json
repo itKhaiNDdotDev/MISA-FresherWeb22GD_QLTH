@@ -347,6 +347,7 @@
     "net6.0": [
       "MISA.FW0922GD.QLTH.BL >= 1.0.0",
       "MISA.FW0922GD.QLTH.Common >= 1.0.0",
+      "MISA.FW0922GD.QLTH.DL >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -388,6 +389,9 @@
             },
             "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj": {
               "projectPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.Common\\MISA.FW0922GD.QLTH.Common.csproj"
+            },
+            "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\MISA.FW0922GD.QLTH.DL.csproj": {
+              "projectPath": "K:\\2022_MISA\\BT1\\MISA-FresherWeb22GD_Ex\\api\\MISA.FW0922GD.QLTH\\MISA.FW0922GD.QLTH.DL\\MISA.FW0922GD.QLTH.DL.csproj"
             }
           }
         }

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.BL\MISA.FW0922GD.QLTH.BL.csproj" />
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.Common\MISA.FW0922GD.QLTH.Common.csproj" />
+    <ProjectReference Include="..\MISA.FW0922GD.QLTH.DL\MISA.FW0922GD.QLTH.DL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

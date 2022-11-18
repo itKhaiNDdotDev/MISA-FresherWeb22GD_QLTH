@@ -503,10 +503,12 @@ export default {
     //this.loadingStatus = true;  //======================================= GIỮ
     // Gọi hàm load dữ liệu
     this.onLoadDSR();
+    this.bindEmployee(this.employeeSelectedId);
   },
 
+  // Auto forcus vào ô input họ tên khi mở form
   mounted() {
-    this.bindEmployee(this.employeeSelectedId);
+    // this.bindEmployee(this.employeeSelectedId);
     this.$nextTick(() => this.$refs.empNameInput.focus())
     console.log(`this.$refs.empNameInput`, this.$refs.empNameInput);
   },
@@ -542,12 +544,11 @@ export default {
 
 .insert-form--left {
     height: 100%;
-    width: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 18px;
     box-sizing: border-box;
+    padding: 24px;
 }
 
 .insert-form--left .upload-avatar {
@@ -594,7 +595,7 @@ export default {
 .form__header {
     font-size: 16px;
     font-family: OpenSansSemiBold;
-    padding: 16px;
+    padding: 24px;
 }
 
 .form__content {
@@ -608,15 +609,26 @@ export default {
 }
 
 .form__content--left {
-    margin-left: 16px;
+    margin-left: 24px;
     display: flex;
     flex-direction: column;
 }
+.form__content--left label {
+  min-width: 100px;
+  margin-right: 12px;
+}
 .form__content--left .m-input-container .m-input, .form__content--left .dropdown__option {
     width: 160px;
-    margin-left: 16px;
 }
 
+.form__content--right {
+  /* min-width: 336px; */
+  margin-right: 8px;
+}
+.form__content--right label {
+  min-width: 80px;
+  margin-right: 12px;
+}
 .form__content--right .m-input, .form__content--right .m-dropdown {
     min-width: 210px;
 }
@@ -627,12 +639,15 @@ export default {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-left: 16px;
+    margin-left: 24px;
+    margin-right: 8px;
     justify-content: space-between;
 }
-
-.form__content--bottom .m-dropdown {
-    margin-left: 16px;
+.form__content--bottom .m-dropdown-container label {
+  min-width: 100px;
+}
+.form__content--bottom label {
+  margin-right: 12px;
 }
 
 .form__footer {
@@ -641,7 +656,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: right;
-    padding-right:  26px;
+    padding-right:  24px;
+    padding-bottom: 24px;
 }
 
 .m-insert-form .icon-close {

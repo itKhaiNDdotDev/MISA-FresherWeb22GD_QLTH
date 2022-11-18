@@ -2,9 +2,9 @@
     <div class="toolbar">
         <div class="toolbar-left">
             <div class="m-input--search">
-                <input v-model="searchText" type="text" class="m-input">
+                <input v-model="searchText" @keyup.enter="searchEmployee" type="text" class="m-input">
                 <div class="hor-line"></div>
-                <button @click="searchEmployee" @keyup.enter="searchEmployee" class="icon-search" title="Tìm kiếm theo tên, số điện thoại,..."></button>
+                <button @click="searchEmployee" class="icon-search" title="Tìm kiếm theo tên, số điện thoại,..."></button>
             </div>
         </div>
         <div class="toolbar-right">

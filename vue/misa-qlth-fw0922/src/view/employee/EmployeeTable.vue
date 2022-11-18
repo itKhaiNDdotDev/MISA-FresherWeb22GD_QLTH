@@ -21,7 +21,8 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-if="notFound" class="table--not-found"> Không tìm thấy kết quả nào </tbody>
+            <tbody v-else>
                 <tr @dblclick="onClickEdit(employee)" v-for="employee in employeeList" :key="employee.Id" :id="employee.id">
                     <td class="m-a-center">
                         <div class="m-checkbox">
@@ -92,6 +93,7 @@
 
 <script>
 import axios from "axios";
+import {PAGE_SIZE} from "./../../resources";
 import MLoader from "../../components/base/MLoader.vue";
 // import MsDialog from './MsDialog.vue'
 export default {
@@ -104,17 +106,14 @@ export default {
   data() {
     return {
       employeeList: null,
-      totalRecord: null,
       isShowDialog: false,
       curEmpId: null,
-      loadingStatus: true,
+      loadingStatus: false,
       tableLoadingStatus: true,
-      // employeeSelectedId: null
+      notFound: false,
     };
   },
   
-  // beforeCreate() {
-  // },
   created() {
     // Hiển thị Loader
     this.tableLoadingStatus = true;  
@@ -122,50 +121,60 @@ export default {
     this.loadData();
   },
 
-  //Other LCHooks
   methods: {
     /*
      * FEAT: Gọi API và lấy (GET tất cả dữ liệu của danh sách nhân viên) với Axios
      * Author: KhaiND (28/10/2022)
      */
-    loadData(keyword) {
+    loadData(keyword, pageIndex) {
       try {
-        // axios.get("https://localhost:44344/api/Employees/getopt", {headers: {'Content-Type': 'application/json'}}, pagingReq)
         if (!keyword) {
           this.tableLoadingStatus = true;
-          axios
-            .get("https://localhost:44344/api/Employees")
-            .then((response) => {
-              this.employeeList = response.data;
-              console.log(this.employeeList);
-              // Ẩn Loader
-              this.tableLoadingStatus = false;      
-            });
-        }
-        else {
-          this.tableLoadingStatus = true;
-          var url = "https://localhost:44344/api/Employees/getopt?keyword=" + keyword + "&pageIndex=1&pageSize=100";
+          if(!pageIndex)
+            pageIndex = 1;
+          var url = "https://localhost:44344/api/Employees/getopt?pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
           axios
             .get(url)
             .then((response) => {
               this.employeeList = response.data.data;
-              this.totalRecord = response.data.totalRecords;
               console.log(this.employeeList);
+              this.$emit("getTotal",response.data.totalRecords);
               // Ẩn Loader
               this.tableLoadingStatus = false;
+            });
+        }
+        else {
+          this.tableLoadingStatus = true;
+          url = "https://localhost:44344/api/Employees/getopt?keyword=" + keyword + "&pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
+          axios
+            .get(url)
+            .then((response) => {
+              this.employeeList = response.data.data;
+              console.log(this.employeeList);
+              this.$emit("getTotal",response.data.totalRecords);
+              // Ẩn Loader
+              this.tableLoadingStatus = false;
+            })
+            .catch((res) => {
+              if(res.response.status == 404) {
+                // Xử lý kết quả
+                this.$emit("getTotal", 0);
+                this.notFound = true;
+                // Ẩn Loader
+                this.tableLoadingStatus = false;
+              }
             });
         }
       } catch (error) {
         this.employeeList = null;
         console.log(error);
       }
-      return this.totalRecord;
     },
 
     /**
      * Sự kiện bấm vào lựa chọn chỉnh sửa thì hiển thị Form chỉnh sửa thông tin cán bộ, giáo viên
      * @param {Object} employee đối tượng dữ liệu tương ứng với thông tin cán bộ, gáo viên
-     * AUth: KhaiND (28/10/2022)
+     * AUthor: KhaiND (28/10/2022)
      */
     onClickEdit(employee) {
       this.$emit("showPopup", employee);
@@ -177,7 +186,7 @@ export default {
     /**
      * Xóa một cán bộ, giáo viên
      * @param {Int} id id tương ứng của cán bộ, giáo viên
-     * Auth: KhaiND (29/10/2022)
+     * Author: KhaiND (29/10/2022)
      */
     onClickDeleteEmployee(id) {
       //Show pop-up confirm
@@ -188,7 +197,7 @@ export default {
     
     /**
      * Thực hiện xóa Cán bộ, giáo viên đã được chỉ định khi bấm xóa và sau đó xác nhận đồng ý xóa
-     * AuthL KhaiND (08/11/2022)
+     * Author: KhaiND (08/11/2022)
      */
     async deleteEmployee() {
       // Hiển thị Loader
@@ -207,7 +216,7 @@ export default {
     },
     /**
      * Đóng dialog xác nhận xóa cán bộ
-     * Auth: KhaiND (08/11/2022)
+     * Author: KhaiND (08/11/2022)
      */
     closeMsDialog() {
       this.isShowDialog = false;
@@ -217,5 +226,13 @@ export default {
 };
 </script>
 
-<style lang="">
+<style scoped>
+  .table--not-found {
+    background-color: inherit;
+    position: absolute;
+    top: 56px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+  }
 </style>

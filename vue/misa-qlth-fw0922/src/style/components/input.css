@@ -1,13 +1,9 @@
 .m-input-container {
     position: relative;
-    padding-right: 26px;
+    padding-right: 16px;
     margin-bottom: 12px;
     display: flex;
     align-items: center;
-}
-
-.m-input-container label {
-    min-width: 100px;
 }
 
 .m-input {
