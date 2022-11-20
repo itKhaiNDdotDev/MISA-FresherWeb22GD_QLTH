@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeleteFailed_DevMsg" xml:space="preserve">
+    <value>Delete to database return 0</value>
+    <comment>Thông điệp trả về cho Dev khi gọi API xóa bản ghi thất bại</comment>
+  </data>
+  <data name="DeleteFailed_MoreInfo" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/6</value>
+    <comment>Thông tin chi tiết lỗi khi gọi API xóa bản ghi thất bại</comment>
+  </data>
+  <data name="DeleteFailed_UserMsg" xml:space="preserve">
+    <value>Xóa không thành công.</value>
+    <comment>Thông điệp trả về cho người dùng khi gọi API xóa bản ghi thất bại</comment>
+  </data>
   <data name="Exception_DevMsg" xml:space="preserve">
     <value>Catched an exception.</value>
     <comment>Thông điệp trả về cho Dev khi gọi API gặp exception</comment>
@@ -128,5 +140,41 @@
   <data name="Exception_UserMsg" xml:space="preserve">
     <value>Có lỗi xảy ra! Vui lòng liên hệ MISA.</value>
     <comment>Thông điệp trả về cho người dùng khi gọi API gặp exception</comment>
+  </data>
+  <data name="InsertFailed_DevMsg" xml:space="preserve">
+    <value>Insert to database return 0</value>
+    <comment>Thông điệp trả về cho Dev khi gọi API thêm mới bản ghi thất bại</comment>
+  </data>
+  <data name="InsertFailed_MoreInfo" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/4</value>
+    <comment>Thông tin chi tiết lỗi khi gọi API thêm mới bản ghi thất bại</comment>
+  </data>
+  <data name="InsertFailed_UserMsg" xml:space="preserve">
+    <value>Thêm mới dữ liệu thất bại.</value>
+    <comment>Thông điệp trả về cho người dùng khi gọi API thêm mới bản ghi thất bại</comment>
+  </data>
+  <data name="Invalid_DevMsg" xml:space="preserve">
+    <value>One or more validation errors occurred.</value>
+    <comment>Thông điệp trả về cho Dev khi gọi API validate dữ liệu thất bại</comment>
+  </data>
+  <data name="Invalid_MoreInfo" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/3</value>
+    <comment>Thông tin chi tiết lỗi khi gọi API validate dữ liệu thất bại</comment>
+  </data>
+  <data name="Invalid_UserMsg" xml:space="preserve">
+    <value>Dữ liệu đầu vào không hợp lệ.</value>
+    <comment>Thông điệp trả về cho người dùng khi gọi API validate dữ liệu thất bại</comment>
+  </data>
+  <data name="UpdateFailed_DevMsg" xml:space="preserve">
+    <value>Update to database return 0</value>
+    <comment>Thông điệp trả về cho Dev khi gọi API  cập nhật bản ghi thất bại</comment>
+  </data>
+  <data name="UpdateFailed_MoreInfo" xml:space="preserve">
+    <value>https://openapi.misa.com.vn/errorcode/5</value>
+    <comment>Thông tin chi tiết lỗi khi gọi API cập nhật bản ghi thất bại</comment>
+  </data>
+  <data name="UpdateFailed_UserMsg" xml:space="preserve">
+    <value>Cập nhật thông tin thất bại.</value>
+    <comment>Thông điệp trả về cho người dùng khi gọi API cập nhật bản ghi thất bại</comment>
   </data>
 </root>

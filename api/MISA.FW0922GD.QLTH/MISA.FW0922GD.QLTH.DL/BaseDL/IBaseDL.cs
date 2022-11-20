@@ -13,7 +13,6 @@ namespace MISA.FW0922GD.QLTH.DL.BaseDL
     /// Created By: KhaiND (16/11/2022)
     public interface IBaseDL<T>
     {
-
         /// <summary>
         /// Lấy danh sách tất cả bản ghi
         /// </summary>
@@ -29,5 +28,28 @@ namespace MISA.FW0922GD.QLTH.DL.BaseDL
         /// Created By: KhaiND (16/11/2022)
         public T GetByID(Guid recordID);
 
+        /// <summary>
+        /// Thêm mới một bản ghi
+        /// </summary>
+        /// <param name="record">Dữ liệu của bản ghi muốn thêm mới</param>
+        /// <returns>ID của bản ghi vừa thêm mới</returns>
+        /// Created By: KhaiND (19/11/2022)
+        public Guid Insert(T record);
+
+        /// <summary>
+        /// Cập nhật thông tin một bản ghi
+        /// </summary>
+        /// <param name="record">Dữ liệu của bản ghi muốn thay đổi</param>
+        /// <returns>ID của bản ghi vừa cập nhật</returns>
+        /// Created By: KhaiND (19/11/2022)
+        public Guid Update(Guid recordID, T record);
+
+        /// <summary>
+        /// Xóa một bản ghi thông qua ID
+        /// </summary>
+        /// <param name="recordID">ID của bản ghi muốn xóa</param>
+        /// <returns>ID của bản ghi vừa xóa</returns>
+        /// Created By: KhaiND (19/11/2022)
+        public Guid Delete(Guid recordID);
     }
 }

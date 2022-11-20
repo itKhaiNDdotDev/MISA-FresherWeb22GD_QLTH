@@ -27,11 +27,13 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Số hiệu cán bộ
         /// </summary>
+        [Required(ErrorMessage = "Số hiêu cán bộ không được để trống")]
         public string EmployeeCode { get; set; }
 
         /// <summary>
         /// Họ và tên cán bộ, giáo viên
         /// </summary>
+        [Required(ErrorMessage = "Họ và tên không được để trống")]
         public string EmployeeName { get; set; }
 
         /// <summary>
@@ -67,7 +69,17 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Ngày nghỉ việc
         /// </summary>
-        public DateTime? DaEmployeeQuitDateyOff { get; set; }
+        public DateTime? EmployeeQuitDate { get; set; }
+
+        /// <summary>
+        /// Danh sách ID của Môn học được phân công
+        /// </summary>
+        public List<Guid>? SubjectIDs {get; set;}
+
+        /// <summary>
+        /// Danh sách ID của Kho, phòng được phân công
+        /// </summary>
+        public List<Guid>? RoomIDs { get; set; }
 
         #endregion
     }

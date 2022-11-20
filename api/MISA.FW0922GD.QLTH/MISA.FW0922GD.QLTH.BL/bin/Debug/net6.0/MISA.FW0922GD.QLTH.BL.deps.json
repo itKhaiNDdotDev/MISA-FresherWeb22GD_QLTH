@@ -1,0 +1,82 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MISA.FW0922GD.QLTH.BL/1.0.0": {
+        "dependencies": {
+          "MISA.FW0922GD.QLTH.Common": "1.0.0",
+          "MISA.FW0922GD.QLTH.DL": "1.0.0"
+        },
+        "runtime": {
+          "MISA.FW0922GD.QLTH.BL.dll": {}
+        }
+      },
+      "Dapper/2.0.123": {
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.123.33578"
+          }
+        }
+      },
+      "MySqlConnector/2.2.0": {
+        "runtime": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.0.0"
+          }
+        }
+      },
+      "MISA.FW0922GD.QLTH.Common/1.0.0": {
+        "runtime": {
+          "MISA.FW0922GD.QLTH.Common.dll": {}
+        }
+      },
+      "MISA.FW0922GD.QLTH.DL/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "MISA.FW0922GD.QLTH.Common": "1.0.0",
+          "MySqlConnector": "2.2.0"
+        },
+        "runtime": {
+          "MISA.FW0922GD.QLTH.DL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MISA.FW0922GD.QLTH.BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Dapper/2.0.123": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "path": "dapper/2.0.123",
+      "hashPath": "dapper.2.0.123.nupkg.sha512"
+    },
+    "MySqlConnector/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RjJlqd22Vtuii7voNV8oyqhekDTmiMUW4legga9bFaJaT+hbyKbwY4/99FZRWkNryVW1BUCZ7GR/N8qhy5155A==",
+      "path": "mysqlconnector/2.2.0",
+      "hashPath": "mysqlconnector.2.2.0.nupkg.sha512"
+    },
+    "MISA.FW0922GD.QLTH.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MISA.FW0922GD.QLTH.DL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
