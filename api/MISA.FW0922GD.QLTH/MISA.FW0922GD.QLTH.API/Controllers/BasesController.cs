@@ -143,13 +143,16 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
         {
             try
             {
+                // Xét 404 khi recordID không tìm thấy
+
+                // TÌm thấy thì gọi BL tiến hành thủ tục cập nhật
                 Guid resID = _baseBL.Update(recordID, record);
 
+                // Kiểm tra kết quả thực thi và trả về
                 if (resID != Guid.Empty)
                 {
                     return StatusCode(StatusCodes.Status200OK, resID);
                 }
-
                 return StatusCode(StatusCodes.Status400BadRequest);
             }
             catch (Exception ex)

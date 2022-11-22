@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using MISA.FW0922GD.QLTH.Common;
 using MISA.FW0922GD.QLTH.Common.Constants;
 using MISA.FW0922GD.QLTH.Common.Entities;
+using MISA.FW0922GD.QLTH.Common.Entities.DTOs;
 using MISA.FW0922GD.QLTH.DL.BaseDL;
 using MySqlConnector;
 using System;
@@ -16,6 +18,62 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
 {
     public class EmployeeDL : BaseDL<Employee>, IEmployeeDL
     {
+        /// <summary>
+        /// Lấy danh sách Cán bộ, giáo viên được tìm kiếm theo Tên, Số điện thoại hoặc Email và phân trang
+        /// </summary>
+        /// <param name="keyword">Từ khóa để tìm kiếm</param>
+        /// <param name="offset">Thứ tự bản ghi bắt đầu của trang tính từ 0 trong Database</param>
+        /// <param name="limmit">Số lượng bản ghi trên mỗi trang</param>
+        /// <returns>Danh sách Cán bộ, giáo viên tìm thấy tương ứng với trang được chỉ định</returns>
+        /// Created By: KhaiND (21/11/2022)
+        public PagingResult<EmployeeResponse> GetSearchPaging(string? keyword, int offset = 0, int limmit = 32)
+        {
+            // Chuẩn bị tham số đầu vào
+            var parameters = new DynamicParameters();
+            parameters.Add("@Keyword", keyword);
+            parameters.Add("Offset", offset);
+            parameters.Add("Limit", limmit);
+
+            // Chuẩn bị câu lệnh SQL
+            string storedProcedureName = "Proc_Employee_GetSearchPaging";
+
+            // Khởi tọa kết nối đến Database MySQL
+            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                // Thực hiện gọi truy vấn vào Database
+                var multipleResult = mySqlConnection.QueryMultiple(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                var employees = multipleResult.Read<EmployeeResponse>().ToList();
+                foreach (var employee in employees)
+                {
+                    // Chuẩn bị tham số đầu vào là EmployeeID để truy xuất khóa ngoại n-n
+                    var paramEmployeeID = new DynamicParameters();
+                    paramEmployeeID.Add("EmployeeID", employee.EmployeeID);
+
+                    // Khởi tọa kết nối con phục vụ truy vấn danh sách tên từ khóa ngoại
+                    using (var subMySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+                    {
+                        // Thực hiện truy vấn để lấy danh sách tên Môn học của Cán bộ, giáo viên
+                        string storeProcedureSubject = "Proc_Employee_GetSubjectNamesByID";
+                        var subjectNames = subMySqlConnection.Query<string>(storeProcedureSubject, paramEmployeeID, commandType: System.Data.CommandType.StoredProcedure);
+                        employee.SubjectNames = subjectNames.ToList();
+
+                        // Thực hiện truy vấn để lấy danh sách tên Kho, phòng của Cán bộ, giáo viên
+                        string storeProcedureRoom = "Proc_Employee_GetRoomNamesByID";
+                        var roomNames = subMySqlConnection.Query<string>(storeProcedureRoom, paramEmployeeID, commandType: System.Data.CommandType.StoredProcedure);
+                        employee.RoomNames = roomNames.ToList();
+                    }
+                }
+
+                int totalRecord = multipleResult.Read<int>().Single();
+                return new PagingResult<EmployeeResponse>
+                {
+                    totalRecord = totalRecord,
+                    data = employees
+                };
+            }
+        }
+
         /// <summary>
         /// Overide: Lấy thông tin một Cán bộ, giáo viên theo ID
         /// </summary>
@@ -67,7 +125,7 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                 // Thực hiện gọi truy vấn vào Database và trả về kết quả
                 var maxCode = mySqlConnection.Query<string>(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure).First();
                 return maxCode;
-            }    
+            }
         }
 
         /// <summary>
@@ -119,7 +177,7 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                             paramSubject.Add("ModifiedBy", employee.ModifiedBy);
 
                             affactedRecordCount += mySqlConnection.Execute(storedProcedureSubject, paramSubject, commandType: System.Data.CommandType.StoredProcedure);
-                        } 
+                        }
                     }
 
                     // Thục hiện thêm các cặp khóa ngoại Kho, phòng
@@ -136,7 +194,7 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                             paramRoom.Add("ModifiedBy", employee.ModifiedBy);
 
                             affactedRecordCount += mySqlConnection.Execute(storedProcedureRoom, paramRoom, commandType: System.Data.CommandType.StoredProcedure);
-                        } 
+                        }
                     }
                 }
             }
@@ -206,7 +264,7 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                             paramSubject.Add("ModifiedBy", employee.ModifiedBy);
 
                             affactedRecordCount += mySqlConnection.Execute(storedProcedureSubject, paramSubject, commandType: System.Data.CommandType.StoredProcedure);
-                        } 
+                        }
                     }
 
                     // Thục hiện thêm các cặp khóa ngoại Kho, phòng
@@ -223,7 +281,7 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                             paramRoom.Add("ModifiedBy", employee.ModifiedBy);
 
                             affactedRecordCount += mySqlConnection.Execute(storedProcedureRoom, paramRoom, commandType: System.Data.CommandType.StoredProcedure);
-                        } 
+                        }
                     }
                 }
             }
@@ -275,6 +333,54 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
             {
                 return Guid.Empty;
             }
+        }
+
+        /// <summary>
+        /// Xóa đồng thời nhiều Cán bộ, giáo viên thông qua danh sách ID
+        /// </summary>
+        /// <param name="employeeIDs">Danh sách ID của các Cán bộ, giáo viên muốn xóa</param>
+        /// <returns>Danh sách ID của các Các cán bộ, giáo viên đã xóa</returns>
+        /// Created By: KhaiND (22/11/2022)
+        public List<Guid> DeleteMany(List<Guid> employeeIDs)
+        {
+            // Kiểm tra đầu vào
+            var deletedIDs = new List<Guid>();
+            if(employeeIDs == null ||  employeeIDs.Count <= 0)
+            {
+                return deletedIDs;
+            }
+
+            // Chuẩn bị tham số đầu vào
+            var parameters = new DynamicParameters();
+            string listEmployeeIDsString = $"('{String.Join("','", employeeIDs)}')";
+            parameters.Add("ListEmployeeIDsString", listEmployeeIDsString);
+
+            // Chuẩn bị câu lệnh truy vấn
+            string storedProcedureName = "Proc_Employee_DeleteManyByIDs";
+
+            // Khởi tọa kết nối đến Database MySQL
+            var affactedRecordCount = 0;
+            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                mySqlConnection.Open();
+                // Sử dụng Transaction
+                using (var transaction = mySqlConnection.BeginTransaction())
+                {
+                    // Thực hiện gọi truy vấn vào Database
+                    affactedRecordCount = mySqlConnection.Execute(storedProcedureName, parameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+
+                    // Truy vấn xóa khóa ngoại
+                    transaction.Commit();
+                    mySqlConnection.Clone();
+                }
+            }
+
+            // Xử lý kết quả trả về
+            if(affactedRecordCount > 0)
+            {
+                deletedIDs = employeeIDs;
+            }
+            return deletedIDs;
         }
     }
 }

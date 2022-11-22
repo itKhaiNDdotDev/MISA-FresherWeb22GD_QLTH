@@ -9,7 +9,7 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
     /// <summary>
     /// BaseEntity chứa các trường thông tin tái sử dụng ở nhiều Entity
     /// </summary>
-    /// Author: KhaiND (17/11/2022)
+    /// Created By: KhaiND (17/11/2022)
     public class BaseEntity
     {
         #region Property

@@ -12,7 +12,7 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
     /// <summary>
     /// Thông tin cán bộ, giáo viên
     /// </summary>
-    /// Author: KhaiND (17/11/2022)
+    /// Created By: KhaiND (17/11/2022)
     [Table("employee")]
     public class Employee : BaseEntity
     {

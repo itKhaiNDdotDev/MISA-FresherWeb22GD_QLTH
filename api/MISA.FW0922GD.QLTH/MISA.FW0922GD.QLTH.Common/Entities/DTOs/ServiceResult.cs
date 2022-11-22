@@ -9,6 +9,7 @@ namespace MISA.FW0922GD.QLTH.Common.Entities.DTOs
     /// <summary>
     /// Dữ liệu của kết quả trả về ở tầng BL
     /// </summary>
+    /// Created By: KhaiND (20/11/2022)
     public class ServiceResult
     {
         #region Property
