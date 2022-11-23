@@ -23,7 +23,7 @@
             </thead>
             <tbody v-if="notFound" class="table--not-found"> Không tìm thấy kết quả nào </tbody>
             <tbody v-else>
-                <tr @dblclick="onClickEdit(employee)" v-for="employee in employeeList" :key="employee.Id" :id="employee.id">
+                <tr @dblclick="onClickEdit(employee)" v-for="employee in employeeList" :key="employee.rmployeeID" :id="employee.rmployeeID">
                     <td class="m-a-center">
                         <div class="m-checkbox">
                             <input class="checkbox-real" type="checkbox">
@@ -33,39 +33,32 @@
                     <td class="m-a-left"> {{employee.employeeCode}} </td>
                     <td class="m-a-left" @click="onClickEdit(employee)"> {{employee.employeeName}} </td>
                     <td class="m-a-left"> {{employee.employeePhoneNumber}} </td>
-                    <td class="m-a-left" title="Tổ Toán - Lý - Hóa" v-if="employee.departmentId == 0"> Tổ Toán - Lý - Hóa </td>
-                    <td class="m-a-left" title="Tổ Toán - Tin" v-else-if="employee.departmentId == 1"> Tổ Toán - Tin </td>
-                    <td class="m-a-left" title="Tổ Hóa - Sinh" v-else-if="employee.departmentId == 2"> Tổ Hóa - Sinh </td>
-                    <td class="m-a-left" title="Tổ Anh văn" v-else-if="employee.departmentId == 3"> Tổ Anh văn </td>
-                    <td class="m-a-left" title="Tổ Sử - Địa - GDCD " v-else-if="employee.departmentId == 4"> Tổ Sử - Địa - GDCD </td>
-                    <td class="m-a-left" title="Tổ Ngữ văn" v-else-if="employee.departmentId == 5"> Tổ Ngữ văn </td>
-                    <td class="m-a-left" title="Tổ Lái" v-else-if="employee.departmentId == 6"> Tổ Lái </td>
-                    <td class="m-a-left" title="" v-else> </td>
-                    <td class="m-a-left" :title="employee.subjects.map((i) => {return i.subjectName})">
-                        <span v-for="(subject, index) in employee.subjects" :key="index">
-                             {{subject.subjectName}}
-                             <span v-if="index < employee.subjects.length-1">, </span>
+                    <td class="m-a-left" :title="employee.departmentName"> {{employee.departmentName}} </td>
+                    <td class="m-a-left" :title="employee.subjectNames.map((i) => {return i})">
+                        <span v-for="(subject, index) in employee.subjectNames" :key="index">
+                             {{subject}}
+                             <span v-if="index < employee.subjectNames.length-1">, </span>
                         </span>
                         <!-- {{employee.subjects.join(", ")}} -->
                     </td>
-                    <td class="m-a-left" :title="employee.rooms.map((i) => {return i.roomName})">
-                        <span v-for="(room, index) in employee.rooms" :key="index">
-                             {{room.roomName}}
-                             <span v-if="index < employee.rooms.length-1">, </span>
+                    <td class="m-a-left" :title="employee.roomNames.map((i) => {return i})">
+                        <span v-for="(room, index) in employee.roomNames" :key="index">
+                             {{room}}
+                             <span v-if="index < employee.roomNames.length-1">, </span>
                         </span>
                     </td>
-                    <td class="m-a-center" v-if="employee.isDeviceManager">
+                    <td class="m-a-center" v-if="employee.employeeIsDeviceManager">
                         <div class="m-icon m-icon-24 icon-check"></div>
                     </td>
                     <td v-else></td>
-                    <td class="m-a-center" v-if="employee.workingStatus">
+                    <td class="m-a-center" v-if="employee.employeeWorkingStatus">
                         <div class="m-icon m-icon-24 icon-check"></div>
                     </td>
                     <td v-else></td>
                     <td class="m-a-center">
                         <button @click="onClickEdit(employee)" class="m-icon button-icon icon--data-action icon-edit"
                             title="chỉnh sửa"></button>
-                        <button @click="onClickDeleteEmployee(employee.id)" class="m-icon button-icon icon--data-action icon-remove"
+                        <button @click="onClickDeleteEmployee(employee.employeeID)" class="m-icon button-icon icon--data-action icon-remove"
                             title="xóa"></button>
                     </td>
                 </tr>
@@ -132,26 +125,28 @@ export default {
           this.tableLoadingStatus = true;
           if(!pageIndex)
             pageIndex = 1;
-          var url = "https://localhost:44344/api/Employees/getopt?pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
+          var url = "http://localhost:35241/api/v1/Employees/search?pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
           axios
             .get(url)
             .then((response) => {
               this.employeeList = response.data.data;
               console.log(this.employeeList);
-              this.$emit("getTotal",response.data.totalRecords);
+              this.$emit("getTotal",response.data.totalRecord);
+              this.notFound = false;
               // Ẩn Loader
               this.tableLoadingStatus = false;
             });
         }
         else {
           this.tableLoadingStatus = true;
-          url = "https://localhost:44344/api/Employees/getopt?keyword=" + keyword + "&pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
+          url = "http://localhost:35241/api/v1/Employees/search?keyword=" + keyword + "&pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
           axios
             .get(url)
             .then((response) => {
               this.employeeList = response.data.data;
               console.log(this.employeeList);
-              this.$emit("getTotal",response.data.totalRecords);
+              this.$emit("getTotal",response.data.totalRecord);
+              this.notFound = false;
               // Ẩn Loader
               this.tableLoadingStatus = false;
             })
@@ -203,7 +198,7 @@ export default {
       // Hiển thị Loader
       this.loadingStatus = true;
       //Call API
-      var url = "https://localhost:44344/api/Employees/" + this.curEmpId;
+      var url = "http://localhost:35241/api/v1/Employees/" + this.curEmpId;
       await axios.delete(url);
       // Reset lại Id và đóng Dialog
       this.isShowDialog = false;

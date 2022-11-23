@@ -59,12 +59,12 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Trình độ nghiệp vụ quản lý thiết bị
         /// </summary>
-        public IsDeviceManager EmployeeIsDeviceManager { get; set; }
+        public bool EmployeeIsDeviceManager { get; set; }
 
         /// <summary>
         /// Trạng thái có còn làm việc hay không
         /// </summary>
-        public WorkingStatus EmployeeWorkingStatus { get; set; }
+        public bool EmployeeWorkingStatus { get; set; }
 
         /// <summary>
         /// Ngày nghỉ việc

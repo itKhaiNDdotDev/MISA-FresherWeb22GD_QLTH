@@ -109,7 +109,6 @@ export default {
      * Auth: KhaiND (07/11/2022)
      */
     changeSelection: function(event){
-      console.log(event);
       this.$emit('selectOpt', event.target.value);
     },
     checkAll() {

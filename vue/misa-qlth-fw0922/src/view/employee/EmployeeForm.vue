@@ -38,7 +38,7 @@
                                 v-model="curDepName"
                                 readonly>
                                 <div class="dropdown__option" :class="{showDown:isShowDepartment}">
-                                    <div v-for="(item) in departmentData" :key="item.departmentId" @click="cbooseDepartment(item.departmentId)" class="dropdown__option--item">{{item.departmentName}}</div>
+                                    <div v-for="(item) in departmentData" :key="item.departmentID" @click="cbooseDepartment(item.departmentID)" class="dropdown__option--item">{{item.departmentName}}</div>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="m-input-container m-dropdown-container">
                             <label title="Quản lý theo môn">QL theo môn</label>
-                            <MSelect :tabindex="6" :options="subjectData" :selectedIds="employee.subjectIds" 
+                            <MSelect :tabindex="6" :options="subjectData" :selectedIds="employee.subjectIDs" 
                               @selectOpt="selectSubject" @checkAll="selectAllSubject"
                               :checkSelected="checkSubjectIdSelected" :isCheckAll="checkAllSubject"/>
                         </div>
@@ -67,13 +67,13 @@
                     <div class="form__content--bottom">
                         <div class="m-input-container m-dropdown-container" style="width: 100%;">
                             <label title="Quản lý theo kho, phòng">QL kho, phòng</label>
-                            <MSelect :tabindex="7" :options="roomData" :selectedIds="employee.roomIds" 
+                            <MSelect :tabindex="7" :options="roomData" :selectedIds="employee.roomIDs" 
                               @selectOpt="selectRoom" @checkAll="selectAllRoom"
                               :checkSelected="checkRoomIdSelected" :isCheckAll="checkAllRoom"/>
                         </div>
                         <div class="m-checkbox-container">
                             <div class="m-checkbox">
-                                <input tabindex="8" v-model="employee.isDeviceManager" class="checkbox-real" type="checkbox">
+                                <input tabindex="8" v-model="employee.employeeIsDeviceManager" class="checkbox-real" type="checkbox">
                                 <div class="checkbox-pseudo"></div>
                             </div>
                             <label for="" style="margin-right: 20px;" title="Trình độ nghiệp vụ quản lý thiết bị">Trình độ
@@ -81,14 +81,14 @@
                         </div>
                         <div class="m-checkbox-container">
                             <div id="boxEheckQuit" class="m-checkbox check--quit-date">
-                                <input tabindex="9" v-model="employee.workingStatus" class="checkbox-real" type="checkbox" checked>
+                                <input tabindex="9" v-model="employee.employeeWorkingStatus" class="checkbox-real" type="checkbox">
                                 <div class="checkbox-pseudo"></div>
                             </div>
                             <label for="" style="margin-right: 20px;">Đang làm việc</label>
                         </div>
-                        <div v-if="!employee.workingStatus" id="eQuitDate" class="m-input-container m-date-input quit-date">
+                        <div v-if="!employee.employeeWorkingStatus" id="eQuitDate" class="m-input-container m-date-input quit-date">
                             <label for="">Ngày nghỉ việc</label>
-                            <input tabindex="10" type="date" v-model="employee.quitDate" class="m-input m-input-date" placeholder="dd-mm-yyyyy" name="date">
+                            <input tabindex="10" type="date" v-model="employee.employeeQuitDate" class="m-input m-input-date" placeholder="dd-mm-yyyyy" name="date">
                         </div>
                         <div v-else style="width: 240px; height: 32px;" class="m-input-container m-date-input quit-date"></div>
                     </div>
@@ -144,7 +144,7 @@ export default {
      * @params {int} Id của cán bộ tương ứng id của đối tượng khi click trong bảnh
      * Auth: KhaiND (29/10/2022)
      */
-    //employeeSelectedId: this.bindEmployee()
+    //employeeSelectedId: this.bindEmployee() WATCH
     async bindEmployee(value) {
       var me = this;
       if (value != null) {
@@ -152,7 +152,7 @@ export default {
         // Hien thi Loader
         me.loadingStatus = true;
         // Call API, nho check Status code va dua ra thong bao
-        var url = "https://localhost:44344/api/Employees/" + value;
+        var url = "http://localhost:35241/api/v1/Employees/" + value;
         console.log("Watching: " + value);
         axios
           .get(url)
@@ -160,10 +160,10 @@ export default {
             me.employee = response.data;
             // // Kiểm tra Id tổ bộ môn và gán tên tổ bộ môn tương ứng cho cán bộ được chọn
             // me.departmentData.forEach((item) => {
-            //   if (item.departmentId == response.data.departmentId) {
+            //   if (item.departmentID == response.data.departmentID) {
             //     me.curDpmName = item.departmentName;
             //   }
-            // });
+            // }); // KHÔNG CẦN LẮM
             console.log(me.employee);
             // Ẩn Loader
             me.loadingStatus = false;
@@ -181,10 +181,10 @@ export default {
         // Đổi form Title
         me.formTitle = "Thêm hồ sơ Cán bộ, giáo viên";
         // Khởi tạo đối tượng rỗng employee
-        me.employee = { workingStatus: true, subjectIds: [], roomIds: [] };
+        me.employee = { workingStatus: true, subjectIDs: [], roomIDs: [], employeeWorkingStatus: true };
         //Gợi ý Số hiệu CB mới
         await axios //DỂ TRONG MOUNTED
-          .get("https://localhost:44344/api/Employees/newcode")
+          .get("http://localhost:35241/api/v1/Employees/newCode")
           .then(function (res) {
             me.employee.employeeCode = res.data;
             // Ẩn Loader
@@ -194,7 +194,7 @@ export default {
         me.postMode = 1;
       }
       console.log("Da bind duoc Id ve Form: " + value);
-      // if(me.employee.roomIds.length == me.roomData.length) {
+      // if(me.employee.roomIDs.length == me.roomData.length) {
       //   me.checkAllRoom = true;
       // }
     },
@@ -229,30 +229,31 @@ export default {
     },
 
     /**
-     * Bắt giá trị roomId của các kho phòng được chọn khi check vào ô tương ứng
+     * Bắt giá trị roomID của các kho phòng được chọn khi check vào ô tương ứng
      * Auth: KhaiND (07/11/2022)
      */
     selectRoom: function (value) {
-      var rooms = this.employee.roomIds;
+      console.log("Da goi ROOM SANG FORM: " + value);
+      var rooms = this.employee.roomIDs;
       // Nếu giá trị tương ứng đã được check (đã tồn tại trong danh sách chọn)
-      if (rooms != undefined && rooms.includes(parseInt(value))) {
+      if (rooms != undefined && rooms.includes(value)) {
         // Loại bỏ nó đi (bấm vào thì uncheck)
-        this.employee.roomIds = rooms.filter((x) => {
-          return x != parseInt(value);
+        this.employee.roomIDs = rooms.filter((x) => { // ParseInt sang Guid
+          return x != value;
         });
       }
       // Ngược lại, chwa check thì check (thêm giá trị tương ứng vào danh sách chọn)
       else {
-        this.employee.roomIds.push(parseInt(value));
+        this.employee.roomIDs.push(value);
       }
       // Kiểm tra xem nếu đã check hết các lựa chọn thì tự động tick ô Tất cả
-      if (this.employee.roomIds.length == this.roomData.length) {
+      if (this.employee.roomIDs.length == this.roomData.length) {
         this.checkAllRoom = true;
       } else {
         this.checkAllRoom = false;
       }
       // console.log("LEANGTH: ");
-      // console.log(this.employee.roomIds.length);
+      // console.log(this.employee.roomIDs.length);
       // console.log(this.roomData.length);
     },
 
@@ -262,11 +263,11 @@ export default {
      */
     selectAllRoom() {
       this.checkAllRoom = !this.checkAllRoom;
-      this.employee.roomIds = [];
+      this.employee.roomIDs = [];
       if (this.checkAllRoom) {
         for (var i = 0; i < this.roomData.length; i++) {
           console.log("PUSH ROOM ID FOR ALL: " + this.roomData[i].itemId);
-          this.employee.roomIds.push(this.roomData[i].itemId);
+          this.employee.roomIDs.push(this.roomData[i].itemId);
         }
       }
     },
@@ -278,29 +279,29 @@ export default {
      * Auth: KhaiND (08/11/2022)
      */
     checkRoomIdSelected(value) {
-      if (this.employee.roomIds == undefined) return false;
-      return this.employee.roomIds.includes(value);
+      if (this.employee.roomIDs == undefined) return false;
+      return this.employee.roomIDs.includes(value);
     },
 
     /**
-     * Bắt giá trị subjectId của các môn được chọn khi check vào ô tương ứng
+     * Bắt giá trị subjectID của các môn được chọn khi check vào ô tương ứng
      * Auth: KhaiND (08/11/2022)
      */
     selectSubject(value) {
-      var subjects = this.employee.subjectIds;
+      var subjects = this.employee.subjectIDs;
       // Nếu giá trị tương ứng đã được check (đã tồn tại trong danh sách chọn)
-      if (subjects != undefined && subjects.includes(parseInt(value))) {
+      if (subjects != undefined && subjects.includes(value)) {
         // Loại bỏ nó đi (bấm vào thì uncheck)
-        this.employee.subjectIds = subjects.filter((x) => {
-          return x != parseInt(value);
+        this.employee.subjectIDs = subjects.filter((x) => { // ParseInt sang Guid
+          return x != value;
         });
       }
       // Ngược lại, chwa check thì check (thêm giá trị tương ứng vào danh sách chọn)
       else {
-        this.employee.subjectIds.push(parseInt(value));
+        this.employee.subjectIDs.push(value);
       }
       // Kiểm tra xem nếu đã check hết các lựa chọn thì tự động tick ô Tất cả
-      if (this.employee.subjectIds.length == this.subjectData.length) {
+      if (this.employee.subjectIDs.length == this.subjectData.length) {
         this.checkAllSubject = true;
       } else {
         this.checkAllSubject = false;
@@ -313,10 +314,10 @@ export default {
      */
     selectAllSubject() {
       this.checkAllSubject = !this.checkAllSubject;
-      this.employee.subjectIds = [];
+      this.employee.subjectIDs = [];
       if (this.checkAllSubject) {
         for (var i = 0; i < this.subjectData.length; i++) {
-          this.employee.subjectIds.push(this.subjectData[i].itemId);
+          this.employee.subjectIDs.push(this.subjectData[i].itemId);
         }
       }
     },
@@ -328,8 +329,8 @@ export default {
      * Auth: KhaiND (08/11/2022)
      */
     checkSubjectIdSelected(value) {
-      if (this.employee.roomIds == undefined) return false;
-      return this.employee.subjectIds.includes(value);
+      if (this.employee.roomIDs == undefined) return false;
+      return this.employee.subjectIDs.includes(value);
     },
 
     /**
@@ -368,7 +369,7 @@ export default {
         if (this.postMode == 1) {
           console.log("POST");
           await axios
-            .post("https://localhost:44344/api/Employees", me.employee)
+            .post("http://localhost:35241/api/v1/Employees", me.employee)
             .then(function () {
               console.log("SUCCESS");
             })
@@ -377,7 +378,7 @@ export default {
         } else {
           console.log("PUT");
           var pUrl =
-            "https://localhost:44344/api/Employees/" + me.employeeSelectedId;
+            "http://localhost:35241/api/v1/Employees/" + me.employeeSelectedId;
           await axios
             .put(pUrl, me.employee)
             .then(function () {
@@ -397,12 +398,12 @@ export default {
     },
     
     /**
-     * Sự kiện khi click vào option tương ứng tổ bộ môn thì chọn tổ bộ môn đó (theo departmentId)
+     * Sự kiện khi click vào option tương ứng tổ bộ môn thì chọn tổ bộ môn đó (theo departmentID)
      * @param {int} depId - departmnemtId định danh tổ bộ môn
      * Auth: KhaiND (05/11/2022)
      */
     cbooseDepartment(depId) {
-      this.employee.departmentId = depId;
+      this.employee.departmentID = depId;
       this.selectDepartment();
     },
     /**
@@ -422,12 +423,12 @@ export default {
       // Lấy danh sách môn
       try {
         axios
-          .get("https://localhost:44344/api/Subjects")
+          .get("http://localhost:35241/api/v1/Subjects")
           .then(function (response) {
             me.subjectData = response.data;
             me.subjectData = me.subjectData.map(function (obj) {
-              obj["itemId"] = obj["subjectId"]; // Assign new key
-              delete obj["subjectId"]; // Delete old key
+              obj["itemId"] = obj["subjectID"]; // Assign new key
+              delete obj["subjectID"]; // Delete old key
               obj["itemName"] = obj["subjectName"]; // Assign new key
               delete obj["subjectName"]; // Delete old key
               return obj;
@@ -444,12 +445,12 @@ export default {
       // Lấy danh sách Kho phòng
       try {
         axios
-          .get("https://localhost:44344/api/Rooms")
+          .get("http://localhost:35241/api/v1/Rooms")
           .then(function (response) {
             me.roomData = response.data;
             me.roomData = me.roomData.map(function (obj) {
-              obj["itemId"] = obj["roomId"]; // Assign new key
-              delete obj["roomId"]; // Delete old key
+              obj["itemId"] = obj["roomID"]; // Assign new key
+              delete obj["roomID"]; // Delete old key
               obj["itemName"] = obj["roomName"]; // Assign new key
               delete obj["roomName"]; // Delete old key
               return obj;
@@ -463,37 +464,21 @@ export default {
       } catch (error) {
         console.log(error);
       }
-      // Lập danh sách Tổ bộ môn
-      this.departmentData = [
-        {
-          departmentId: 0,
-          departmentName: "Tổ Toán - Lý - Hóa",
-        },
-        {
-          departmentId: 1,
-          departmentName: "Tổ Toán - Tin",
-        },
-        {
-          departmentId: 2,
-          departmentName: "Tổ Hóa - Sinh",
-        },
-        {
-          departmentId: 3,
-          departmentName: "Tổ Anh văn",
-        },
-        {
-          departmentId: 4,
-          departmentName: "Tổ Sử - Địa - GDCD",
-        },
-        {
-          departmentId: 5,
-          departmentName: "Tổ Ngữ văn",
-        },
-        {
-          departmentId: 6,
-          departmentName: "Tổ Lái",
-        },
-      ];
+      // Lấy danh sách Tổ bộ môn
+      try {
+        axios
+          .get("http://localhost:35241/api/v1/Departments")
+          .then(function (response) {
+            me.departmentData = response.data;
+            console.log(me.departmentData);
+            //An Loader
+          })
+          .catch(function (response) {
+            console.log(response);
+          });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 
@@ -510,7 +495,6 @@ export default {
   mounted() {
     // this.bindEmployee(this.employeeSelectedId);
     this.$nextTick(() => this.$refs.empNameInput.focus())
-    console.log(`this.$refs.empNameInput`, this.$refs.empNameInput);
   },
 
   /**
@@ -520,15 +504,17 @@ export default {
   computed: {
     curDepName() {
       var depName = "";
-      this.departmentData.forEach((opt) => {
-        if (opt.departmentId == this.employee.departmentId)
-          depName = opt.departmentName;
-        console.log("Đã bắt được tổ bộ môn : " + depName);
-      });
+      if(this.departmentData != undefined || this.departmentData != null) {
+        this.departmentData.forEach((opt) => {
+          if (opt.departmentID == this.employee.departmentID)
+            depName = opt.departmentName;
+          console.log("Đã bắt được tổ bộ môn : " + depName);
+        });
+      }
       return depName;
     },
   },
-};
+}
 </script>
 
 <style scoped>

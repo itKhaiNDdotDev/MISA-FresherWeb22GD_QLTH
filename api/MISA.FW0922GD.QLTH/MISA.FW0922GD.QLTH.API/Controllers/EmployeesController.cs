@@ -96,6 +96,7 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
         /// </summary>
         /// <param name="employeeIDs">Danh sách ID của các Cán bộ, giáo viên muốn xóa</param>
         /// <returns>Danh sách ID của các Cán bộ, giáo viên đã xóa</returns>
+        /// Created By: KhaiND (22/11/2022)
         [HttpDelete("deleteMany")]
         public IActionResult DeleteMany([FromBody] List<Guid> employeeIDs)
         {

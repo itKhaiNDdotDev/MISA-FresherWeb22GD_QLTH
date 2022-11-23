@@ -53,7 +53,7 @@ export default {
     onClickOpenForm(employee) {
       this.showEmployeeForm(true);
       console.log(employee);
-      this.employeeSelectedId = employee.id;
+      this.employeeSelectedId = employee.employeeID;
     },
     /**
      * Sự kiện bấm vào nút Đóng hoặc icon x trên Form - ẩn pop-up thêm mới employee

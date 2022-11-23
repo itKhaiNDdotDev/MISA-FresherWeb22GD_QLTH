@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add CORS Policy (By: KhaiND - 20/22/2022)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "_myAllowSpecificOrigins",
+    options.AddPolicy(name: "myAllowSpecificOrigins",
                       policy =>
                       {
                           policy.AllowAnyOrigin()
@@ -42,6 +42,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Aply CORS Midlewares
+app.UseCors("myAllowSpecificOrigins");
 
 app.UseAuthorization();
 
