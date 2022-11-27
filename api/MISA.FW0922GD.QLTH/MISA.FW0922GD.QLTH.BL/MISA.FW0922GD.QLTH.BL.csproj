@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.Common\MISA.FW0922GD.QLTH.Common.csproj" />
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.DL\MISA.FW0922GD.QLTH.DL.csproj" />
   </ItemGroup>

@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MISA.FW0922GD.QLTH.BL.EmployeeBL;
 using MISA.FW0922GD.QLTH.Common;
 using MISA.FW0922GD.QLTH.Common.Entities;
 using MISA.FW0922GD.QLTH.Common.Entities.DTOs;
 using MISA.FW0922GD.QLTH.Common.Enums;
+using MISA.FW0922GD.QLTH.DL.EmployeeDL;
+using System.Data;
+using System.Text;
 
 namespace MISA.FW0922GD.QLTH.API.Controllers
 {
@@ -91,6 +96,31 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
             }
         }
 
+
+        [HttpGet("export")]
+        public IActionResult Export()
+        {
+            try
+            {
+                var stream = _employeeBL.GetAllExport();
+                string fileName = "Danh_sach_can_bo_giao_vien.xlsx";
+                Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = GDErrorCode.Exception,
+                    DevMsg = Resources.Exception_DevMsg,
+                    UserMsg = Resources.Exception_UserMsg,
+                    MoreInfo = Resources.Exception_MoreInfo,
+                    TraceId = HttpContext.TraceIdentifier
+                });
+            }
+        }
+
         /// <summary>
         /// API xóa đồng thời nhiều Cán bộ, giáo viên từ danh sách ID
         /// </summary>
@@ -118,6 +148,33 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
                     DevMsg = Resources.Exception_DevMsg,
                     UserMsg = Resources.Exception_UserMsg,
                     MoreInfo= Resources.Exception_MoreInfo,
+                    TraceId = HttpContext.TraceIdentifier
+                });
+            }
+        }
+
+        /// <summary>
+        /// API kiểm tra trùng Số hiệu Cán bộ
+        /// </summary>
+        /// <param name="employeeCode">Số hiệu Cán bộ muốn kiểm tra</param>
+        /// <returns>Kết quả kiểm tra nếu SHCB đã tồn tại thì trả về 1, ngược lại trả về 0</returns>
+        [HttpGet("checkDuplicateCode")]
+        public IActionResult CheckDuplicatCode([FromQuery] string employeeCode)
+        {
+            try
+            {
+                var result = _employeeBL.CheckDuplicateCode(employeeCode);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = GDErrorCode.Exception,
+                    DevMsg = Resources.Exception_DevMsg,
+                    UserMsg = Resources.Exception_UserMsg,
+                    MoreInfo = Resources.Exception_MoreInfo,
                     TraceId = HttpContext.TraceIdentifier
                 });
             }

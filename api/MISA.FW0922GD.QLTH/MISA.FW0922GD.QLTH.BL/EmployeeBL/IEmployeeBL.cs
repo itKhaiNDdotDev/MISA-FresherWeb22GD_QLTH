@@ -23,6 +23,13 @@ namespace MISA.FW0922GD.QLTH.BL.EmployeeBL
         public PagingResult<EmployeeResponse> GetSearchPaging(string? keyword, int pageIndex = 1, int pageSize = 32);
 
         /// <summary>
+        /// Xuất file Excel danh sách dữ liệu tất cả Cán bộ, giáo viên theo định dạng của bảng phân trang
+        /// </summary>
+        /// <returns>File danh sách tất cả Cán bộ, giáo viên</returns>
+        /// Created By: KhaiND (26/11/2022)
+        public Stream GetAllExport();
+
+        /// <summary>
         /// Gợi ý mã nhân viên tự tăng thêm một giá trị từ mã nhân viên lớn nhất
         /// </summary>
         /// <returns>Mã nhân viên mới tự tăng</returns>
@@ -36,5 +43,13 @@ namespace MISA.FW0922GD.QLTH.BL.EmployeeBL
         /// <returns>Danh sách ID của các Các cán bộ, giáo viên đã xóa</returns>
         /// Created By: KhaiND (22/11/2022)
         public List<Guid> DeleteMany(List<Guid> employeeIDs);
+
+        /// <summary>
+        /// Kiểm tra số hiệu cán bộ có trùng hay không
+        /// </summary>
+        /// <param name="employeeCode">Số hiệu cán bộ muốn kiểm tra</param>
+        /// <returns>true nếu có trùng và false nếu SHCB chưa tồn tại</returns>
+        /// Created By: KhaiND 24/11/2022
+        public bool CheckDuplicateCode(string employeeCode);
     }
 }

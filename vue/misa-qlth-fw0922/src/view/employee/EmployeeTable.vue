@@ -4,58 +4,59 @@
         <table>
             <thead>
                 <tr>
-                    <th>
-                        <div class="m-checkbox">
-                            <input class="checkbox-real" type="checkbox">
+                    <th style="width: 40px; padding: 0px;">
+                        <div class="m-checkbox" style="margin: 0px auto;">
+                            <input @change="onCheckAll" v-bind:checked="checkAllEmplyee" class="checkbox-real" type="checkbox">
                             <div class="checkbox-pseudo"></div>
                         </div>
                     </th>
-                    <th>Số hiệu cán bộ</th>
-                    <th>Họ và tên</th>
-                    <th>Số điện thoại</th>
-                    <th>Tổ chuyên môn</th>
-                    <th title="Quản lý theo môn">QL theo môn</th>
-                    <th title="Quản lý theo kho, phòng">QL kho, phòng</th>
-                    <th title="Đào tạo quản lý thiết bị">Đào tạo QLTB</th>
-                    <th>Đang làm việc</th>
+                    <th>{{thText.Code}}</th>
+                    <th>{{thText.Name}}</th>
+                    <th>{{thText.Phone}}</th>
+                    <th>{{thText.Department}}</th>
+                    <th title="Quản lý theo môn">{{thText.Subject}}</th>
+                    <th title="Quản lý theo kho, phòng">{{thText.Room}}</th>
+                    <th title="Đào tạo quản lý thiết bị">{{thText.DeviceManager}}</th>
+                    <th>{{thText.Working}}</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody v-if="notFound" class="table--not-found"> Không tìm thấy kết quả nào </tbody>
+            <tbody v-if="errorResult" class="table--not-found"> {{msgResult}} </tbody>
             <tbody v-else>
                 <tr @dblclick="onClickEdit(employee)" v-for="employee in employeeList" :key="employee.rmployeeID" :id="employee.rmployeeID">
-                    <td class="m-a-center">
-                        <div class="m-checkbox">
-                            <input class="checkbox-real" type="checkbox">
+                    <td class="m-a-center" style="padding: 0px;">
+                        <div class="m-checkbox" style="margin: 0px auto;">
+                            <input @change="checkEmployee(employee.employeeID)" class="checkbox-real" type="checkbox"
+                              v-bind:checked="checkSelected(employee.employeeID)">
                             <div class="checkbox-pseudo"></div>
                         </div>
                     </td>
-                    <td class="m-a-left"> {{employee.employeeCode}} </td>
-                    <td class="m-a-left" @click="onClickEdit(employee)"> {{employee.employeeName}} </td>
-                    <td class="m-a-left"> {{employee.employeePhoneNumber}} </td>
-                    <td class="m-a-left" :title="employee.departmentName"> {{employee.departmentName}} </td>
-                    <td class="m-a-left" :title="employee.subjectNames.map((i) => {return i})">
+                    <td class="m-a-left" style="max-width: 114px;"> {{employee.employeeCode}} </td>
+                    <td class="m-a-left" style="min-width: 183px; color: #03AE66; cursor: pointer;" @click="onClickEdit(employee)"> {{employee.employeeName}} </td>
+                    <td class="m-a-left" style="max-width: 100px;"> {{employee.employeePhoneNumber}} </td>
+                    <td class="m-a-left" style="max-width: 100px;" :title="employee.departmentName"> {{employee.departmentName}} </td>
+                    <td class="m-a-left" style="max-width: 100px;" :title="employee.subjectNames.map((i) => {return i})">
                         <span v-for="(subject, index) in employee.subjectNames" :key="index">
                              {{subject}}
                              <span v-if="index < employee.subjectNames.length-1">, </span>
                         </span>
                         <!-- {{employee.subjects.join(", ")}} -->
                     </td>
-                    <td class="m-a-left" :title="employee.roomNames.map((i) => {return i})">
+                    <td class="m-a-left" style="min-width: 160px; max-width: 160px;" :title="employee.roomNames.map((i) => {return i})">
                         <span v-for="(room, index) in employee.roomNames" :key="index">
                              {{room}}
                              <span v-if="index < employee.roomNames.length-1">, </span>
                         </span>
                     </td>
-                    <td class="m-a-center" v-if="employee.employeeIsDeviceManager">
-                        <div class="m-icon m-icon-24 icon-check"></div>
+                    <td class="m-a-center" style="max-width: 100px;" v-if="employee.employeeIsDeviceManager">
+                        <div class="m-icon m-icon-24 icon-check" style="margin: 0px auto;"></div>
                     </td>
-                    <td v-else></td>
-                    <td class="m-a-center" v-if="employee.employeeWorkingStatus">
-                        <div class="m-icon m-icon-24 icon-check"></div>
+                    <td style="max-width: 100px;" v-else></td>
+                    <td class="m-a-center" style="max-width: 100px;" v-if="employee.employeeWorkingStatus">
+                        <div class="m-icon m-icon-24 icon-check" style="margin: 0px auto;"></div>
                     </td>
-                    <td v-else></td>
-                    <td class="m-a-center">
+                    <td style="max-width: 100px;" v-else></td>
+                    <td style="min-width: 70px; max-width: 72px; padding: 0px;" class="m-a-center">
                         <button @click="onClickEdit(employee)" class="m-icon button-icon icon--data-action icon-edit"
                             title="chỉnh sửa"></button>
                         <button @click="onClickDeleteEmployee(employee.employeeID)" class="m-icon button-icon icon--data-action icon-remove"
@@ -65,105 +66,190 @@
             </tbody>
         </table>
     </div>
-    <!-- <MsDialog :class="{showD:isShowDialog}"/> -->
     <div class="m-popup-container" :class="{showD:isShowDialog}">
-        <div class="m-dialog">
-            <div class="dialog__header">
-                Thông báo
-            </div>
-            <div class="dialog__content">
-                Bạn có chắc chắn muốn xóa Cán bộ giáo viên đang chọn không?
-            </div>
-            <div class="dialog__footer">
-                <button @click="closeMsDialog" class="m-button m-btn-style2">Đóng</button>
-                <button @click="deleteEmployee" class="m-button m-btn-style1">Đồng ý</button>
-            </div>
-            <button title="Đóng" @click="closeMsDialog" class="m-icon m-icon-24 button-icon icon-close" id="closeDialog"></button>
-        </div>
+        <MsDialog @onConfirm="onConfirmDelete" @onClose="closeMsDialog" :dialogMessage="confirmMessage"/>
         <MLoader v-if="loadingStatus"/>
     </div>
 </template>
 
 <script>
+import CommonText from "./../../utils/resources/common";
+import { PAGE_SIZE, BASE_URL } from "../../utils/resources/common";
+import EmployeeText from "./../../utils/resources/employee";
 import axios from "axios";
-import {PAGE_SIZE} from "./../../resources";
 import MLoader from "../../components/base/MLoader.vue";
-// import MsDialog from './MsDialog.vue'
+import MsDialog from "./../../components/base/MsDialog.vue";
+
 export default {
   name: "EmployeeTable",
   components: {
     MLoader,
-    //MsDialog
+    MsDialog,
   },
 
   data() {
     return {
-      employeeList: null,
-      isShowDialog: false,
-      curEmpId: null,
-      loadingStatus: false,
-      tableLoadingStatus: true,
-      notFound: false,
+      dialogText: CommonText.Dialog,
+      toastMsg: CommonText.Toast.Message,
+      errorResultText: CommonText.ErrorResult,
+      thText: EmployeeText.TableHead,
+      employeeList: null, // Danh sách Cán bộ, giáo viên đã load được để render ra bảng
+      isShowDialog: false, // Trạng thái có hiển thị Dialog cảnh báo xóa hay không
+      curEmpId: null, // Id của Cán bộ, giáo viên đang Forcus
+      loadingStatus: false, // Trạng thái có hiển thị mask Loader cho toàn bộ content hay không
+      tableLoadingStatus: true, // Trạng thái có hiển thị mask Loader cho phần thân dữ liệu của bảng hay không
+      errorResult: false, // Trạng thái load dữ liệu cho bảng Cán bộ, giáo viên có lỗi hay không
+      msgResult: "", // Thông điệp đi kèm kết quả load fail
+      empSelectedIds: [], // Danh sách Id của Cán bộ, giáo viên đang được check
+      checkAllEmplyee: false, // Có đang chọn tất cả Cán bộ, giáo viên trên màn hình hay không
+      confirmMessage:
+        "Bạn có chắc chắn muốn xóa Cán bộ, giáo viên đang chọn không?",
+      deleteManyMode: 0 // Action xóa là xóa 1 hay xóa nhiều
     };
   },
-  
+
   created() {
     // Hiển thị Loader
-    this.tableLoadingStatus = true;  
+    this.tableLoadingStatus = true;
     // Lấy dữ liệu từ API
     this.loadData();
   },
 
   methods: {
+    /**
+     * Hiển thị mask Loading của toàn bộ trang
+     * Author: KhaiND (26/11/2022)
+     */
+    startLoading() {
+      this.loadingStatus = true;
+    },
+
+    /**
+     * Ẩn mask Loading của toàn bộ trang
+     * Author: KhaiND (26/11/2022)
+     */
+    endLoading() {
+      this.tableLoadingStatus = false;
+    },
+
+    /**
+     * Xử lý khi gọi API load dữ liệu thành công (Cán bộ, giáo viên)
+     * Author: KhaiND (26/11/2022)
+     */
+    thenLoadAPI(response) {
+      this.employeeList = response.data.data;
+      this.$emit("getTotal", response.data.totalRecord);
+      this.errorResult = false;
+      // Ẩn Loader
+      this.tableLoadingStatus = false;
+    },
+
+    /**
+     * Xử lý khi gọi API load dữ liệu thất bại (Cán bộ, giáo viên)
+     * Author: KhaiND (26/11/2022)
+     */
+    catchLoadAPI(response) {
+      switch(response.response.status) {
+        case 404:
+          // Xử lý kết quả
+          this.$emit("getTotal", 0);
+          this.errorResult = true;
+          this.msgResult = this.errorResultText.NotFound;
+          // Ẩn Loader
+          this.tableLoadingStatus = false;
+          break;
+        case 400: //Thêm Các TOAST==================
+          // Xử lý kết quả
+          this.$emit("getTotal", 0);
+          this.errorResult = true;
+          this.msgResult = this.errorResultText.InvalidSearch;
+          // Ẩn Loader
+          this.tableLoadingStatus = false;
+          break;
+        case 500:
+          // Xử lý kết quả
+          this.$emit("getTotal", 0);
+          this.errorResult = true;
+          this.msgResult = this.errorResultText.Error500;
+          // Ẩn Loader
+          this.tableLoadingStatus = false;
+          break;
+      }
+    },
+
     /*
-     * FEAT: Gọi API và lấy (GET tất cả dữ liệu của danh sách nhân viên) với Axios
+     * Gọi API và lấy (GET tất cả dữ liệu của danh sách nhân viên) với Axios
      * Author: KhaiND (28/10/2022)
      */
     loadData(keyword, pageIndex) {
       try {
         if (!keyword) {
           this.tableLoadingStatus = true;
-          if(!pageIndex)
-            pageIndex = 1;
-          var url = "http://localhost:35241/api/v1/Employees/search?pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
-          axios
-            .get(url)
-            .then((response) => {
-              this.employeeList = response.data.data;
-              console.log(this.employeeList);
-              this.$emit("getTotal",response.data.totalRecord);
-              this.notFound = false;
-              // Ẩn Loader
-              this.tableLoadingStatus = false;
-            });
-        }
-        else {
+          if (!pageIndex) pageIndex = 1;
+          var url = BASE_URL + "Employees/search?pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
+          axios.get(url)
+            .then((response) => this.thenLoadAPI(response))
+            .catch((response) => this.catchLoadAPI(response));
+        } else {
           this.tableLoadingStatus = true;
-          url = "http://localhost:35241/api/v1/Employees/search?keyword=" + keyword + "&pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
-          axios
-            .get(url)
-            .then((response) => {
-              this.employeeList = response.data.data;
-              console.log(this.employeeList);
-              this.$emit("getTotal",response.data.totalRecord);
-              this.notFound = false;
-              // Ẩn Loader
-              this.tableLoadingStatus = false;
-            })
-            .catch((res) => {
-              if(res.response.status == 404) {
-                // Xử lý kết quả
-                this.$emit("getTotal", 0);
-                this.notFound = true;
-                // Ẩn Loader
-                this.tableLoadingStatus = false;
-              }
-            });
+          url = BASE_URL + "Employees/search?keyword=" + keyword + "&pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
+          axios.get(url)
+            .then((response) => this.thenLoadAPI(response))
+            .catch((response) => this.catchLoadAPI(response));
         }
       } catch (error) {
         this.employeeList = null;
+        this.$emit("showToast", this.errorResultText.Error500, 0);
         console.log(error);
       }
+    },
+
+    /**
+     * Mỗi lần check/uncheck vào chekcbox đầu dàng dữ liệu tương ứng của bảng Cán bộ, giáo viên thì thêm/bỏ Id tương ứng tỏng danh sách chọn
+     * Author: KhaiND (23/11/2022)
+     */
+    checkEmployee(id) {
+      if (this.empSelectedIds.includes(id) && this.empSelectedIds != undefined) {
+        this.empSelectedIds.splice(this.empSelectedIds.indexOf(id), 1);
+      } else {
+        this.empSelectedIds.push(id);
+      }
+      // Kiểm tra xem nếu đã check hết các lựa chọn thì tự động tick ô Tất cả
+      if (this.empSelectedIds.length == this.employeeList.length) {
+        this.checkAllEmplyee = true;
+      } else {
+        this.checkAllEmplyee = false;
+      }
+    },
+
+    /**
+     * Sự kiện khi bấm vào checkbox ở đầu bảng thì chọn tất cả Cán bộ, giáo viên tương ứng đang hiển thị
+     * Author: KhaiND (25/11/2022)
+     */
+    onCheckAll() {
+      try {
+        this.checkAllEmplyee = !this.checkAllEmplyee;
+        this.empSelectedIds = [];
+        if (this.checkAllEmplyee) {
+          for (var i = 0; i < this.employeeList.length; i++) {
+            
+            this.empSelectedIds.push(this.employeeList[i].employeeID);
+          }
+        }
+      }
+      catch(error) {
+        console.log(error);
+      }
+    },
+
+    /**
+     * Kiểm tra xem Cán bộ, giáo viên tương ứng đã được chọn hay chưa, nếu đã được chọn thì bind động để ô checkbox tương ứng được checked
+     * @param {String} employeeID giá trị ID của Cán bộ, giáo viên cần kiểm tra 
+     * Author: KhaiND (25/11/2022)
+     */
+    checkSelected(employeeID) {
+      if (this.empSelectedIds == undefined) return false;
+      return this.empSelectedIds.includes(employeeID);
     },
 
     /**
@@ -173,9 +259,6 @@ export default {
      */
     onClickEdit(employee) {
       this.$emit("showPopup", employee);
-      // console.log(employee);
-      // this.$emit('getId', $event);
-      // this.employeeSelectedId = employee.id;
     },
 
     /**
@@ -184,31 +267,105 @@ export default {
      * Author: KhaiND (29/10/2022)
      */
     onClickDeleteEmployee(id) {
+      this.deleteManyMode = 0;
       //Show pop-up confirm
       this.isShowDialog = true;
       // Chỉ định Id của Employee cần xóa
       this.curEmpId = id;
     },
-    
+
+    /**
+     * Sự kiện khi người dùng bấm chọn vào tính năng xóa nhiều thì kiểm tra dữ liệu chọn và hiển thị thông báo
+     * Author: KhaiND (24/11/2022)
+     */
+    onClickDeleteMany() {
+      try {
+        // Kiểm tra danh sách chọn
+        if (this.empSelectedIds == null || this.empSelectedIds.length <= 0) {
+          this.$emit("showToast", this.toastMsg.Employee.NoSelected, 3);
+        }
+        else
+        {
+          // Hiển thị Dialog
+        this.isShowDialog = true;
+        this.confirmMessage = this.dialogText.Message.DeleteManyEmployee;
+          // Gọi đúng API
+          this.deleteManyMode = 1;
+        }
+      }
+      catch(error) {
+        console.log(error);
+        this.$emit("showToast", this.toastMsg.Error500, 0);
+      }
+    },
+
+    /**
+     * Event khi bấm xác nhận đồng ý xóa trên Dialog thì kiểm tra xem là xóa 1 hay xóa nhiều và thực hiện tương ứng
+     * Author: KhaiND (24/11/2022)
+     */
+    onConfirmDelete() {
+      if(this.deleteManyMode == 1) {
+        this.deleteManyEmployee();
+      }
+      else {
+        this.deleteEmployee();
+      }
+    },
+
     /**
      * Thực hiện xóa Cán bộ, giáo viên đã được chỉ định khi bấm xóa và sau đó xác nhận đồng ý xóa
      * Author: KhaiND (08/11/2022)
      */
     async deleteEmployee() {
-      // Hiển thị Loader
-      this.loadingStatus = true;
-      //Call API
-      var url = "http://localhost:35241/api/v1/Employees/" + this.curEmpId;
-      await axios.delete(url);
-      // Reset lại Id và đóng Dialog
-      this.isShowDialog = false;
-      this.curEmpId = null;
-      // Ẩn Loader
-      this.loadingStatus = false;
-      // Reload va toast
-      this.$emit("showToast", "Xóa thành công cán bộ, giáo viên");
-      await this.loadData();
+      try {
+        // Hiển thị Loader
+        this.loadingStatus = true;
+        //Call API
+        var url = BASE_URL + "Employees/" + this.curEmpId;
+        await axios.delete(url);
+        // Reset lại Id và đóng Dialog
+        this.isShowDialog = false;
+        this.curEmpId = null;
+        // Ẩn Loader
+        this.loadingStatus = false;
+        // Reload va toast
+        this.$emit("showToast", this.toastMsg.Employee.DeleteSuccess, 1);
+        await this.$emit("reloadData");
+      }
+      catch(error) {
+        console.log(error);
+        this.$emit("showToast", this.toastMsg.Error500, 0);
+      }
     },
+
+    /**
+     * Chức năng xóa nhiều Cán bộ, giáo viên
+     * Author: KhaiND (23/11/2022)
+     */
+    async deleteManyEmployee() {
+      try {
+        // Hiển thị Loader
+        this.loadingStatus = true;
+        //Call API
+        await this.empSelectedIds.forEach((employeeID) => {
+          var url = BASE_URL + "Employees/" + employeeID;
+          axios.delete(url);  // Nên call bằng API xóa nhiều
+        });
+        // Đóng Dialog
+        this.isShowDialog = false;
+        // Ẩn Loader
+        this.loadingStatus = false;
+        // Reload va toast
+        this.$emit("showToast", this.toastMsg.Employee.DeleteManySucessPre + this.empSelectedIds.length + this.toastMsg.Employee.DeleteManySucessSfx, 1);
+        this.empSelectedIds = [];
+        await this.$emit("reloadData");
+      }
+      catch(error) {
+        console.log(error);
+        this.$emit("showToast", this.toastMsg.Error500, 0);
+      }
+    },
+
     /**
      * Đóng dialog xác nhận xóa cán bộ
      * Author: KhaiND (08/11/2022)
@@ -222,12 +379,12 @@ export default {
 </script>
 
 <style scoped>
-  .table--not-found {
-    background-color: inherit;
-    position: absolute;
-    top: 56px;
-    left: 0px;
-    right: 0px;
-    text-align: center;
-  }
+.table--not-found {
+  background-color: inherit;
+  position: absolute;
+  top: 56px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+}
 </style>

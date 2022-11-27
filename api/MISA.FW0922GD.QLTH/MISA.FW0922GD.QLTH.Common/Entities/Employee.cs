@@ -39,17 +39,17 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Đường dẫn đến nơi lưu ảnh đại diện của cán bộ, giáo viên
         /// </summary>
-        public string EmployeeImageUrl { get; set; }
+        public string? EmployeeImageUrl { get; set; }
 
         /// <summary>
         /// Số điện thoại của cán bộ, giáo viên
         /// </summary>
-        public string EmployeePhoneNumber { get; set; }
+        public string? EmployeePhoneNumber { get; set; }
 
         /// <summary>
         /// Email của cán bộ, giáo viên
         /// </summary>
-        public string EmployeeEmail { get; set; }
+        public string? EmployeeEmail { get; set; }
 
         /// <summary>
         /// Khóa ngoại tham chiếu đến Tổ bộ môn của cán bộ, giáo viên

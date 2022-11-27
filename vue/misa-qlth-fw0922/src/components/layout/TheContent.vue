@@ -14,8 +14,8 @@ export default {
         // EmployeeList
     },
     methods: {
-        showToast(mes) {
-            this.$emit('showToast', mes);
+        showToast(mes, statusRes) {
+            this.$emit('showToast', mes, statusRes);
         }
     },
 }

@@ -34,7 +34,7 @@ namespace MISA.FW0922GD.QLTH.Common.Entities.DTOs
         /// <summary>
         /// Số điện thoại của cán bộ, giáo viên
         /// </summary>
-        public string EmployeePhoneNumber { get; set; }
+        public string? EmployeePhoneNumber { get; set; }
 
         /// <summary>
         /// Tên Tổ bộ môn của cán bộ, giáo viên

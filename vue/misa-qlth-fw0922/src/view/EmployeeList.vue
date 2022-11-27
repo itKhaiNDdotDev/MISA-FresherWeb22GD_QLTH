@@ -1,7 +1,7 @@
 <template lang="">
     <!-- DS cán bộ -->
-    <employee-toolbar @searchEmployee="searchEmployee" @showPopup="onClickOpenForm"></employee-toolbar>
-    <employee-table :key="tableKey" @showToast="showToast" ref="tableData" @showPopup="onClickOpenForm" v-if="true" @getTotal="bindTotal"></employee-table>
+    <employee-toolbar @onClickDeleteMany="onClickDeleteMany" @searchEmployee="searchEmployee" @showToast="showToast" @startLoading="startLoading" @endLoading="endLoading" @showPopup="onClickOpenForm"></employee-toolbar>
+    <employee-table :key="tableKey" @reloadData="reloadEmployeeData" @showToast="showToast" ref="tableData" @showPopup="onClickOpenForm" v-if="true" @getTotal="bindTotal"></employee-table>
     <no-data v-else @showPopup="onClickOpenForm"></no-data>
     <!-- @getId="getSelectedId" -->
     <employee-paging :key="pagingKey" ref="pagging" :searchText="searchText" :propPageIndex="pageIndex" @searchEmployee="searchEmployee" :totalRecord="totalRecord"></employee-paging>
@@ -24,6 +24,7 @@ export default {
     EmployeeForm,
     NoData,
   },
+
   data() {
     return {
       isShowForm: false,
@@ -37,12 +38,27 @@ export default {
 
   methods: {
     /**
+     * Hiển thị mask Loading
+     * Author: (26/11/2022)
+     */
+    startLoading() {
+      this.$refs.tableData.startLoading();
+    },
+
+    /**
+     * Ẩn mask Loading
+     * Author: KhaiND (26/11/2022)
+     */
+    endLoading() {
+      this.$refs.tableData.endLoading();
+    },
+
+    /**
      * Binding dữ liệu tổng số bản ghi từ việc load dữ liệu table sang
      * Author: KhaiND (17/11/2022)
      */
     bindTotal(value) {
       this.totalRecord = value;
-      console.log(this.totalRecord);
     },
 
     /**
@@ -51,10 +67,15 @@ export default {
      * Author: KhaiND (29/10/2022)
      */
     onClickOpenForm(employee) {
-      this.showEmployeeForm(true);
-      console.log(employee);
-      this.employeeSelectedId = employee.employeeID;
+      try {
+        this.showEmployeeForm(true);
+        this.employeeSelectedId = employee.employeeID;
+      } catch (error) {
+        console.log(error);
+        this.employeeSelectedId = {};
+      }
     },
+
     /**
      * Sự kiện bấm vào nút Đóng hoặc icon x trên Form - ẩn pop-up thêm mới employee
      * Viết chung ở view EmployeeList, các components con call qua $emits
@@ -78,11 +99,18 @@ export default {
      * Author: KhaiND (30/10/2022)
      */
     reloadEmployeeData() {
-      // this.$forceUpdate();
-      //this.$refs.tableData.loadData();
-      this.tableKey += 1;
-      this.formKey += 1;
-      this.employeeSelectedId = 0;
+      try {
+        // this.$forceUpdate();
+        //this.$refs.tableData.loadData();
+        this.tableKey += 1;
+        this.formKey += 1;
+        this.employeeSelectedId = 0;
+      } catch (error) {
+        console.log(error);
+        this.tableKey = 1;
+        this.formKey = 1;
+        this.employeeSelectedId = 0;
+      }
     },
 
     /**
@@ -92,7 +120,6 @@ export default {
     searchEmployee(keyword, pageIndex) {
       this.searchText = keyword;
       if (!pageIndex) pageIndex = 1;
-      console.log(pageIndex);
       //this.totalRecord = this.$refs.tableData.loadData(keyword, pageIndex);
       this.$refs.tableData.loadData(keyword, pageIndex);
       //this.totalRecord = this.$refs.tableData.totalRecord;
@@ -100,13 +127,20 @@ export default {
       this.pagingKey += 1;
     },
 
-  /**
-   * Gọi emit để show toast message
-   * AuthorL KhaiND (30/10/2022)
-   */
-    showToast(mes) {
-      this.$emit("showToast", mes);
-      // console.log("Tu FORM RA LIST");
+    /**
+     * Gọi emit để show toast message
+     * AuthorL KhaiND (30/10/2022)
+     */
+    showToast(mes, statusRes) {
+      this.$emit("showToast", mes, statusRes);
+    },
+
+    /**
+     * Gọi vào phương thức xử lý khi action bấm vào nút xóa nhiều
+     * Author: KhaiND (24/11/2022)
+     */
+    onClickDeleteMany() {
+      this.$refs.tableData.onClickDeleteMany();
     },
   },
 };

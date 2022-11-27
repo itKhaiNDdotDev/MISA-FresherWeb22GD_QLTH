@@ -36,7 +36,7 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Thông tin mô tả về Tổ bộ môn
         /// </summary>
-        public string DepartmentDescription { get; set; } 
+        public string? DepartmentDescription { get; set; } 
 
         #endregion
     }

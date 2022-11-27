@@ -75,6 +75,47 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
         }
 
         /// <summary>
+        /// Lấy ra tất cả dữ liệu Cán bộ, giáo viên theo định dạng của bảng phân trang
+        /// </summary>
+        /// <returns>Danh sách thông tin tất cả Cán bộ, giáo viên</returns>
+        /// Created By: KhaiND (26/11/2022)
+        public IEnumerable<EmployeeResponse> GetAllExport()
+        {
+            // Chuẩn bị câu lệnh SQL
+            string storedProcedureName = "Proc_Employee_GetAllExport";
+
+            // Khởi tọa kết nối đến Database MySQL
+            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                // Thực hiện gọi truy vấn vào Database
+                var employees = mySqlConnection.Query<EmployeeResponse>(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure);
+
+                foreach (var employee in employees)
+                {
+                    // Chuẩn bị tham số đầu vào là EmployeeID để truy xuất khóa ngoại n-n
+                    var paramEmployeeID = new DynamicParameters();
+                    paramEmployeeID.Add("EmployeeID", employee.EmployeeID);
+
+                    // Khởi tọa kết nối con phục vụ truy vấn danh sách tên từ khóa ngoại
+                    using (var subMySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+                    {
+                        // Thực hiện truy vấn để lấy danh sách tên Môn học của Cán bộ, giáo viên
+                        string storeProcedureSubject = "Proc_Employee_GetSubjectNamesByID";
+                        var subjectNames = subMySqlConnection.Query<string>(storeProcedureSubject, paramEmployeeID, commandType: System.Data.CommandType.StoredProcedure);
+                        employee.SubjectNames = subjectNames.ToList();
+
+                        // Thực hiện truy vấn để lấy danh sách tên Kho, phòng của Cán bộ, giáo viên
+                        string storeProcedureRoom = "Proc_Employee_GetRoomNamesByID";
+                        var roomNames = subMySqlConnection.Query<string>(storeProcedureRoom, paramEmployeeID, commandType: System.Data.CommandType.StoredProcedure);
+                        employee.RoomNames = roomNames.ToList();
+                    }
+                }
+
+                return employees;
+            }
+        }
+
+        /// <summary>
         /// Overide: Lấy thông tin một Cán bộ, giáo viên theo ID
         /// </summary>
         /// <param name="recordID">ID của Cán bộ, giáo viên muốn lấy</param>
@@ -381,6 +422,28 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                 deletedIDs = employeeIDs;
             }
             return deletedIDs;
+        }
+
+        /// <summary>
+        /// Kiểm tra số hiệu cán bộ có trùng hay không
+        /// </summary>
+        /// <param name="employeeCode">Số hiệu cán bộ muốn kiểm tra</param>
+        /// <returns>true nếu có trùng và false nếu SHCB chưa tồn tại</returns>
+        /// Created By: KhaiND 24/11/2022
+        public bool checkDuplicateCode(string employeeCode)
+        {
+            // Chuẩn bị tham số đầu vào
+            var parameters = new DynamicParameters();
+            parameters.Add("EmployeeCode", employeeCode);
+
+            // Chuẩn bị câu lệnh SQL
+            string storedProcedureName = "Proc_Employee_CheckExistCode";
+            // Khởi tạo kết nối đến Database MySQL
+            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                // Thực hiện gọi truy vấn vào Database
+                return mySqlConnection.QueryFirstOrDefault<bool>(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+            }
         }
     }
 }
