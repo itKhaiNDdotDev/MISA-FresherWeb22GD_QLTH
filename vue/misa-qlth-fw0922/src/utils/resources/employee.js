@@ -30,9 +30,9 @@ export default {
         Working: "Đang làm việc",
         QuitDate: "Ngày nghỉ việc",
         ErrorMsg: {
-            CodeEmpty: "Số hiệu cán bộ không được bỏ trống.",
+            CodeEmpty: "Số hiệu cán bộ không được phép để trống.",
             CodeDuplicate: "Số hiệu cán bộ đã tồn tại! Vui lòng kiểm tra lại.",
-            NameEmpty: "Họ và tên không được bỏ trống.",
+            NameEmpty: "Họ và tên không được phép để trống.",
             PhoneInvalid: "Số điện thoại không hợp lệ! Vui lòng kiểm tra lại.",
             EmailInvalid: "Email không hợp lệ! Vui lòng kiểm tra lại"
         }

@@ -66,6 +66,30 @@ namespace MISA.FW0922GD.QLTH.DL.BaseDL
         }
 
         /// <summary>
+        /// Lấy số hiện hiện tại của bản ghi tương ứng
+        /// </summary>
+        /// <param name="recordID">ID của bản ghi muốn lấy</param>
+        /// <returns>Số hiệu định danh thông tin bản ghi</returns>
+        /// Created By: KhaiND (16/11/2022)
+        public string GetMyCode(Guid recordID)
+        {
+            // Chuẩn bị tham số đầu vào
+            var parameters = new DynamicParameters();
+            parameters.Add($"{typeof(T).Name}ID", recordID);
+
+            // Chuẩn bị câu lệnh SQL
+            string storedProcedureName = String.Format(Procedure.GET_MY_CODE, typeof(T).Name);
+
+            // Khởi tạo kết nối đến Database MySQL
+            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                // Thực hiện gọi truy vấn vào Database
+                var myCode = mySqlConnection.QueryFirstOrDefault<string>(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                return myCode;
+            }
+        }
+
+        /// <summary>
         /// Thêm mới một bản ghi
         /// </summary>
         /// <param name="record">Dữ liệu của bản ghi muốn thêm mới</param>

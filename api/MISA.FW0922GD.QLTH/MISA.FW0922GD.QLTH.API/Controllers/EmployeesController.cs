@@ -96,7 +96,11 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
             }
         }
 
-
+        /// <summary>
+        /// API xuất khẩu dữ liệu danh sách cán bộ ra file Excel
+        /// </summary>
+        /// <returns>Flie Excel danh sách cán bộ</returns>
+        /// Created By: KhaiND (27/11/2022)
         [HttpGet("export")]
         public IActionResult Export()
         {

@@ -30,7 +30,7 @@ namespace MISA.FW0922GD.QLTH.BL.EmployeeBL
 
         #region Constructor
 
-        public EmployeeBL(IEmployeeDL employeeDL) : base(employeeDL)
+        public EmployeeBL(IEmployeeDL employeeDL) : base(employeeDL, employeeDL)
         {
             _employeeDL = employeeDL;
         }

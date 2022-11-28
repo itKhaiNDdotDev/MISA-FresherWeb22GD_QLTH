@@ -29,6 +29,14 @@ namespace MISA.FW0922GD.QLTH.DL.BaseDL
         public T GetByID(Guid recordID);
 
         /// <summary>
+        /// Lấy số hiện hiện tại của bản ghi tương ứng
+        /// </summary>
+        /// <param name="recordID">ID của bản ghi muốn lấy</param>
+        /// <returns>Số hiệu định danh thông tin bản ghi</returns>
+        /// Created By: KhaiND (16/11/2022)
+        public string GetMyCode(Guid recordID);
+
+        /// <summary>
         /// Thêm mới một bản ghi
         /// </summary>
         /// <param name="record">Dữ liệu của bản ghi muốn thêm mới</param>

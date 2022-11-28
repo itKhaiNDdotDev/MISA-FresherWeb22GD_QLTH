@@ -43,7 +43,7 @@ namespace MISA.FW0922GD.QLTH.BL.BaseBL
         /// <param name="record">Dữ liệu của bản ghi muốn thay đổi</param>
         /// <returns>ID của bản ghi vừa cập nhật</returns>
         /// Created By: KhaiND (19/11/2022)
-        public Guid Update(Guid recordID, T record);
+        public ServiceResult Update(Guid recordID, T record);
 
         /// <summary>
         /// Xóa một bản ghi thông qua ID

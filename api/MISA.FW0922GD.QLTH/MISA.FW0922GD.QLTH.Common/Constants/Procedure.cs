@@ -24,6 +24,11 @@ namespace MISA.FW0922GD.QLTH.Common.Constants
         public static string GET_BY_ID = "Proc_{0}_GetByID";
 
         /// <summary>
+        /// Format tên của Procedure lấy Số hiệu cán bộ hiện tại của Cán bộ, giáo viên
+        /// </summary>
+        public static string GET_MY_CODE = "Proc_{0}_GetMyCode";
+
+        /// <summary>
         /// Format tên của Procedure thêm mới một bản ghi
         /// </summary>
         public static string INSERT = "Proc_{0}_Insert";

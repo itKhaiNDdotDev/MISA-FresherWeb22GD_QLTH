@@ -1,4 +1,6 @@
-﻿using MISA.FW0922GD.QLTH.BL.BaseBL;
+﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using Microsoft.AspNetCore.Mvc;
+using MISA.FW0922GD.QLTH.BL.BaseBL;
 using MISA.FW0922GD.QLTH.BL.EmployeeBL;
 using MISA.FW0922GD.QLTH.DL;
 using MISA.FW0922GD.QLTH.DL.BaseDL;
@@ -18,6 +20,12 @@ builder.Services.AddCors(options =>
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
                       });
+});
+
+// Turn off Automatic Model State Validation (By: KhaiND - 26/11/2022)
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
 });
 
 builder.Services.AddControllers();

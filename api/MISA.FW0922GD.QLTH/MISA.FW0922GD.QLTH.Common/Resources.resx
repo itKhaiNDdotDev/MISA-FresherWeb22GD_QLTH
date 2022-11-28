@@ -129,6 +129,22 @@
     <value>Xóa không thành công.</value>
     <comment>Thông điệp trả về cho người dùng khi gọi API xóa bản ghi thất bại</comment>
   </data>
+  <data name="Email_InvalidMessage" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ! Vui lòng kiểm tra lại.</value>
+    <comment>Thông điệp khi Email Validae không hợp lệ.</comment>
+  </data>
+  <data name="EmployeeCode_DuplicateMessage" xml:space="preserve">
+    <value>Số hiệu cán bộ đã tồn tại! Vui lòng kiểm tra lại</value>
+    <comment>Thông điệp khi Validate trùng Số hiệu cán bộ.</comment>
+  </data>
+  <data name="EmployeeCode_RequiredMessage" xml:space="preserve">
+    <value>Số hiệu cán bộ không được phép để trống.</value>
+    <comment>Thông điệp khi để trống trường thông tin bắt buộc Số hiệu cán bộ.</comment>
+  </data>
+  <data name="EmployeeName_RequiredMessage" xml:space="preserve">
+    <value>Họ và tên không được phép để trống.</value>
+    <comment>Thông điệp khi để trống trường thông tin bắt buộc Họ và tên.</comment>
+  </data>
   <data name="Exception_DevMsg" xml:space="preserve">
     <value>Catched an exception.</value>
     <comment>Thông điệp trả về cho Dev khi gọi API gặp exception</comment>
@@ -164,6 +180,10 @@
   <data name="Invalid_UserMsg" xml:space="preserve">
     <value>Dữ liệu đầu vào không hợp lệ.</value>
     <comment>Thông điệp trả về cho người dùng khi gọi API validate dữ liệu thất bại</comment>
+  </data>
+  <data name="Phone_InvalidMessage" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ! Vui lòng kiểm tra lại.</value>
+    <comment>Thông điệp khi Số điện thoại Validae không hợp lệ.</comment>
   </data>
   <data name="UpdateFailed_DevMsg" xml:space="preserve">
     <value>Update to database return 0</value>

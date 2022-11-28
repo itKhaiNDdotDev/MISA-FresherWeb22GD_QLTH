@@ -88,6 +88,42 @@ namespace MISA.FW0922GD.QLTH.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ! Vui lòng kiểm tra lại..
+        /// </summary>
+        public static string Email_InvalidMessage {
+            get {
+                return ResourceManager.GetString("Email_InvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số hiệu cán bộ đã tồn tại! Vui lòng kiểm tra lại.
+        /// </summary>
+        public static string EmployeeCode_DuplicateMessage {
+            get {
+                return ResourceManager.GetString("EmployeeCode_DuplicateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số hiệu cán bộ không được phép để trống..
+        /// </summary>
+        public static string EmployeeCode_RequiredMessage {
+            get {
+                return ResourceManager.GetString("EmployeeCode_RequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Họ và tên không được phép để trống..
+        /// </summary>
+        public static string EmployeeName_RequiredMessage {
+            get {
+                return ResourceManager.GetString("EmployeeName_RequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catched an exception..
         /// </summary>
         public static string Exception_DevMsg {
@@ -165,6 +201,15 @@ namespace MISA.FW0922GD.QLTH.Common {
         public static string Invalid_UserMsg {
             get {
                 return ResourceManager.GetString("Invalid_UserMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ! Vui lòng kiểm tra lại..
+        /// </summary>
+        public static string Phone_InvalidMessage {
+            get {
+                return ResourceManager.GetString("Phone_InvalidMessage", resourceCulture);
             }
         }
         

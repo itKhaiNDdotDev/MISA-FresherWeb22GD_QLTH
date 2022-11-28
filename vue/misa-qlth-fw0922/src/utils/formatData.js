@@ -4,6 +4,6 @@ export function isVietnamesePhoneNumber(phoneNumber) {
 }
 
 export function isEmail(email) {
-    const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+@[a-zA-Z0-9-]@[a-zA-Z0-9-]/;
     return email.match(regexEmail) ? true : false;
 }   

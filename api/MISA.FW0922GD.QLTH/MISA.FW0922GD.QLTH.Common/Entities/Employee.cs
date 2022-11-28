@@ -1,4 +1,5 @@
-﻿using MISA.FW0922GD.QLTH.Common.Enums;
+﻿using MISA.FW0922GD.QLTH.Common.Constants;
+using MISA.FW0922GD.QLTH.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,13 +28,13 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Số hiệu cán bộ
         /// </summary>
-        [Required(ErrorMessage = "Số hiêu cán bộ không được để trống")]
+        [Required(ErrorMessage = Mesage.EMPLOYEE_CODE_REQUIRED)]
         public string EmployeeCode { get; set; }
 
         /// <summary>
         /// Họ và tên cán bộ, giáo viên
         /// </summary>
-        [Required(ErrorMessage = "Họ và tên không được để trống")]
+        [Required(ErrorMessage = Mesage.EMPLOYEE_NAME_REQUIRED)]
         public string EmployeeName { get; set; }
 
         /// <summary>
@@ -44,11 +45,13 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Số điện thoại của cán bộ, giáo viên
         /// </summary>
+        [Phone(ErrorMessage = Mesage.PHONE_INVALID)]
         public string? EmployeePhoneNumber { get; set; }
 
         /// <summary>
         /// Email của cán bộ, giáo viên
         /// </summary>
+        [EmailAddress(ErrorMessage = Mesage.EMAIL_INVALID)]
         public string? EmployeeEmail { get; set; }
 
         /// <summary>
