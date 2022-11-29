@@ -8,6 +8,7 @@
         </div>
         <div class="dialog__footer">
             <button @click="onClickClose" class="m-button m-btn-style2">Đóng</button>
+            <button @click="onClickBtn2" v-if="btn2Show" class="m-button m-btn-style2">{{btn2Text}}</button>
             <button @click="onClickConfirm" class="m-button m-btn-style1">Đồng ý</button>
         </div>
         <button title="Đóng" @click="onClickClose" class="m-icon m-icon-24 button-icon icon-close" id="closeDialog"></button>
@@ -16,7 +17,7 @@
 <script>
 export default {
   name: "MsDialog",
-  props: ["isShow", "dialogMessage"],
+  props: ["isShow", "dialogMessage", "btn2Text", "btn2Show"],
 
   methods: {
     /**
@@ -33,6 +34,14 @@ export default {
      */
     onClickConfirm() {
         this.$emit("onConfirm");
+    },
+
+    /**
+     * Sự kiện bấm vào nút thứ 2 (tạm thời chính là nút ở giữa nếu có)
+     * Author: KhaiND (28/11/2022)
+     */
+    onClickBtn2() {
+        this.$emit("onClickBtn2");
     }
   },
 };

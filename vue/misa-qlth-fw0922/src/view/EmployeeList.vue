@@ -1,11 +1,11 @@
 <template lang="">
     <!-- DS cán bộ -->
-    <employee-toolbar @onClickDeleteMany="onClickDeleteMany" @searchEmployee="searchEmployee" @showToast="showToast" @startLoading="startLoading" @endLoading="endLoading" @showPopup="onClickOpenForm"></employee-toolbar>
-    <employee-table :key="tableKey" @reloadData="reloadEmployeeData" @showToast="showToast" ref="tableData" @showPopup="onClickOpenForm" v-if="true" @getTotal="bindTotal"></employee-table>
+    <employee-toolbar :key="toolbarKey" @onClickDeleteMany="onClickDeleteMany" @searchEmployee="searchEmployee" @showToast="showToast" @startLoading="startLoading" @endLoading="endLoading" @showPopup="onClickOpenForm"></employee-toolbar>
+    <employee-table :key="tableKey" @setPageIndex="setPageIndex" @reloadData="reloadEmployeeData" @showToast="showToast" ref="tableData" @showPopup="onClickOpenForm" v-if="true" @getTotal="bindTotal"></employee-table>
     <no-data v-else @showPopup="onClickOpenForm"></no-data>
     <!-- @getId="getSelectedId" -->
-    <employee-paging :key="pagingKey" ref="pagging" :searchText="searchText" :propPageIndex="pageIndex" @searchEmployee="searchEmployee" :totalRecord="totalRecord"></employee-paging>
-    <employee-form :key="formKey" @showToast="showToast" v-if="isShowForm" @hidePopup="onClickClosePopUp" @reloadData="reloadEmployeeData" :employeeSelectedId="employeeSelectedId"></employee-form>
+    <employee-paging :key="pagingKey" ref="pagingTable" :searchText="searchText" :propPageIndex="pageIndex" @searchEmployee="searchEmployee" :totalRecord="totalRecord"></employee-paging>
+    <employee-form :key="formKey" @showDialog="showDialog" @showToast="showToast" v-if="isShowForm" @hidePopup="onClickClosePopUp" @reloadData="reloadEmployeeData" :employeeSelectedId="employeeSelectedId"></employee-form>
 </template>
 
 <script>
@@ -62,6 +62,16 @@ export default {
     },
 
     /**
+     * Thực hiện gọi set pageIndex ở paging
+     * Author: KhaiND (28/11/2022)
+     */
+    setPageIndex(value) {
+      if(this.$refs.pagingTable != null) {
+        this.$refs.pagingTable.setPageIndex(value);
+      }
+    },
+
+    /**
      * Sự kiện bấm vào nút Thêm - Hiển thị pop-up thêm mới employee
      * Viết chung ở view EmployeeList, các components con call qua $emits
      * Author: KhaiND (29/10/2022)
@@ -95,6 +105,14 @@ export default {
     },
 
     /**
+     * Chỉ load lại dữ liệu bảng danh sách Cán bộ trang hiện tại
+     * Author: KhaiND (29/11/2022)
+     */
+    loadCurEmployeeTable() {
+      this.$refs.tableData.loadCurData();
+    },
+
+    /**
      * Reload lại trang
      * Author: KhaiND (30/10/2022)
      */
@@ -102,13 +120,17 @@ export default {
       try {
         // this.$forceUpdate();
         //this.$refs.tableData.loadData();
+        this.toolbarKey += 1;
         this.tableKey += 1;
         this.formKey += 1;
+        this.pagingKey += 1;
         this.employeeSelectedId = 0;
       } catch (error) {
         console.log(error);
+        this.toolbarKey = 1;
         this.tableKey = 1;
         this.formKey = 1;
+        this.pagingKey = 1;
         this.employeeSelectedId = 0;
       }
     },
@@ -124,7 +146,7 @@ export default {
       this.$refs.tableData.loadData(keyword, pageIndex);
       //this.totalRecord = this.$refs.tableData.totalRecord;
       //console.log("TOTAL RC: " + this.totalRecord);
-      this.pagingKey += 1;
+      //this.pagingKey += 1;
     },
 
     /**
@@ -142,6 +164,10 @@ export default {
     onClickDeleteMany() {
       this.$refs.tableData.onClickDeleteMany();
     },
+
+    // showDialog(msg, btn2Show, btn2Text, btnDefaultText) {
+    //   this.$refs.tableData.showMsDialog(msg, btn2Show, btn2Text, btnDefaultText);
+    // }
   },
 };
 </script>

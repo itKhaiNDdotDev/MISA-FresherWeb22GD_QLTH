@@ -42,6 +42,9 @@ input.m-input {
 .m-input:hover+.m-error-message {
     display: block;
 }
+.m-input:focus+.m-error-message {
+    display: block;
+}
 .m-error-message .error-arrow {
     width: 6px;
     height: 6px;

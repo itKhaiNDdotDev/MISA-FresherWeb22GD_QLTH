@@ -19,8 +19,8 @@
                     <div class="form__content--left">
                         <div class="m-input-container">
                             <label for="eId">{{formText.Code}} <span style="color: #FA3939;">*</span></label>
-                            <input @blur="onBlurEmpCode" tabindex="1" v-model="employee.employeeCode" id="eId" type="text"
-                              :class="{inputError:errorEmployee.CodeInvalid}" class="m-input" mrequired>
+                            <input @blur="validateCode" tabindex="1" v-model="employee.employeeCode" id="eId" type="text"
+                              ref='empCodeInput' :class="{inputError:errorEmployee.CodeInvalid}" class="m-input" mrequired>
                             <div class="m-error-message" v-if="errorEmployee.CodeInvalid" style="left: 280px">
                                 <div class="error-text">{{errorEmployee.CodeMsg}}</div>
                                 <div class="error-arrow"></div>
@@ -28,8 +28,8 @@
                         </div>
                         <div class="m-input-container">
                             <label for="">{{formText.Phone}}</label>
-                            <input @blur="onBlurPhoneNumber" tabindex="3" v-model="employee.employeePhoneNumber" type="text"
-                              class="m-input" :class="{inputError:errorEmployee.PhoneInvalid}">
+                            <input @blur="validatePhone" tabindex="3" v-model="employee.employeePhoneNumber" type="text"
+                              ref='empPhoneInput' class="m-input" :class="{inputError:errorEmployee.PhoneInvalid}">
                             <div class="m-error-message" v-if="errorEmployee.PhoneInvalid" style="left: 280px">
                                 <div class="error-text">{{errorEmployee.PhoneMsg}}</div>
                                 <div class="error-arrow"></div>
@@ -51,8 +51,8 @@
                     <div class="form__content--right">
                         <div class="m-input-container">
                             <label for="eName">{{formText.Name}}<span style="color: #FA3939;">*</span></label>
-                            <input @blur="onBlurEmpName" ref='empNameInput' tabindex="2" v-model="employee.employeeName" type="text"
-                            :class="{inputError:errorEmployee.NameEmpty}" class="m-input" mrequired />
+                            <input @blur="validateName" tabindex="2" v-model="employee.employeeName" type="text"
+                              ref='empNameInput' :class="{inputError:errorEmployee.NameEmpty}" class="m-input" mrequired />
                             <div class="m-error-message" v-if="errorEmployee.NameEmpty" style="left: 314px">
                                 <div class="error-text">{{errorEmployee.NameMsg}}</div>
                                 <div class="error-arrow"></div>
@@ -60,8 +60,8 @@
                         </div>
                         <div class="m-input-container">
                             <label for="">{{formText.Email}}</label>
-                            <input @blur="onBlurEmail" tabindex="4" v-model="employee.employeeEmail" type="text"
-                              class="m-input" :class="{inputError:errorEmployee.EmailInvalid}">
+                            <input @blur="validateEmail" tabindex="4" v-model="employee.employeeEmail" type="text"
+                              ref='empEmailInput' class="m-input" :class="{inputError:errorEmployee.EmailInvalid}">
                             <div class="m-error-message" v-if="errorEmployee.EmailInvalid" style="left: 314px">
                                 <div class="error-text">{{errorEmployee.EmailMsg}}</div>
                                 <div class="error-arrow"></div>
@@ -111,6 +111,10 @@
         </div>
         <MLoader v-if="loadingStatus"/>
     </div>
+    <div class="m-popup-container mask-upper" :class="{showD:isShowDialog}">
+      <MsDialog @onConfirm="onClickSave" @onClose="closeMsDialog" @onClickBtn2="onClickDialogRefuse" :dialogMessage="dialogMessage"
+          :btn2Show="true" :btn2Text="dialogBtnRefuseText" :btnDefaultText="dialogBtnDefaultText"/>
+    </div>
 </template>
 
 <script>
@@ -118,15 +122,17 @@ import EmployeeText from "./../../utils/resources/employee";
 import {BASE_URL} from "./../../utils/resources/common"
 import CommonText from "./../../utils/resources/common"
 import axios from "axios";
-import {isEmail} from "./../../utils/formatData.js";
+import { isPhone, isEmail } from "./../../utils/formatData.js";
 import MSelect from "../../components/base/MSelect.vue";
 import MLoader from "../../components/base/MLoader.vue";
+import MsDialog from "./../../components/base/MsDialog.vue";
 
 export default {
   name: "EmployeeForm",
   components: {
     MSelect,
     MLoader,
+    MsDialog
   },
 
   data() {
@@ -156,7 +162,12 @@ export default {
         NameMsg: "",
         PhoneMsg: "",
         EmailMsg: ""
-      }
+      },
+      curEmployee: {}, // Dữ liệu CB, GV load từ CSDL và chưa bị thay đổi do người udngf nhập
+      isShowDialog: false, // Hiển thị dialog confirm thay đổi dữ liệu
+      dialogMessage: "",
+      dialogBtnDefaultText: CommonText.Button.Save,
+      dialogBtnRefuseText: CommonText.Button.Refuse,
     };
   },
 
@@ -213,10 +224,21 @@ export default {
           me.loadingStatus = true;
           // Call API, nho check Status code va dua ra thong bao
           var url = BASE_URL + "Employees/" + value;
-          axios
-            .get(url)
+          // Đổ dữ liệu từ API vào curEmployee để phục vụ kiểm tra thay đổi
+          axios.get(url).then(function(response) {
+            me.curEmployee = response.data;
+          })
+          .catch((response) => {
+            console.log(response);
+          });
+
+          axios.get(url)
             .then(function (response) {
               me.employee = response.data;
+              // Định dạng ngày
+              if(me.employee.employeeQuitDate) {
+                me.employee.employeeQuitDate = me.employee.employeeQuitDate.substring(0, 10);
+              }
               // Kiểm tra các Môn học nếu được chọn hết thì chủ động checkAll
               if(me.employee.subjectIDs.length == me.subjectData.length) {
                 me.checkAllSubject = true;
@@ -243,6 +265,22 @@ export default {
           me.loadingStatus = true;
           // Đổi form Title
           me.formTitle =  me.formText.FormTitlePost;
+
+          // Khởi tạo đối tượng để check thay đổi
+          me.curEmployee = {
+            subjectIDs: [],
+            roomIDs: [],
+            employeeIsDeviceManager: false,
+            employeeWorkingStatus: true,
+          };
+          await axios.get(BASE_URL + "Employees/newCode")
+            .then(function (res) {
+              me.curEmployee.employeeCode = res.data;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
           // Khởi tạo đối tượng rỗng employee
           me.employee = {
             subjectIDs: [],
@@ -251,8 +289,7 @@ export default {
             employeeWorkingStatus: true,
           };
           //Gợi ý Số hiệu CB mới
-          await axios //DỂ TRONG MOUNTED
-            .get(BASE_URL + "Employees/newCode")
+          await axios.get(BASE_URL + "Employees/newCode")
             .then(function (res) {
               me.employee.employeeCode = res.data;
               // Ẩn Loader
@@ -260,6 +297,8 @@ export default {
             })
             .catch((error) => {
               console.log(error);
+              // Ẩn Loader
+              me.loadingStatus = false;
             });
           //Thêm mới
           me.postMode = 1;
@@ -277,16 +316,16 @@ export default {
      * Sự kiện nhập xong EmployeeCode chuyển qua ô khác - kiểm tra rỗng
      * Auth: KhaiND (08/11/2022)
      */
-    onBlurEmpCode() {
+    validateCode() {
       try {
         // Kiểm tra đã nhập SHCB chưa
         if (!this.employee.employeeCode) {
           this.errorEmployee.CodeInvalid = true;
           this.errorEmployee.CodeMsg =  this.formText.ErrorMsg.CodeEmpty;     
-        } else { // Kiểm tra xem có trùng mã không
+        } else {// Kiểm tra xem có trùng mã không
           this.errorEmployee.CodeInvalid = false;
           // Gọi API để kiểm tra
-          var url = BASE_URL + "Employees/checkDuplicateCode?employeeCode=" + this.employee.employeeCode;
+          var url = BASE_URL + "Employees/checkDuplicateCode?employeeID=" + this.employee.employeeID + "&employeeCode=" + this.employee.employeeCode;
           axios.get(url).then((response) => {
             if(response.data) {
               this.errorEmployee.CodeInvalid = true;
@@ -299,7 +338,6 @@ export default {
           .catch((error) => {
             console.log(error);
           });
-          // Xử lý trường họp sửa, trùng mã với chính mình không thành vấn đề
         }
       }
       catch(error) {
@@ -311,7 +349,7 @@ export default {
      * Sự kiện nhập xong EmployeeName chuyển qua ô khác - kiểm tra rỗng
      * Author: KhaiND (09/11/2022)
      */
-    onBlurEmpName() {
+    validateName() {
       try {
         // Kiểm tra xem đã nhập tên chưa
         if (!this.employee.employeeName) {
@@ -338,16 +376,19 @@ export default {
      * Action khi thoát forcus khỏi ô nhập Số điện thoại thì validate và hiển thị thông báo lỗi
      * Author: KhaiND (24/11/2022)
      */
-    onBlurPhoneNumber() {
+    validatePhone() {
       try {
-        if(this.employee.employeePhoneNumber.length < 7 || this.employee.employeePhoneNumber.length > 20) {
-          if(this.employee.employeePhoneNumber.length == 0) {
-            this.errorEmployee.PhoneInvalid = false;
+        if(this.employee.employeePhoneNumber) {
+          if(!isPhone(this.employee.employeePhoneNumber)) {
+              this.errorEmployee.PhoneInvalid = true;
+              this.errorEmployee.PhoneMsg = this.formText.ErrorMsg.PhoneInvalid;
           }
           else {
-            this.errorEmployee.PhoneInvalid = true;
-            this.errorEmployee.PhoneMsg = this.formText.ErrorMsg.PhoneInvalid;
+            this.errorEmployee.PhoneInvalid = false;
           }
+        }
+        else {
+          this.errorEmployee.PhoneInvalid = false;
         }
       }
       catch(error) {
@@ -359,7 +400,7 @@ export default {
      * Action khi thoát forcus khỏi ô nhập Email thì validate và hiển thị thông báo lỗi
      * Author: KhaiND (24/11/2022)
      */
-    onBlurEmail() {
+    validateEmail() {
       try {
         if(this.employee.employeeEmail) {
           if(!isEmail(this.employee.employeeEmail)) {
@@ -369,6 +410,9 @@ export default {
           else {
             this.errorEmployee.EmailInvalid = false;
           }
+        }
+        else {
+          this.errorEmployee.EmailInvalid = false;
         }
       }
       catch(error) {
@@ -499,18 +543,41 @@ export default {
     },
 
     /**
+     * Bấm vào nút "Đóng" trên dialog thông báo thay đổi dữ liệu thì đóng dialog trả lại màn hình form
+     * Author: KhaiND (28/11/2022)
+     */
+    closeMsDialog() {
+      this.isShowDialog = false;
+    },
+
+    /**
+     * Sự kiện bấm vào nút "Không" trên dialog xác nhận thay đổi dữ liệu thì đóng form và dialog mà không tiến hành lưu
+     * Author: KhaiND (29/11/2022)
+     */
+    onClickDialogRefuse() {
+      this.isShowDialog = false;
+      this.$emit("hidePopup", null);
+    },
+
+    /**
      * Sự kiện khi bấm vào nút Đóng hoặc icon x trên Form thì ẩn pop-up Form đi
      * Auth: KhaiND (29/10/2022)
      */
     onClickClose() {
-      this.$emit("hidePopup", null);
+      if(JSON.stringify(this.employee) !== JSON.stringify(this.curEmployee)) {
+        this.dialogMessage = CommonText.Dialog.Message.FormDataCHanged;
+        this.isShowDialog = true;
+      }
+      else {
+        this.$emit("hidePopup", null);
+      }
     },
 
     /**
      * Xử lý khi gọi API cất dữ liệu thành công
      * Author: KhaiND (26/11/2022)
      */
-    thenSaveAPI(response, msg) {
+    async thenSaveAPI(response, msg) {
       // response chưa dùng đến
       // Thông báo thành công
       this.$emit("showToast", msg, 1);
@@ -519,7 +586,14 @@ export default {
       // Đóng form
       this.$emit("hidePopup", null);
       // Reload dữ liệu
-      this.$emit("reloadData", null);
+      if(this.postMode) {
+        // Load toàn trang, về trang 1
+        await this.$emit("reloadData", null);
+      }
+      else {
+        // Chỉ load dữ liệu bảng, về trang hiện tại
+        await this.$emit("loadCurData");
+      }
     },
 
     /**
@@ -533,6 +607,10 @@ export default {
         this.loadingStatus = true;
   
         // Validate dữ liệu
+        this.validateCode();
+        this.validateName();
+        this.validatePhone();
+        this.validateEmail();
         me.valid = ((!me.errorEmployee.CodeInvalid) && (!me.errorEmployee.NameEmpty) && (!me.errorEmployee.PhoneInvalid) && (!me.errorEmployee.EmailInvalid))
   
         // Build object thông tin cán bộ
@@ -548,18 +626,32 @@ export default {
             // PUT
             var pUrl = BASE_URL + "Employees/" + me.employeeSelectedId;
             await axios
-              .put(pUrl, me.employee)
-              .then((response) => me.thenSaveAPI(response, me.toastMsg.Employee.UpdateSuccess))
+              .put(pUrl, me.employee) // Tự động load lại dữ liệu hiện thời
+              .then( async (response) => { await me.thenSaveAPI(response, me.toastMsg.Employee.UpdateSuccess) })
               .catch((respomse) => me.catchAPI(respomse, me.toastMsg.InvalidUpdate));
           }
         }
-        else {
+        else { // Validate fail
           me.loadingStatus = false;
           if(this.postMode) {
             me.$emit("showToast", me.toastMsg.InvalidInsert, 0);
           }
           else {
             me.$emit("showToast", me.toastMsg.InvalidUpdate, 0);
+          }
+
+          // Kiểm tra xem ô nào fail thì nhảy forcus vào ô đó luôn
+          if(me.errorEmployee.CodeInvalid) {
+            me.$nextTick(() => me.$refs.empCodeInput.focus());
+          }
+          else if(me.errorEmployee.NameEmpty) {
+            me.$nextTick(() => me.$refs.empNameInput.focus());
+          }
+          else if(me.errorEmployee.PhoneInvalid) {
+            me.$nextTick(() => me.$refs.empPhoneInput.focus());
+          }
+          else if(me.errorEmployee.EmailInvalid) {
+            me.$nextTick(() => me.$refs.empEmailInput.focus());
           }
         }
       }

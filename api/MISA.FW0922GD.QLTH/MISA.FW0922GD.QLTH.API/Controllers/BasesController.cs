@@ -158,7 +158,7 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
 
                 if (result.Success)
                 {
-                    return StatusCode(StatusCodes.Status201Created, result.Data);
+                    return StatusCode(StatusCodes.Status200OK, result.Data);
                 }
 
                 var errorResult = new ErrorResult();
@@ -191,6 +191,13 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
         {
             try
             {
+                // Xét trường hợp không tìm thấy
+                var record = _baseBL.GetByID(recordID);
+                if(record == null)
+                {
+                    return StatusCode(StatusCodes.Status404NotFound);
+                }    
+
                 Guid resID = _baseBL.Delete(recordID);
 
                 if (resID != Guid.Empty)
@@ -198,7 +205,14 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
                     return StatusCode(StatusCodes.Status200OK, resID);
                 }
 
-                return StatusCode(StatusCodes.Status404NotFound);
+                return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
+                {
+                    ErrorCode = GDErrorCode.DeleteFailed,
+                    DevMsg = Resources.DeleteFailed_DevMsg,
+                    UserMsg = Resources.DeleteFailed_UserMsg,
+                    MoreInfo = Resources.DeleteFailed_MoreInfo,
+                    TraceId = HttpContext.TraceIdentifier
+                });
             }
             catch (Exception ex)
             {

@@ -1,5 +1,5 @@
 export const BASE_URL = "http://localhost:35241/api/v1/";
-export const PAGE_SIZE = 15;
+export const PAGE_SIZE = 5;
 
 export default {
     Button: {
@@ -9,7 +9,8 @@ export default {
         Import: "Nhập khẩu",
         Save: "Lưu",
         Close: "Đóng",
-        Confirm: "Đồng ý"
+        Confirm: "Đồng ý",
+        Refuse: "Không"
     },
 
     Dialog: {
@@ -18,7 +19,8 @@ export default {
         },
         Message: {
             DeleteEmployee: "Bạn có chắc chắn muốn xóa Cán bộ, giáo viên đang chọn không? Hê he",
-            DeleteManyEmployee: "Bạn có chắc chắn muốn xóa những Cán bộ, giáo viên đang chọn không?"
+            DeleteManyEmployee: "Bạn có chắc chắn muốn xóa những Cán bộ, giáo viên đang chọn không?",
+            FormDataCHanged: "Dữ liệu đã bị thay đổi, bạn có muốn lưu lại không?"
         }
     },
 

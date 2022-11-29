@@ -23,6 +23,17 @@ export default {
             pageSize: PAGE_SIZE
         }
     },
+    
+    watch: { /// CHưa dùng
+        pageIndex: function(value) {
+            if(value > Math.ceil(this.totalRecord/PAGE_SIZE)) {
+                console.log("OK");
+                this.pageIndex = Math.ceil(this.totalRecord/PAGE_SIZE)
+                this.$emit('searchEmployee', this.searchText, this.pageIndex);
+            }
+        }
+    },
+
     methods: {
         /**
          * Sự kiện khi người dùng bấm vào icon tương ứng thì chuyển về trang đầu
@@ -30,8 +41,10 @@ export default {
          */
         onClickMoveToFirst() {
             try {
-                this.pageIndex = 1;
-                this.$emit('searchEmployee', this.searchText, this.pageIndex);
+                if(this.pageIndex != 1) {
+                    this.pageIndex = 1;
+                    this.$emit('searchEmployee', this.searchText, this.pageIndex);
+                }
             }
             catch(error) {
                 console.log(error);
@@ -44,8 +57,10 @@ export default {
          */
         onClickMoveToLast() {
             try {
-                this.pageIndex = Math.ceil(this.totalRecord/PAGE_SIZE);
-                this.$emit('searchEmployee', this.searchText, this.pageIndex);
+                if(this.pageIndex != Math.ceil(this.totalRecord/PAGE_SIZE)) {
+                    this.pageIndex = Math.ceil(this.totalRecord/PAGE_SIZE);
+                    this.$emit('searchEmployee', this.searchText, this.pageIndex);
+                }
             }
             catch(error) {
                 console.log(error);
@@ -103,7 +118,15 @@ export default {
                 console.log(error);
                 this.$emit('searchEmployee', "", 1);
             }
-        }
+        },
+
+        /**
+         * Thiết lập giá trị số trang hiện tại hiển thị ở ô số trang
+         * Author: KhaiND (28/11/2022)
+         */
+        setPageIndex(value) {
+            this.pageIndex = value;
+        },
     },
 }
 </script>

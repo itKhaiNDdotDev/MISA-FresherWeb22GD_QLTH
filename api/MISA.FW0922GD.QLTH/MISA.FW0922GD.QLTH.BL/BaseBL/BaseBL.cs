@@ -179,7 +179,7 @@ namespace MISA.FW0922GD.QLTH.BL.BaseBL
                 }
 
                 // Valiate trùng mã
-                if (property.Name == "EmployeeCode")
+                if (property.Name == "EmployeeCode" && propertyValue != null)
                 {
                     if (dataAction == DataAction.Post)
                     {

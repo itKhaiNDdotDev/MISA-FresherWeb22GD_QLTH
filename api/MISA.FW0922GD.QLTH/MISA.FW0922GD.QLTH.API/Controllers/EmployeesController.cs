@@ -131,17 +131,24 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
         /// <param name="employeeIDs">Danh sách ID của các Cán bộ, giáo viên muốn xóa</param>
         /// <returns>Danh sách ID của các Cán bộ, giáo viên đã xóa</returns>
         /// Created By: KhaiND (22/11/2022)
-        [HttpDelete("deleteMany")]
+        [HttpPost("deleteMany")]
         public IActionResult DeleteMany([FromBody] List<Guid> employeeIDs)
         {
             try
             {
                 var deletedIDs = _employeeBL.DeleteMany(employeeIDs);
-                if(deletedIDs != null && deletedIDs.Count > 0)
+                if (deletedIDs != null && deletedIDs.Count > 0)
                 {
                     return StatusCode(StatusCodes.Status200OK, deletedIDs);
                 }
-                return StatusCode(StatusCodes.Status400BadRequest);
+                return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
+                {
+                    ErrorCode = GDErrorCode.DeleteFailed,
+                    DevMsg = Resources.DeleteFailed_DevMsg,
+                    UserMsg = Resources.DeleteFailed_UserMsg,
+                    MoreInfo = Resources.DeleteFailed_MoreInfo,
+                    TraceId = HttpContext.TraceIdentifier
+                });
             }
             catch(Exception ex)
             {
@@ -163,11 +170,11 @@ namespace MISA.FW0922GD.QLTH.API.Controllers
         /// <param name="employeeCode">Số hiệu Cán bộ muốn kiểm tra</param>
         /// <returns>Kết quả kiểm tra nếu SHCB đã tồn tại thì trả về 1, ngược lại trả về 0</returns>
         [HttpGet("checkDuplicateCode")]
-        public IActionResult CheckDuplicatCode([FromQuery] string employeeCode)
+        public IActionResult CheckDuplicatCode([FromQuery] Guid? employeeID, [FromQuery] string employeeCode)
         {
             try
             {
-                var result = _employeeBL.CheckDuplicateCode(employeeCode);
+                var result = _employeeBL.CheckDuplicateCode(employeeID, employeeCode);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
             catch (Exception ex)

@@ -47,8 +47,6 @@ export default {
     },
     mounted() {
         //this.$nextTick( () => this.$refs.focusMe.focus() )
-        console.log("Can FOCUS: " );
-        console.log(this.$refs.focusMe.class);   //Chưa forcus được nhea
     },
     methods: {
         /**

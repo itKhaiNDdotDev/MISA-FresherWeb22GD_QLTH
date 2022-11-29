@@ -13,6 +13,7 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
 {
@@ -359,20 +360,39 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
             int affactedRecordCount = 0;
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
             {
-                // Thực hiện gọi truy vấn vào Database
-                affactedRecordCount = mySqlConnection.Execute(storeProcedureDeleteSubject, parameters, commandType: System.Data.CommandType.StoredProcedure);
-                affactedRecordCount += mySqlConnection.Execute(storeProcedureDeleteRoom, parameters, commandType: System.Data.CommandType.StoredProcedure);
-                affactedRecordCount += mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-            }
+                mySqlConnection.Open();
+                // Sử dụng Transaction
+                using (var transaction = mySqlConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Thực hiện gọi truy vấn vào Database
+                        affactedRecordCount = mySqlConnection.Execute(storeProcedureDeleteSubject, parameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+                        affactedRecordCount += mySqlConnection.Execute(storeProcedureDeleteRoom, parameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+                        affactedRecordCount += mySqlConnection.Execute(storedProcedureName, parameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
 
-            // Xử lý kết quả trả về
-            if (affactedRecordCount > 0)
-            {
-                return employeeID;
-            }
-            else
-            {
-                return Guid.Empty;
+                        transaction.Commit();
+                        mySqlConnection.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        mySqlConnection.Close();
+                        Console.WriteLine(ex.Message);
+                        affactedRecordCount = 0;
+                    }
+                }
+
+                // Xử lý kết quả trả về
+                if (affactedRecordCount > 0)
+                {
+                    return employeeID;
+                }
+                else
+                {
+                    return Guid.Empty;
+                }
             }
         }
 
@@ -386,7 +406,7 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
         {
             // Kiểm tra đầu vào
             var deletedIDs = new List<Guid>();
-            if(employeeIDs == null ||  employeeIDs.Count <= 0)
+            if (employeeIDs == null || employeeIDs.Count <= 0)
             {
                 return deletedIDs;
             }
@@ -398,6 +418,8 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
 
             // Chuẩn bị câu lệnh truy vấn
             string storedProcedureName = "Proc_Employee_DeleteManyByIDs";
+            string storeProcedureDeleteRoom = "Proc_EmployeeWithRoom_DeleteByEmployeeID";
+            string storeProcedureDeleteSubject = "Proc_EmployeeWithSubject_DeleteByEmployeeID";
 
             // Khởi tọa kết nối đến Database MySQL
             var affactedRecordCount = 0;
@@ -407,17 +429,36 @@ namespace MISA.FW0922GD.QLTH.DL.EmployeeDL
                 // Sử dụng Transaction
                 using (var transaction = mySqlConnection.BeginTransaction())
                 {
-                    // Thực hiện gọi truy vấn vào Database
-                    affactedRecordCount = mySqlConnection.Execute(storedProcedureName, parameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+                    try
+                    {
+                        // Truy vấn xóa khóa ngoại
+                        foreach (var employeeID in employeeIDs)
+                        {
+                            var deleteFKParameters = new DynamicParameters();
+                            deleteFKParameters.Add("EmployeeID", employeeID);
 
-                    // Truy vấn xóa khóa ngoại
-                    transaction.Commit();
-                    mySqlConnection.Clone();
+                            affactedRecordCount = mySqlConnection.Execute(storeProcedureDeleteSubject, deleteFKParameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+                            affactedRecordCount += mySqlConnection.Execute(storeProcedureDeleteRoom, deleteFKParameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+                        }
+                        // Thực hiện gọi truy vấn xóa nhiều vào Database
+                        affactedRecordCount += mySqlConnection.Execute(storedProcedureName, parameters, transaction, commandType: System.Data.CommandType.StoredProcedure);
+
+                        transaction.Commit();
+                        mySqlConnection.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        mySqlConnection.Close();
+                        Console.WriteLine(ex.Message);
+                        affactedRecordCount = 0;
+                    }
                 }
             }
 
             // Xử lý kết quả trả về
-            if(affactedRecordCount > 0)
+            if (affactedRecordCount > 0)
             {
                 deletedIDs = employeeIDs;
             }

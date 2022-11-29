@@ -47,9 +47,10 @@ namespace MISA.FW0922GD.QLTH.BL.EmployeeBL
         /// <summary>
         /// Kiểm tra số hiệu cán bộ có trùng hay không
         /// </summary>
+        /// <param name="employeeID">ID tương ứng của Cán bộ giáo viên, nếu không có nghĩa là đang thêm mới</param>
         /// <param name="employeeCode">Số hiệu cán bộ muốn kiểm tra</param>
         /// <returns>true nếu có trùng và false nếu SHCB chưa tồn tại</returns>
         /// Created By: KhaiND 24/11/2022
-        public bool CheckDuplicateCode(string employeeCode);
+        public bool CheckDuplicateCode(Guid? employeeID, string employeeCode);
     }
 }

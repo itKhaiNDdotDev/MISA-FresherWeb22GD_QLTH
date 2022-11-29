@@ -2,9 +2,9 @@
     <div class="toolbar">
         <div class="toolbar-left">
             <div class="m-input--search">
-                <input v-model="searchText" @keyup.enter="searchEmployee" type="text" class="m-input">
+                <input v-model="searchText" @keyup.enter="searchEmployee" type="text" class="m-input" placeholder="Tìm kiếm theo tên, số điện thoại hoặc email">
                 <div class="hor-line"></div>
-                <button @click="searchEmployee" class="icon-search" title="Tìm kiếm theo tên, số điện thoại,..."></button>
+                <button @click="searchEmployee" class="icon-search" title="Tìm kiếm theo tên, số điện thoại hoặc email"></button>
             </div>
         </div>
         <div class="toolbar-right">
@@ -13,6 +13,7 @@
             <button @click="onClickMore" class="m-btn-style2 m-btn-style4 icon-more" :class="{extend:showMore}" title="Tính năng khác"></button>
         </div>
         <div class="toolbar-extend" v-if="showMore">
+            <div class="m-arrow"></div>
             <button @click="onClickDeleteMany" class="m-button m-btn-style2 icon-delete m-extend-button">{{buttonText.Delete}}</button>
             <button class="m-button m-btn-style1">{{buttonText.Import}}</button>
         </div>
@@ -113,9 +114,23 @@ export default {
     position: absolute;
     top: calc(100% - 12px);
     right: 16px;
-    z-index: 6;
+    z-index: 2;
     display: flex;
     flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px #D5D5D5;
+    padding: 4px 8px;
+  }
+
+  .m-arrow {
+    background-color: inherit;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
 .toolbar-extend .m-button {
@@ -125,5 +140,9 @@ export default {
  .m-extend-button {
   background-repeat: no-repeat;
   background-position: 6px center;
+ }
+
+ .m-input--search input::placeholder{
+  font-style: italic;
  }
 </style>

@@ -66,8 +66,9 @@
             </tbody>
         </table>
     </div>
-    <div class="m-popup-container" :class="{showD:isShowDialog}">
-        <MsDialog @onConfirm="onConfirmDelete" @onClose="closeMsDialog" :dialogMessage="confirmMessage"/>
+    <div class="m-popup-container mask-upper" :class="{showD:isShowDialog}">
+        <MsDialog @onConfirm="onConfirmDelete" @onClose="closeMsDialog" :dialogMessage="confirmMessage"
+          :btn2Show="false" :btnDefaultText="dialogBtnDefaultText"/>
         <MLoader v-if="loadingStatus"/>
     </div>
 </template>
@@ -92,6 +93,7 @@ export default {
       dialogText: CommonText.Dialog,
       toastMsg: CommonText.Toast.Message,
       errorResultText: CommonText.ErrorResult,
+      btnText: CommonText.Button,
       thText: EmployeeText.TableHead,
       employeeList: null, // Danh sách Cán bộ, giáo viên đã load được để render ra bảng
       isShowDialog: false, // Trạng thái có hiển thị Dialog cảnh báo xóa hay không
@@ -102,9 +104,11 @@ export default {
       msgResult: "", // Thông điệp đi kèm kết quả load fail
       empSelectedIds: [], // Danh sách Id của Cán bộ, giáo viên đang được check
       checkAllEmplyee: false, // Có đang chọn tất cả Cán bộ, giáo viên trên màn hình hay không
-      confirmMessage:
-        "Bạn có chắc chắn muốn xóa Cán bộ, giáo viên đang chọn không?",
-      deleteManyMode: 0 // Action xóa là xóa 1 hay xóa nhiều
+      confirmMessage: CommonText.Dialog.Message.DeleteEmployee,
+      deleteManyMode: 0, // Action xóa là xóa 1 hay xóa nhiều,
+      curPageIndex: 1,
+      curKeyword: "",
+      dialogBtnDefaultText: CommonText.Button.Confirm
     };
   },
 
@@ -137,6 +141,8 @@ export default {
      * Author: KhaiND (26/11/2022)
      */
     thenLoadAPI(response) {
+      this.checkAllEmplyee = false;
+      this.empSelectedIds = [];
       this.employeeList = response.data.data;
       this.$emit("getTotal", response.data.totalRecord);
       this.errorResult = false;
@@ -149,31 +155,55 @@ export default {
      * Author: KhaiND (26/11/2022)
      */
     catchLoadAPI(response) {
-      switch(response.response.status) {
-        case 404:
-          // Xử lý kết quả
-          this.$emit("getTotal", 0);
-          this.errorResult = true;
-          this.msgResult = this.errorResultText.NotFound;
-          // Ẩn Loader
-          this.tableLoadingStatus = false;
-          break;
-        case 400: //Thêm Các TOAST==================
-          // Xử lý kết quả
-          this.$emit("getTotal", 0);
-          this.errorResult = true;
-          this.msgResult = this.errorResultText.InvalidSearch;
-          // Ẩn Loader
-          this.tableLoadingStatus = false;
-          break;
-        case 500:
-          // Xử lý kết quả
-          this.$emit("getTotal", 0);
-          this.errorResult = true;
-          this.msgResult = this.errorResultText.Error500;
-          // Ẩn Loader
-          this.tableLoadingStatus = false;
-          break;
+      try {
+        switch(response.response.status) {
+          case 404:
+            // Xử lý kết quả
+            this.$emit("getTotal", 0);
+            this.errorResult = true;
+            this.msgResult = this.errorResultText.NotFound;
+            // Ẩn Loader
+            this.tableLoadingStatus = false;
+            break;
+          case 400: //Thêm Các TOAST==================
+            // Xử lý kết quả
+            this.$emit("getTotal", 0);
+            this.employeeList = null;
+            this.$emit("showToast", this.errorResultText.InvalidSearch, 0);
+            this.errorResult = true;
+            this.msgResult = this.errorResultText.InvalidSearch;
+            // Ẩn Loader
+            this.tableLoadingStatus = false;
+            break;
+          case 500:
+            // Xử lý kết quả
+            this.$emit("getTotal", 0);
+            this.employeeList = null;
+            this.$emit("showToast", this.errorResultText.Error500, 0);
+            this.errorResult = true;
+            this.msgResult = this.errorResultText.Error500;
+            // Ẩn Loader
+            this.tableLoadingStatus = false;
+            break;
+          default:
+            this.$emit("getTotal", 0);
+            this.employeeList = null;
+            this.$emit("showToast", this.errorResultText.Error500, 0);
+            this.errorResult = true;
+            this.msgResult = this.errorResultText.Error500;
+            // Ẩn Loader
+            this.tableLoadingStatus = false;
+            break;
+        }
+      }
+      catch(error) {
+        this.$emit("getTotal", 0);
+        this.employeeList = null;
+        this.$emit("showToast", this.errorResultText.Error500, 0);
+        this.errorResult = true;
+        this.msgResult = this.errorResultText.Error500;
+        // Ẩn Loader
+        this.tableLoadingStatus = false;
       }
     },
 
@@ -183,12 +213,17 @@ export default {
      */
     loadData(keyword, pageIndex) {
       try {
+        this.curPageIndex = pageIndex;
+        this.$emit("setPageIndex", this.curPageIndex);
+        this.curKeyword = keyword;
         if (!keyword) {
           this.tableLoadingStatus = true;
           if (!pageIndex) pageIndex = 1;
           var url = BASE_URL + "Employees/search?pageIndex=" + pageIndex + "&pageSize=" + PAGE_SIZE;
           axios.get(url)
-            .then((response) => this.thenLoadAPI(response))
+            .then((response) => {
+              this.thenLoadAPI(response);
+            })
             .catch((response) => this.catchLoadAPI(response));
         } else {
           this.tableLoadingStatus = true;
@@ -202,6 +237,14 @@ export default {
         this.$emit("showToast", this.errorResultText.Error500, 0);
         console.log(error);
       }
+    },
+
+    /**
+     * Load dữ liệu với trang tìm kiếm hiện tại
+     * Author: KhaiND (29/11/2022)
+     */
+    loadCurData() {
+      this.loadData(this.curKeyword, this.curPageIndex);
     },
 
     /**
@@ -269,6 +312,7 @@ export default {
     onClickDeleteEmployee(id) {
       this.deleteManyMode = 0;
       //Show pop-up confirm
+      this.confirmMessage = this.dialogText.Message.DeleteEmployee;
       this.isShowDialog = true;
       // Chỉ định Id của Employee cần xóa
       this.curEmpId = id;
@@ -284,11 +328,10 @@ export default {
         if (this.empSelectedIds == null || this.empSelectedIds.length <= 0) {
           this.$emit("showToast", this.toastMsg.Employee.NoSelected, 3);
         }
-        else
-        {
+        else {
           // Hiển thị Dialog
-        this.isShowDialog = true;
-        this.confirmMessage = this.dialogText.Message.DeleteManyEmployee;
+          this.confirmMessage = this.dialogText.Message.DeleteManyEmployee;
+          this.isShowDialog = true;
           // Gọi đúng API
           this.deleteManyMode = 1;
         }
@@ -330,7 +373,10 @@ export default {
         this.loadingStatus = false;
         // Reload va toast
         this.$emit("showToast", this.toastMsg.Employee.DeleteSuccess, 1);
-        await this.$emit("reloadData");
+        if(this.employeeList.length == 1 && this.curPageIndex > 1) {
+           this.curPageIndex -= 1; 
+        }
+        await this.loadData(this.curKeyword, this.curPageIndex);
       }
       catch(error) {
         console.log(error);
@@ -344,13 +390,16 @@ export default {
      */
     async deleteManyEmployee() {
       try {
+        var me = this;
         // Hiển thị Loader
         this.loadingStatus = true;
         //Call API
-        await this.empSelectedIds.forEach((employeeID) => {
-          var url = BASE_URL + "Employees/" + employeeID;
-          axios.delete(url);  // Nên call bằng API xóa nhiều
-        });
+        // await this.empSelectedIds.forEach((employeeID) => {
+        //   var url = BASE_URL + "Employees/" + employeeID;
+        //   axios.delete(url);  // Nên call bằng API xóa nhiều
+        // });
+        console.log(JSON.stringify(me.empSelectedIds));
+        await axios.post(BASE_URL + "Employees/deleteMany", me.empSelectedIds);
         // Đóng Dialog
         this.isShowDialog = false;
         // Ẩn Loader
@@ -358,7 +407,10 @@ export default {
         // Reload va toast
         this.$emit("showToast", this.toastMsg.Employee.DeleteManySucessPre + this.empSelectedIds.length + this.toastMsg.Employee.DeleteManySucessSfx, 1);
         this.empSelectedIds = [];
-        await this.$emit("reloadData");
+        if(this.checkAllEmplyee && this.curPageIndex > 1) {
+          this.curPageIndex -= 1;
+        }
+        await this.loadData(this.curKeyword, this.curPageIndex);
       }
       catch(error) {
         console.log(error);
@@ -374,6 +426,15 @@ export default {
       this.isShowDialog = false;
       this.curEmpId = null;
     },
+
+    // showMsDialog(msg, btn2Show, btn2Text, btnDefaultText) {
+    //   this.confirmMessage = msg;
+    //   this.dialogBtn2Show = btn2Show;
+    //   this.dialogBtn2Text = btn2Text;
+    //   this.dialogBtnDefaultText = btnDefaultText;
+    //   this.isShowDialog = true;
+    //   console.log("TABLE" + this.btn2Show + this.btn2Text)
+    // }
   },
 };
 </script>
