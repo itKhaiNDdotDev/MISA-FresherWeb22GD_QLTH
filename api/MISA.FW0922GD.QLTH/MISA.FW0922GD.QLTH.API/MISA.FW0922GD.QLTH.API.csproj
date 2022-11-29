@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MISA.FW0922GD.QLTH.BL\MISA.FW0922GD.QLTH.BL.csproj" />
+    <ProjectReference Include="..\MISA.FW0922GD.QLTH.Common\MISA.FW0922GD.QLTH.Common.csproj" />
+    <ProjectReference Include="..\MISA.FW0922GD.QLTH.DL\MISA.FW0922GD.QLTH.DL.csproj" />
+  </ItemGroup>
+
+</Project>

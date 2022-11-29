@@ -1,0 +1,42 @@
+.mask-upper {
+    z-index: 3;
+}
+
+.m-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    z-index: 100;
+}
+
+.dialog__header {
+    height: 56px;
+    font-size: 16px;
+    font-family: OpenSansSemiBold;
+    padding: 18px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.dialog__content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    padding-top: 8px;
+}
+
+.dialog__footer {
+    height: 56px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 0px 16px;
+}
+
+.m-dialog .icon-close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}

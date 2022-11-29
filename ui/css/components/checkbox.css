@@ -1,3 +1,9 @@
+.m-checkbox-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
 .m-checkbox {
     margin-right: 8px;
     /* -webkit-user-select: none;
@@ -7,6 +13,7 @@
     width: 24px;
     height: 24px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .m-checkbox .checkbox-real {
@@ -18,6 +25,7 @@
     bottom: 0px;
     z-index: 1;
     cursor: pointer;
+    margin: 0px;
 }
 
 .m-checkbox .checkbox-pseudo {

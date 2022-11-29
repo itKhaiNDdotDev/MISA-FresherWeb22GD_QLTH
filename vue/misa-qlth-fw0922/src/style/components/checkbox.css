@@ -1,0 +1,56 @@
+.m-checkbox-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.m-checkbox {
+    margin-right: 8px;
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+    user-select: none;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.m-checkbox .checkbox-real {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+    cursor: pointer;
+    margin: 0px;
+}
+
+.m-checkbox .checkbox-pseudo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    background-image: url(../../assets/Icons/ic_Checkbox_Inactive.png);
+}
+.checkbox-real:hover ~ .checkbox-pseudo,
+.checkbox-real:focus ~ .checkbox-pseudo {
+    background-image: url(../../assets/Icons/ic_Checkbox_Hover.png);
+}
+.checkbox-real:checked ~ .checkbox-pseudo {
+    background-image: url(../../assets/Icons/ic_Checkbox_Active.png);
+}
+.m-checkbox .checkbox-real:disabled {
+    cursor: not-allowed;
+}
+.checkbox-real:disabled ~ .checkbox-pseudo {
+    background-image: url(../../assets/Icons/ic_Checkbox_Inactive_Disable.png);
+}
+.checkbox-real:checked:disabled ~ .checkbox-pseudo {
+    background-image: url(../../assets/Icons/ic_Checkbox_Active_Disable.png);
+}
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
     <script src="https://kit.fontawesome.com/4960595244.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div style="padding: 32px;" class="nav-page">
         <a href="views/employee.html" style="font-size: 24px; margin: 36px;"><b>Employee</b></a>
@@ -97,20 +99,20 @@
         <br>
         <label for=""><b> 4. Dropdown:</b></label>
         <div style="margin: 15px 0px;">
-            <select name="" id="" class="m-dropdown">
-                <option value="">Hà Nội</option>
-                <option value="">TP Hồ Chí Minh</option>
-                <option value="">An Giang</option>
-                <option value="">Bắc Ninh</option>
-                <option value="">Đồng Nai</option>
-                <option value="">Nghệ An</option>
-                <option value="">Hà Nội</option>
-                <option value="">TP Hồ Chí Minh</option>
-                <option value="">An Giang</option>
-                <option value="">Bắc Ninh</option>
-                <option value="">Đồng Nai</option>
-                <option value="">Nghệ An</option>
-            </select>
+            <div class="m-dropdown-container">
+                <label>Dropdonw cua toi</label>
+                <div class="m-dropdown">
+                    <input type="text" class="m-icon icon-down m-input" readonly>
+                    <div class="dropdown__option">
+                        <div class="dropdown__option--item">Lua chon 1</div>
+                        <div class="dropdown__option--item">Lua chon 2</div>
+                        <div class="dropdown__option--item">Lua chon 3</div>
+                        <div class="dropdown__option--item">Lua chon 4</div>
+                        <div class="dropdown__option--item">Lua chon 5</div>
+                        <div class="dropdown__option--item">Lua chon 6</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <br>
         <label for=""><b> 5. Thẻ (tag):</b></label>
@@ -155,7 +157,7 @@
         </div>
         <br>
         <label for=""><b> 7. Toast:</b></label>
-        <div style="margin: 15px 0px;">
+        <div style="margin: 15px 0px; display: none;">
             <div class="toasts-container">
                 <div class="m-toast toast-message-fail">
                     <div class="toast-icon icon-toast-fail"></div>
@@ -181,5 +183,9 @@
         </div>
         <img width="40px" src="assets/Images/KhaiND.JPG" alt="avt" class="avt">
     </div>
+
+    <script src="lib/jslib/jquery-3.6.1.min.js"></script>
+    <script src="js/dropdown.js"></script>
 </body>
+
 </html>

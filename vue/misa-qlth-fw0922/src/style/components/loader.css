@@ -1,0 +1,160 @@
+.m-loading-wrapper {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #0000006a;
+    z-index: 3;
+}
+
+.table-content .m-loading-wrapper {
+    position: absolute;
+    top: 41px;
+    bottom: 0px;
+    margin-right: 8px;
+}
+
+.m-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    width: 140px;
+    height: 80px;
+    border: 16px solid #B1B1B1;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes cir1 {
+    0% {
+        background-color: red;
+        width: 4x;
+        height: 4px;
+    }
+    25% {
+        background-color: greenyellow;
+        width: 6px;
+        height: 6px;
+    }
+    75% {
+        background-color: yellow;
+        width: 8px;
+        height: 8px;
+    }
+    100% {
+        background-color: orange;
+        width: 6px;
+        height: 6px;
+    }
+}
+@keyframes cir2 {
+    0% {
+        background-color: orange;
+        width: 6px;
+        height: 6px;
+    }
+    25% {
+        background-color: red;
+        width: 4x;
+        height: 4px;
+    }
+    75% {
+        background-color: greenyellow;
+        width: 6px;
+        height: 6px;
+    }
+    100% {
+        border-color: yellow;
+        width: 8px;
+        height: 8px;
+    }
+}
+@keyframes cir3 {
+    0% {
+        background-color: yellow;
+        width: 8px;
+        height: 8px;
+    }
+    25% {
+        background-color: orange;
+        width: 6px;
+        height: 6px;
+    }
+    75% {
+        background-color: red;
+        width: 4x;
+        height: 4px;
+    }
+    100% {
+        background-color: greenyellow;
+        width: 6px;
+        height: 6px;
+    }
+}
+@keyframes cir4 {
+    0% {
+        background-color: greenyellow;
+        width: 6px;
+        height: 6px;
+    }
+    25% {
+        border-color: yellow;
+        width: 8px;
+        height: 8px;
+    }
+    75% {
+        background-color: orange;
+        width: 4px;
+        height: 4px;
+    }
+    100% {
+        background-color: red;
+        width: 4x;
+        height: 4px;
+    }
+}
+
+.m-loading .loading--circle {
+    /* width: 6px;
+    height: 6px; */
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.m-loading .loading--circle:nth-child(1) {
+    /* background-color: red; */
+    animation: cir1 1.5s linear infinite;
+}
+
+.m-loading .loading--circle:nth-child(2) {
+    margin-left: 4px;
+    margin-right: 4px;
+    /* background-color: orange;
+    width: 8px;
+    height: 8px; */
+    animation: cir2 1.5s linear infinite;
+}
+
+.m-loading .loading--circle:nth-child(3) {
+    /* background-color: yellow; */
+    margin-right: 4px;
+    animation: cir3 1.5s linear infinite;
+}
+
+.m-loading .loading--circle:nth-child(4) {
+    /* background-color: yellowgreen;
+    width: 4px;
+    height: 4px; */
+    animation: cir4 1.5s linear infinite;
+}
+
+.m-loading .loading--text {
+    position: absolute;
+    bottom: 12px;
+}

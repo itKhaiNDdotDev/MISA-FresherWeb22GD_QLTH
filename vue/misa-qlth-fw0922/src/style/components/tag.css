@@ -1,0 +1,35 @@
+.m-tag {
+    padding-left: 12px;
+    margin: 0px 0px 0px 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0E0E0;
+    height: 24px;
+    width: max-content;
+}
+
+.m-tag .m-tag-text {
+    margin-right: 3px;
+    display: flex;
+    width: max-content;
+}
+
+ .m-tag .icon-x:hover {
+    background-color: #fa393919;
+    border-radius: 50%;
+ }
+ .m-tag .icon-x:active {
+    background-color: #fa393948;
+ }
+
+.tag-list { /*Dropdownlist/Combobox*/
+    padding: 3px 28px 3px 3px;
+    display: flex;
+    flex-wrap: wrap;    
+    width: max-content;
+}
+.tag-list .m-tag:first-child {
+    margin-left: 0px;
+}

@@ -1,0 +1,1425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Devart (www.devart.com), Data-Generator document file -->
+<!-- Modifying this generated file will probably render it invalid -->
+<DataGenDocument Version="6.1">
+  <ConnectionModel>
+    <PropertyValue Name="Database">59f90733-4d68-4fdf-82a7-f0fcbf5460aa</PropertyValue>
+    <PropertyValue Name="ConnectionString" xml:space="preserve">User Id=root;Host=localhost;Character Set=utf8</PropertyValue>
+    <PropertyValue Name="ExecutionTimeout">0</PropertyValue>
+  </ConnectionModel>
+  <Settings>
+    <Provider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</Provider>
+    <AllowNulls>true</AllowNulls>
+    <IncludeNullsPercent>10</IncludeNullsPercent>
+    <AllowEmptyString>false</AllowEmptyString>
+    <IncludeEmptyStringPercent>10</IncludeEmptyStringPercent>
+    <DatabaseName>misaqlth_w092022</DatabaseName>
+    <PopulationType>RowsCount</PopulationType>
+    <RowsToGenerate>1000</RowsToGenerate>
+    <ProportionOfExistingData>10</ProportionOfExistingData>
+    <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+    <GenerateUniqueValues>false</GenerateUniqueValues>
+    <TruncateTables>true</TruncateTables>
+    <DistributionMode>Seed</DistributionMode>
+    <Seed>1</Seed>
+    <LastSeedValue>0</LastSeedValue>
+    <Language>US</Language>
+    <ShowDataPreview>true</ShowDataPreview>
+  </Settings>
+  <Tables>
+    <Table Name="department">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>7</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="DepartmentID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="UniqueidentifierGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>true</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>1</SeedValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringUniqueidentifierGenerator</GeneratorType>
+          <GeneratorName>ID (globally unique identifier)</GeneratorName>
+          <GeneratorDescription>25f64401-1ec2-39c6-87b2-ca571da4a630, 6ab83b1e-2094-2176-16d1-b5f6e90d259e, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="DepartmentCode">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>1</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>SHTBM001|SHTBM002|SHTBM003|SHTBM004|SHTBM005|SHTBM006|SHTBM007</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Department</GeneratorName>
+          <GeneratorDescription>Marketing, Finance, Research and Development, Manufacturing, Sales, Customer Support, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>20</Length>
+        </Column>
+        <Column Name="DepartmentName">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>2</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>Tổ Toán - Lý - Hóa | Tổ Lý | Tổ Hóa - Sinh | Tổ Anh văn | Tổ Sử - Địa - GDCD | Tổ Ngữ Văn | Tổ văn phòng</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Department</GeneratorName>
+          <GeneratorDescription>Marketing, Finance, Research and Development, Manufacturing, Sales, Customer Support, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="DepartmentDescription">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>3</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"JobTitles.csv[0]")</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Department</GeneratorName>
+          <GeneratorDescription>Marketing, Finance, Research and Development, Manufacturing, Sales, Customer Support, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="DepartmentCreatedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>1</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="DepartmentCreatedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>1</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="DepartmentModifiedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>2</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="DepartmentModifiedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>2</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="device">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1000</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="DeviceID">
+          <Checked>false</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>\d{5}</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>ID (random)</GeneratorName>
+          <GeneratorDescription>54470, 16912, 43814, 06728, 36017, 82433, 95664, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="DeviceCode">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>[0-9A-Z]+</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <Length>20</Length>
+        </Column>
+        <Column Name="DeviceName">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")|($"LastNames.txt"))(\D{1,3}))|((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")|($"LastNames.txt"))((19[5-9]\d)|(20[0-2]\d)))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>NickName</GeneratorName>
+          <GeneratorDescription>Jodi1982, Nancey777, Terrance28, Erich95, Cindi1, Salena92, Pasquale2015, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="DeviceDescription">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlLoremIpsumGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>0</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <MinLength>1</MinLength>
+            <MaxLength>199</MaxLength>
+            <MaxAllowedLength>255</MaxAllowedLength>
+            <MinWordsInSentence>3</MinWordsInSentence>
+            <MaxWordsInSentence>7</MaxWordsInSentence>
+            <MinSentences>1</MinSentences>
+            <MaxSentences>10</MaxSentences>
+            <MinParagraphs>1</MinParagraphs>
+            <MaxParagraphs>1</MaxParagraphs>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <PunctuationSigns>,.!?...;</PunctuationSigns>
+            <StartParagraphWithIndent>false</StartParagraphWithIndent>
+            <AddParagraphTags>false</AddParagraphTags>
+            <AddItalicTags>false</AddItalicTags>
+            <AddBoldTags>false</AddBoldTags>
+            <AddSingleLineBreakTags>false</AddSingleLineBreakTags>
+            <AddNewLines>false</AddNewLines>
+          </GeneratorOptions>
+          <GeneratorType>MySqlLoremIpsumGenerator</GeneratorType>
+          <GeneratorName>Product Description</GeneratorName>
+          <GeneratorDescription>Sunt id voluptatem eveniet ipsum minus hic. Repellenadus at facilis. Aut facilis esse qui, eligendi et quae! Et qui ullam., ...</GeneratorDescription>
+          <GeneratorCategory>Product</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="DeviceReleaseDate">
+          <Checked>false</Checked>
+          <DataType>DATE</DataType>
+          <GeneratorOptions p6:type="DateGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>1970-01-01T00:00:00</MinDate>
+            <MaxDate>2022-11-13T00:00:00+07:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateGenerator</GeneratorType>
+          <GeneratorName>date</GeneratorName>
+          <GeneratorDescription>fill with date values</GeneratorDescription>
+        </Column>
+        <Column Name="DeviceRecivedDate">
+          <Checked>false</Checked>
+          <DataType>DATE</DataType>
+          <GeneratorOptions p6:type="DateGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>5</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>1970-01-01T00:00:00</MinDate>
+            <MaxDate>2022-11-13T00:00:00+07:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateGenerator</GeneratorType>
+          <GeneratorName>date</GeneratorName>
+          <GeneratorDescription>fill with date values</GeneratorDescription>
+        </Column>
+        <Column Name="DeviceSupplier">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>5</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>[0-9A-Z]+</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <Length>255</Length>
+        </Column>
+        <Column Name="DeviceCreatedDate">
+          <Checked>false</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>1970-01-01T00:00:00</MinDate>
+            <MaxDate>2022-11-13T00:00:00+07:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="DeviceCreatedBy">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>4</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>(($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")) ($"LastNames.txt")</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="DeviceModifiedDate">
+          <Checked>false</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>5</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>1970-01-01T00:00:00</MinDate>
+            <MaxDate>2022-11-13T00:00:00+07:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="DeviceModifiedBy">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>5</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>(($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")) ($"LastNames.txt")</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="room">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>8</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="RoomID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="UniqueidentifierGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>true</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>12</SeedValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringUniqueidentifierGenerator</GeneratorType>
+          <GeneratorName>ID (globally unique identifier)</GeneratorName>
+          <GeneratorDescription>25f64401-1ec2-39c6-87b2-ca571da4a630, 6ab83b1e-2094-2176-16d1-b5f6e90d259e, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="RoomCode">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>12</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>SHKP0001|SHKP0002|SHKP0003|SHKP0004|SHKP0005|SHKP0006|SHKP0007|SHKP0008</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <Length>20</Length>
+        </Column>
+        <Column Name="RoomName">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>12</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>Kho phòng chung | Phòng thí nghiệm | Phòng Hóa Sinh | Phòng Tổ Toán | Phòng thí nghiệm Hóa | Phòng thí nghiệm Lý | Phòng họp | Kho sách</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>NickName</GeneratorName>
+          <GeneratorDescription>Jodi1982, Nancey777, Terrance28, Erich95, Cindi1, Salena92, Pasquale2015, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="RoomDescription">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlLoremIpsumGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>0</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>12</SeedValue>
+            <MinLength>1</MinLength>
+            <MaxLength>199</MaxLength>
+            <MaxAllowedLength>255</MaxAllowedLength>
+            <MinWordsInSentence>3</MinWordsInSentence>
+            <MaxWordsInSentence>7</MaxWordsInSentence>
+            <MinSentences>1</MinSentences>
+            <MaxSentences>10</MaxSentences>
+            <MinParagraphs>1</MinParagraphs>
+            <MaxParagraphs>1</MaxParagraphs>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <PunctuationSigns>,.!?...;</PunctuationSigns>
+            <StartParagraphWithIndent>false</StartParagraphWithIndent>
+            <AddParagraphTags>false</AddParagraphTags>
+            <AddItalicTags>false</AddItalicTags>
+            <AddBoldTags>false</AddBoldTags>
+            <AddSingleLineBreakTags>false</AddSingleLineBreakTags>
+            <AddNewLines>false</AddNewLines>
+          </GeneratorOptions>
+          <GeneratorType>MySqlLoremIpsumGenerator</GeneratorType>
+          <GeneratorName>Product Description</GeneratorName>
+          <GeneratorDescription>Sunt id voluptatem eveniet ipsum minus hic. Repellenadus at facilis. Aut facilis esse qui, eligendi et quae! Et qui ullam., ...</GeneratorDescription>
+          <GeneratorCategory>Product</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="RoomCreatedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>12</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="RoomCreatedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>12</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="RoomModifiedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>13</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="RoomModifiedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>13</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="subject">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>10</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="SubjectID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="UniqueidentifierGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>true</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>14</SeedValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringUniqueidentifierGenerator</GeneratorType>
+          <GeneratorName>ID (globally unique identifier)</GeneratorName>
+          <GeneratorDescription>25f64401-1ec2-39c6-87b2-ca571da4a630, 6ab83b1e-2094-2176-16d1-b5f6e90d259e, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="SubjectCode">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>14</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>SHMH0001|SHMH0002|SHMH0003|SHMH0004|SHMH0005|SHMH0006|SHMH0007|SHMH0008|SHMH0009|SHMH00010</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <Length>20</Length>
+        </Column>
+        <Column Name="SubjectName">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>14</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>Toán|Lý|Hóa học|Sinh|Anh|Ngữ văn|GDCD|Sử|Địa lý|Tin</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>NickName</GeneratorName>
+          <GeneratorDescription>Jodi1982, Nancey777, Terrance28, Erich95, Cindi1, Salena92, Pasquale2015, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="SubjectCreatedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>14</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="SubjectCreatedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>14</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="SubjectModifiedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>15</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="SubjectModifiedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>15</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="employee">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>700</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="EmployeeID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="UniqueidentifierGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>true</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringUniqueidentifierGenerator</GeneratorType>
+          <GeneratorName>ID (globally unique identifier)</GeneratorName>
+          <GeneratorDescription>25f64401-1ec2-39c6-87b2-ca571da4a630, 6ab83b1e-2094-2176-16d1-b5f6e90d259e, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="EmployeeCode">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>SHCB[0-1][0-9][0-9][0-9]</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <Length>20</Length>
+        </Column>
+        <Column Name="EmployeeName">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>NickName</GeneratorName>
+          <GeneratorDescription>Jodi1982, Nancey777, Terrance28, Erich95, Cindi1, Salena92, Pasquale2015, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="EmployeeImageUrl">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="PythonGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>100</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <Expression># This script retrieves a Gravatar image url based on an email address
+import urllib, hashlib
+ 
+# Specify a static email or table column containing emails
+email = "my_gravatar_email@example.com"
+# email = email_column_name
+default = "http://www.example.com/default.jpg"
+size = 40
+ 
+# construct the url
+gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
+gravatar_url += urllib.urlencode({'d':default, 's':str(size)})
+
+gravatar_url</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlPythonGenerator</GeneratorType>
+          <GeneratorName>URL (Gravatar image)</GeneratorName>
+          <GeneratorDescription>http://www.gravatar.com/avatar/6ffc45896e63ba040e769b8b9d150107?s=40&amp;d=http%3A%2F%2Fwww.example.com%2Fdefault.jpg ;...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>255</Length>
+        </Column>
+        <Column Name="EmployeePhoneNumber">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>09[018]\d{7}</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>UK Phone Number (premium rate service)</GeneratorName>
+          <GeneratorDescription>09186825458, 09044531268, 09827538502, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>50</Length>
+        </Column>
+        <Column Name="EmployeeEmail">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>(((((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt"))[_.]?)?($"LastNames.txt"))|(($"LastNames.txt")\C?)|(((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt"))[_.]?(\C[_.]?)?)?($"LastNames.txt")))(\D{,3})?|\c{4,8}(\d{1,4}|[_.]\c{4,10}))@(example$"7"|nowhere$"3").com</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Email</GeneratorName>
+          <GeneratorDescription>Danica.Foley@example.com, fstu@nowhere.com, CurtK_Burton@example.com, LaroseM696@nowhere.com, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="DepartmentID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
+          </GeneratorOptions>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>36</Length>
+        </Column>
+        <Column Name="EmployeeIsDeviceManager">
+          <Checked>true</Checked>
+          <DataType>BOOL</DataType>
+          <GeneratorOptions p6:type="BitGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <TrueProbability>0.48</TrueProbability>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+          </GeneratorOptions>
+          <GeneratorType>MySqlBoolGenerator</GeneratorType>
+          <GeneratorName>bool</GeneratorName>
+          <GeneratorDescription>fill with true or false values</GeneratorDescription>
+          <Precision>1</Precision>
+        </Column>
+        <Column Name="EmployeeWorkingStatus">
+          <Checked>true</Checked>
+          <DataType>BOOL</DataType>
+          <GeneratorOptions p6:type="BitGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>7</SeedValue>
+            <TrueProbability>0.5</TrueProbability>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+          </GeneratorOptions>
+          <GeneratorType>MySqlBoolGenerator</GeneratorType>
+          <GeneratorName>bool</GeneratorName>
+          <GeneratorDescription>fill with true or false values</GeneratorDescription>
+          <Precision>1</Precision>
+        </Column>
+        <Column Name="EmployeeQuitDate">
+          <Checked>true</Checked>
+          <DataType>DATE</DataType>
+          <GeneratorOptions p6:type="DateGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>70</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2020-01-01T00:00:00+07:00</MinDate>
+            <MaxDate>2022-11-13T00:00:00+07:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateGenerator</GeneratorType>
+          <GeneratorName>date</GeneratorName>
+          <GeneratorDescription>fill with date values</GeneratorDescription>
+        </Column>
+        <Column Name="EmployeeCreatedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="EmployeeCreatedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+        <Column Name="EmployeeModifiedDate">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions p6:type="MySqlDateTimeGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>7</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2022-10-03T00:00:00</MinDate>
+            <MaxDate>2022-11-10T00:00:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+        <Column Name="EmployeeModifiedBy">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>7</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>($"Ho.txt") ((($"DemNam.txt") ($"TenNam.txt"))|(($"DemNu.txt") ($"TenNu.txt")))</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Full Name</GeneratorName>
+          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>100</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="employeewithroom">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1000</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="EmployeeWithRoomID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="UniqueidentifierGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>true</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>8</SeedValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringUniqueidentifierGenerator</GeneratorType>
+          <GeneratorName>ID (globally unique identifier)</GeneratorName>
+          <GeneratorDescription>25f64401-1ec2-39c6-87b2-ca571da4a630, 6ab83b1e-2094-2176-16d1-b5f6e90d259e, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="EmployeeID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>8</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
+          </GeneratorOptions>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>36</Length>
+        </Column>
+        <Column Name="RoomID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>9</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
+          </GeneratorOptions>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>36</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="employeewithsubject">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1000</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="EmployeeWithSubjectID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="UniqueidentifierGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>true</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>10</SeedValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlStringUniqueidentifierGenerator</GeneratorType>
+          <GeneratorName>ID (globally unique identifier)</GeneratorName>
+          <GeneratorDescription>25f64401-1ec2-39c6-87b2-ca571da4a630, 6ab83b1e-2094-2176-16d1-b5f6e90d259e, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
+          <Length>36</Length>
+        </Column>
+        <Column Name="EmployeeID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>10</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
+          </GeneratorOptions>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>36</Length>
+        </Column>
+        <Column Name="SubjectID">
+          <Checked>true</Checked>
+          <DataType>CHAR</DataType>
+          <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>11</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
+          </GeneratorOptions>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>36</Length>
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <SynchronizationOptions p2:type="DataSyncOptionGroup" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
+    <SynchronizationFileName>K:\2022_MISA\BT1\MISA-FresherWeb22GD_Ex\database\DataGeneration_202211131202.sql</SynchronizationFileName>
+    <BulkInsert>false</BulkInsert>
+  </SynchronizationOptions>
+</DataGenDocument>
