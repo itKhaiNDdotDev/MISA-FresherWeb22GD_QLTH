@@ -19,6 +19,7 @@
                     <div class="form__content--left">
                         <div class="m-input-container">
                             <label for="eId">{{formText.Code}} <span style="color: #FA3939;">*</span></label>
+                            <button ref='focusMe' tabindex="1" style="margin-left: -16px; opacity: 0; width: 0px"></button>
                             <input @blur="validateCode" tabindex="1" v-model="employee.employeeCode" id="eId" type="text"
                               ref='empCodeInput' :class="{inputError:errorEmployee.CodeInvalid}" class="m-input" mrequired>
                             <div class="m-error-message" v-if="errorEmployee.CodeInvalid" style="left: 280px">
@@ -104,7 +105,7 @@
                 </div>
                 <div class="form__footer">
                     <button tabindex="11" @click="onClickClose" class="btn-close m-button m-btn-style2">{{buttonText.Close}}</button>
-                    <button tabindex="12" @click="onClickSave" class="btn-save m-button m-btn-style1">{{buttonText.Save}}</button>
+                    <button ref="btnSave" @keydown.tab="onTabEndForm" tabindex="12" @click="onClickSave" class="btn-save m-button m-btn-style1">{{buttonText.Save}}</button>
                 </div>
             </div>
             <button title="Đóng" @click="onClickClose" class="m-icon m-icon-24 button-icon icon-close"></button>
@@ -126,6 +127,7 @@ import { isPhone, isEmail } from "./../../utils/formatData.js";
 import MSelect from "../../components/base/MSelect.vue";
 import MLoader from "../../components/base/MLoader.vue";
 import MsDialog from "./../../components/base/MsDialog.vue";
+import { ResultStatus } from "./../../utils/enums/status";
 
 export default {
   name: "EmployeeForm",
@@ -181,6 +183,22 @@ export default {
 
   methods: {
     /**
+     * Khi Tab vào control cuối Form thì forcus vào ô đầu tiên của Form
+     * Author: KhaiND (29/11/2022)
+     */
+    onTabEndForm() {
+      this.$nextTick(() => this.$refs.focusMe.focus());
+    },
+
+    /**
+     * Khi Shif+Tab vào control đầu tiên của Form thì quay về control cuối form
+     * Author: KhaiND (29/11/2022)
+     */
+    onShifTabBeginForm() {
+      this.$nextTick(() => this.$refs.btnSave.focus());
+    },
+
+    /**
      * Xử lý khi có lỗi API
      * Author: KhaiND (26/11/2022)
      */
@@ -189,22 +207,22 @@ export default {
         case 400:
           // Ẩn Loader
           this.loadingStatus = false;
-          this.$emit("showToast", msg400, 0);
+          this.$emit("showToast", msg400, ResultStatus.FAIL);
           break;
         case 500:
           // Ẩn Loader
           this.loadingStatus = false;
-          this.$emit("showToast", this.toastMsg.Error500, 0);
+          this.$emit("showToast", this.toastMsg.Error500, ResultStatus.FAIL);
           break;
         case 404:
           // Ẩn Loader
           this.loadingStatus = false;
-          this.$emit("showToast", this.toastMsg.ErrorDefault, 0);
+          this.$emit("showToast", this.toastMsg.ErrorDefault, ResultStatus.FAIL);
           break;
         default:
           // Ẩn Loader
           this.loadingStatus = false;
-          this.$emit("showToast", this.toastMsg.ErrorDefault, 0);
+          this.$emit("showToast", this.toastMsg.ErrorDefault, ResultStatus.FAIL);
           break;
       }
     },
@@ -256,7 +274,7 @@ export default {
               me.loadingStatus = false;
               // Đóng FORM trả lại giao diện bảng và thông báo lỗi
               me.onClickClose();
-              me.$emit("showToast", me.toastMsg.ErrorDefault, 0);
+              me.$emit("showToast", me.toastMsg.ErrorDefault, ResultStatus.FAIL);
             });
           // Sửa dữ liệu
           me.postMode = 0;
@@ -308,7 +326,7 @@ export default {
         console.log(error);
         // Đóng FORM trả lại giao diện bảng và thông báo lỗi
         me.onClickClose();
-        me.$emit("showToast", me.toastMsg.ErrorDefault, 0);
+        me.$emit("showToast", me.toastMsg.ErrorDefault, ResultStatus.FAIL);
       }
     },
 
@@ -580,20 +598,14 @@ export default {
     async thenSaveAPI(response, msg) {
       // response chưa dùng đến
       // Thông báo thành công
-      this.$emit("showToast", msg, 1);
+      this.$emit("showToast", msg, ResultStatus.OK);
       // Ẩn Loader
       this.loadingStatus = false;
       // Đóng form
       this.$emit("hidePopup", null);
       // Reload dữ liệu
-      if(this.postMode) {
-        // Load toàn trang, về trang 1
-        await this.$emit("reloadData", null);
-      }
-      else {
-        // Chỉ load dữ liệu bảng, về trang hiện tại
-        await this.$emit("loadCurData");
-      }
+      // Load toàn trang, về trang 1
+      await this.$emit("reloadData", null);
     },
 
     /**
@@ -628,16 +640,19 @@ export default {
             await axios
               .put(pUrl, me.employee) // Tự động load lại dữ liệu hiện thời
               .then( async (response) => { await me.thenSaveAPI(response, me.toastMsg.Employee.UpdateSuccess) })
-              .catch((respomse) => me.catchAPI(respomse, me.toastMsg.InvalidUpdate));
+              .catch((respomse) => me.catchAPI(respomse, me.toastMsg.InvalidUpdate))
+              .finally(() => {
+                this.$emit("loadCurData");
+              })
           }
         }
         else { // Validate fail
           me.loadingStatus = false;
           if(this.postMode) {
-            me.$emit("showToast", me.toastMsg.InvalidInsert, 0);
+            me.$emit("showToast", me.toastMsg.InvalidInsert, ResultStatus.FAIL);
           }
           else {
-            me.$emit("showToast", me.toastMsg.InvalidUpdate, 0);
+            me.$emit("showToast", me.toastMsg.InvalidUpdate, ResultStatus.FAIL);
           }
 
           // Kiểm tra xem ô nào fail thì nhảy forcus vào ô đó luôn
@@ -658,7 +673,7 @@ export default {
       catch(error) {
         console.log(error);
         this.loadingStatus = false;
-        this.$emit("showToast", me.toastMsg.ErrorDefault, 0);
+        this.$emit("showToast", me.toastMsg.ErrorDefault, ResultStatus.FAIL);
       }
     },
 
@@ -708,7 +723,7 @@ export default {
           })
           .catch(function (response) {
             console.log(response);
-            this.$emit("showToast", this.toastMsg.ErrorDefault, 0);
+            this.$emit("showToast", this.toastMsg.ErrorDefault, ResultStatus.FAIL);
             this.onClickClose();
             this.loadingStatus = false;
           });
@@ -732,7 +747,7 @@ export default {
           })
           .catch(function (response) {
             console.log(response);
-            this.$emit("showToast", this.toastMsg.ErrorDefault, 0);
+            this.$emit("showToast", this.toastMsg.ErrorDefault, ResultStatus.FAIL);
             this.onClickClose();
             this.loadingStatus = false;
           });
@@ -748,13 +763,13 @@ export default {
           })
           .catch(function (response) {
             console.log(response);
-            this.$emit("showToast", this.toastMsg.ErrorDefault, 0);
+            this.$emit("showToast", this.toastMsg.ErrorDefault, ResultStatus.FAIL);
             this.onClickClose();
             this.loadingStatus = false;
           });
       } catch (error) {
         console.log(error);
-        this.$emit("showToast", "Có lỗi xảy ra!", 0);
+        this.$emit("showToast", this.toastMsg.ErrorDefault, ResultStatus.FAIL);
         this.onClickClose();
         this.loadingStatus = false;
       }

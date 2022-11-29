@@ -2,14 +2,16 @@
   <div class="m-dropdown" @blur="isShow=false">
     <input :tabindex="tabindex"
       @click="toggleMe"
-      type="text"
+      type="text" :title="selecteds.map((i) => {return i.itemName})"
       class="m-icon icon-down m-input"
       readonly
     />
     <div class="m-icon icon-down m-input tag-list">
+      <div class="tag-list">
       <div class="m-tag" v-for="(item, index) in selecteds" :key="index">
         <span class="m-tag-text">{{ item.itemName }}</span>
         <div @click="changeSelection(item.itemId)" class="m-icon m-icon-24 icon-x"></div>
+      </div>
       </div>
     </div>
     <div class="dropdown__option" :class="{ showOpt: isShow }">
@@ -205,11 +207,30 @@ input {
   min-height: 32px;
   flex-wrap: nowrap;
   /* overflow: auto; */
-  
-
+  overflow: hidden;
 }
 input:focus+.tag-list {
   border-color: #0DD469;
+}
+
+.m-input .tag-list {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  right: 28px;
+  width: calc(100% - 56px);
+  min-height: 24px !important;
+  background-color: inherit;
+}
+
+/* Employee Form - Tag list of combobox */
+.form__content--right .tag-list {
+    max-width: 512px;
+}
+  
+.form__content--bottom .tag-list {
+    max-width: 780px;
 }
 
 .tag-list .icon-x {
@@ -232,7 +253,4 @@ input:focus+.tag-list {
   z-index: 1;
 }
 
-::-webkit-scrollbar-track {
-  margin-top: 34px;
-}
 </style>

@@ -104,13 +104,14 @@ export default {
       this.isShowForm = isShow;
     },
 
-    /**
-     * Chỉ load lại dữ liệu bảng danh sách Cán bộ trang hiện tại
-     * Author: KhaiND (29/11/2022)
-     */
-    loadCurEmployeeTable() {
-      this.$refs.tableData.loadCurData();
-    },
+    // /**
+    //  * Chỉ load lại dữ liệu bảng danh sách Cán bộ trang hiện tại
+    //  * Author: KhaiND (29/11/2022)
+    //  */
+    // loadCurEmployeeTable() {
+    //   this.$refs.tableData.loadCurData();
+    //   console.log("Vao duoc LIST");
+    // },
 
     /**
      * Reload lại trang

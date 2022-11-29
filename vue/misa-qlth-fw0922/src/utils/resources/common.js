@@ -1,5 +1,5 @@
 export const BASE_URL = "http://localhost:35241/api/v1/";
-export const PAGE_SIZE = 5;
+export const PAGE_SIZE = 15;
 
 export default {
     Button: {

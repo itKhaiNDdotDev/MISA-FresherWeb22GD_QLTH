@@ -4,7 +4,7 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width: 40px; padding: 0px;">
+                    <th style="min-width: 40px; max-width: 40px; padding: 0px;">
                         <div class="m-checkbox" style="margin: 0px auto;">
                             <input @change="onCheckAll" v-bind:checked="checkAllEmplyee" class="checkbox-real" type="checkbox">
                             <div class="checkbox-pseudo"></div>
@@ -80,6 +80,7 @@ import EmployeeText from "./../../utils/resources/employee";
 import axios from "axios";
 import MLoader from "../../components/base/MLoader.vue";
 import MsDialog from "./../../components/base/MsDialog.vue";
+import {ResultStatus } from "./../../utils/enums/status";
 
 export default {
   name: "EmployeeTable",
@@ -169,7 +170,7 @@ export default {
             // Xử lý kết quả
             this.$emit("getTotal", 0);
             this.employeeList = null;
-            this.$emit("showToast", this.errorResultText.InvalidSearch, 0);
+            this.$emit("showToast", this.errorResultText.InvalidSearch, ResultStatus.FAIL);
             this.errorResult = true;
             this.msgResult = this.errorResultText.InvalidSearch;
             // Ẩn Loader
@@ -179,7 +180,7 @@ export default {
             // Xử lý kết quả
             this.$emit("getTotal", 0);
             this.employeeList = null;
-            this.$emit("showToast", this.errorResultText.Error500, 0);
+            this.$emit("showToast", this.errorResultText.Error500, ResultStatus.FAIL);
             this.errorResult = true;
             this.msgResult = this.errorResultText.Error500;
             // Ẩn Loader
@@ -188,7 +189,7 @@ export default {
           default:
             this.$emit("getTotal", 0);
             this.employeeList = null;
-            this.$emit("showToast", this.errorResultText.Error500, 0);
+            this.$emit("showToast", this.errorResultText.Error500, ResultStatus.FAIL);
             this.errorResult = true;
             this.msgResult = this.errorResultText.Error500;
             // Ẩn Loader
@@ -199,7 +200,7 @@ export default {
       catch(error) {
         this.$emit("getTotal", 0);
         this.employeeList = null;
-        this.$emit("showToast", this.errorResultText.Error500, 0);
+        this.$emit("showToast", this.errorResultText.Error500, ResultStatus.FAIL);
         this.errorResult = true;
         this.msgResult = this.errorResultText.Error500;
         // Ẩn Loader
@@ -234,18 +235,19 @@ export default {
         }
       } catch (error) {
         this.employeeList = null;
-        this.$emit("showToast", this.errorResultText.Error500, 0);
+        this.$emit("showToast", this.errorResultText.Error500, ResultStatus.FAIL);
         console.log(error);
       }
     },
 
-    /**
-     * Load dữ liệu với trang tìm kiếm hiện tại
-     * Author: KhaiND (29/11/2022)
-     */
-    loadCurData() {
-      this.loadData(this.curKeyword, this.curPageIndex);
-    },
+    // /**
+    //  * Load dữ liệu với trang tìm kiếm hiện tại
+    //  * Author: KhaiND (29/11/2022)
+    //  */
+    // loadCurData() {
+    //   this.loadData(this.curKeyword, this.curPageIndex);
+    //   console.log("LOAD LAI DU LIEU HIEN TAI")
+    // },
 
     /**
      * Mỗi lần check/uncheck vào chekcbox đầu dàng dữ liệu tương ứng của bảng Cán bộ, giáo viên thì thêm/bỏ Id tương ứng tỏng danh sách chọn
@@ -326,7 +328,7 @@ export default {
       try {
         // Kiểm tra danh sách chọn
         if (this.empSelectedIds == null || this.empSelectedIds.length <= 0) {
-          this.$emit("showToast", this.toastMsg.Employee.NoSelected, 3);
+          this.$emit("showToast", this.toastMsg.Employee.NoSelected, ResultStatus.INFO);
         }
         else {
           // Hiển thị Dialog
@@ -338,7 +340,7 @@ export default {
       }
       catch(error) {
         console.log(error);
-        this.$emit("showToast", this.toastMsg.Error500, 0);
+        this.$emit("showToast", this.toastMsg.Error500, ResultStatus.FAIL);
       }
     },
 
@@ -372,7 +374,7 @@ export default {
         // Ẩn Loader
         this.loadingStatus = false;
         // Reload va toast
-        this.$emit("showToast", this.toastMsg.Employee.DeleteSuccess, 1);
+        this.$emit("showToast", this.toastMsg.Employee.DeleteSuccess, ResultStatus.OK);
         if(this.employeeList.length == 1 && this.curPageIndex > 1) {
            this.curPageIndex -= 1; 
         }
@@ -380,7 +382,7 @@ export default {
       }
       catch(error) {
         console.log(error);
-        this.$emit("showToast", this.toastMsg.Error500, 0);
+        this.$emit("showToast", this.toastMsg.Error500, ResultStatus.FAIL);
       }
     },
 
@@ -405,7 +407,7 @@ export default {
         // Ẩn Loader
         this.loadingStatus = false;
         // Reload va toast
-        this.$emit("showToast", this.toastMsg.Employee.DeleteManySucessPre + this.empSelectedIds.length + this.toastMsg.Employee.DeleteManySucessSfx, 1);
+        this.$emit("showToast", this.toastMsg.Employee.DeleteManySucessPre + this.empSelectedIds.length + this.toastMsg.Employee.DeleteManySucessSfx, ResultStatus.OK);
         this.empSelectedIds = [];
         if(this.checkAllEmplyee && this.curPageIndex > 1) {
           this.curPageIndex -= 1;
@@ -414,7 +416,7 @@ export default {
       }
       catch(error) {
         console.log(error);
-        this.$emit("showToast", this.toastMsg.Error500, 0);
+        this.$emit("showToast", this.toastMsg.Error500, ResultStatus.FAIL);
       }
     },
 

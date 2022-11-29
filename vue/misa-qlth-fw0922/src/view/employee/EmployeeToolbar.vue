@@ -23,6 +23,7 @@
 <script>
 import CommonText, {BASE_URL} from "./../../utils/resources/common";
 import axios from "axios";
+import { ResultStatus } from "./../../utils/enums/status";
 
 export default {
   name: "EmployeeToolbar",
@@ -88,13 +89,13 @@ export default {
           // Xử lý lỗi
           console.log(response);
           this.$emit("endLoading");
-          this.$emit("showToast", CommonText.Toast.Message.Error500, 0);
+          this.$emit("showToast", CommonText.Toast.Message.Error500, ResultStatus.FAIL);
         });
       }
       catch(error) {
         console.log(error);
           this.$emit("endLoading");
-          this.$emit("showToast", CommonText.Toast.Message.Error500, 0);
+          this.$emit("showToast", CommonText.Toast.Message.Error500, ResultStatus.FAIL);
       }
     }
   }
