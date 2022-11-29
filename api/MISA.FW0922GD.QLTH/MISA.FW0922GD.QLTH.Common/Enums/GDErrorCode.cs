@@ -25,6 +25,21 @@ namespace MISA.FW0922GD.QLTH.Common.Enums
         /// <summary>
         /// Lỗi dữ liệu đầu vào không hợp lệ
         /// </summary>
-        InvalidData = 3
+        InvalidData = 3,
+
+        /// <summary>
+        /// Thêm mới bản ghi thất bại
+        /// </summary>
+        InsertFailed = 4,
+
+        /// <summary>
+        /// Cập nhật bản ghi thất bại
+        /// </summary>
+        UpdateFailed = 5,
+
+        /// <summary>
+        /// Xóa bản ghi thất bại
+        /// </summary>
+        DeleteFailed = 6
     }
 }

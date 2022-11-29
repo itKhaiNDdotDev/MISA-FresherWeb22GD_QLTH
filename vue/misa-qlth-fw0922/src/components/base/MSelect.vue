@@ -2,14 +2,16 @@
   <div class="m-dropdown" @blur="isShow=false">
     <input :tabindex="tabindex"
       @click="toggleMe"
-      type="text"
+      type="text" :title="selecteds.map((i) => {return i.itemName})"
       class="m-icon icon-down m-input"
       readonly
     />
     <div class="m-icon icon-down m-input tag-list">
-      <div class="m-tag" v-for="(item, index) in selected" :key="index">
-        <span class="m-tag-text">{{ item }}</span>
-        <div class="m-icon m-icon-24 icon-x"></div>
+      <div class="tag-list">
+      <div class="m-tag" v-for="(item, index) in selecteds" :key="index">
+        <span class="m-tag-text">{{ item.itemName }}</span>
+        <div @click="changeSelection(item.itemId)" class="m-icon m-icon-24 icon-x"></div>
+      </div>
       </div>
     </div>
     <div class="dropdown__option" :class="{ showOpt: isShow }">
@@ -35,7 +37,7 @@
           <input
             v-bind:value="item.itemId"
             v-bind:checked="checkSelected(item.itemId)"
-            @change="changeSelection"
+            @change="changeSelection(item.itemId)"
             class="checkbox-real"
             type="checkbox"
           />
@@ -50,7 +52,9 @@
 <script>
 export default {
   name: "MSelect",
+  
   emits: ['selectRoom'],
+
   props: {
     options: Array,
     selectedIds: Array,
@@ -60,23 +64,26 @@ export default {
     },
     tabindex: Number
   },
+
   data() {
     return {
       isShow: false,
       // isCheckAll: false,
     };
   },
+
   methods: {
     /**
      * Ẩn hiện danh sách option
-     * Auth: KhaiND (05/11/2022)
+     * Author: KhaiND (05/11/2022)
      */
     toggleMe() {
       this.isShow = !this.isShow;
     },
+
     /**
      * Chức năng chọn tất cả option
-     * Auth: KhaiND (05/11/2022)
+     * Author: KhaiND (05/11/2022)
      */
     // checkAll: function () {
     //   this.isCheckAll = !this.isCheckAll;
@@ -92,9 +99,10 @@ export default {
     //     }
     //   }
     // },
+
     /**
      * Mỗi lần check một option thì kiểm tra xem, nếu đã check hết phần tử thì đặt check của Tất cả thành true (checked)
-     * Auth: KhaiND (05/11/2022)
+     * Author: KhaiND (05/11/2022)
      */
     // updateCheckall: function () {
     //   if (this.selectedIds.length == this.options.length) {
@@ -103,61 +111,69 @@ export default {
     //     this.isCheckAll = false;
     //   }
     // },
+
     /**
      * Lời gọi emit đến hàm xử lý việc check/uncheck cho options tương ứng
      * @param {event} event - sự kiện thay đổi tương ứng với options checkbox
-     * Auth: KhaiND (07/11/2022)
+     * Author: KhaiND (07/11/2022)
      */
-    changeSelection: function(event){
-      console.log(event);
-      this.$emit('selectOpt', event.target.value);
+    changeSelection: function(itemId){
+      // pram: event - ở trên Select thì ko truyền tham số khi gọi method nữa
+      // this.$emit('selectOpt', event.target.value);
+      this.$emit('selectOpt', itemId);
     },
+
+    /**
+     * Lời gọi emit thực hiện checkall lựa chọn
+     * Author: KhaiND (05/11/2022)
+     */
     checkAll() {
       this.$emit("checkAll", null);
     }
+
     // checkSelected(val) {
     //   this.$emit('checkSelected', val);
     //   console.log("Bắt giá trị CHECKED: " + this.$emit('checkSelected', val));
     // }
   },
-  /////////////////// DEBUG //////////////////////////
-  watch: {
-    selectedIds() {
-      console.log("WATCH SELECTED_ID: ");
-      console.log(this.selectedIds);
-    },
-    isCheckAll() {
-      console.log("Giá trị của isCheckAll: " + this.isCheckAll);
-    }
-  },
+
   /**
    * Mỗi lần có thay đổi trong danh sách chọn thì kiểm tra các id được chọn để trả về danh sách tên lựa chọn tương ứng cho việc hiển thị tag
    * Auth: KhaiND (05/11/2022)
    */
   computed: {
-    selected() {
-      var sltName = [];
-      // this.options.forEach(opt => {
-      //   this.selectedIds.forEach( val => {
-      //     if(opt.itemId == val)
-      //       sltName.push(opt.itemName);
-      //   });
-      // });
-      if(this.selectedIds == undefined)
-        console.log("EMPTY SELECTED");
-      else
-      {
-        for (var i = 0; i < this.options.length; i++) {
-        for (var j = 0; j < this.selectedIds.length; j++) {
-          if(this.options[i].itemId == this.selectedIds[j])
-            sltName.push(this.options[i].itemName);
+    selecteds() {
+      try {
+        var sltObjs = [];
+        // this.options.forEach(opt => {
+        //   this.selectedIds.forEach( val => {
+        //     if(opt.itemId == val)
+        //       sltName.push(opt.itemName);
+        //   });
+        // });
+        if(this.selectedIds == undefined)
+          console.log("EMPTY SELECTED");
+        else
+        {
+          for (var i = 0; i < this.options.length; i++) {
+            for (var j = 0; j < this.selectedIds.length; j++) {
+              if(this.options[i].itemId == this.selectedIds[j]) {
+                var sltObj = {
+                  itemId: this.options[i].itemId,
+                  itemName: this.options[i].itemName
+                }
+                sltObjs.push(sltObj);
+              }
+            }
+          }
         }
+        console.log(sltObjs);
+        return sltObjs;
       }
+      catch(error) {
+        console.log(error);
+        return null;
       }
-      
-      // console.log("SELECTED: ");
-      // console.log(this.selectedIds);
-      return sltName;
     },
   },
 };
@@ -189,10 +205,37 @@ input {
   /* flex: 1; */
   width: 100%;
   min-height: 32px;
-  /* flex-wrap: nowrap; */
+  flex-wrap: nowrap;
+  /* overflow: auto; */
+  overflow: hidden;
 }
 input:focus+.tag-list {
   border-color: #0DD469;
+}
+
+.m-input .tag-list {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  right: 28px;
+  width: calc(100% - 56px);
+  min-height: 24px !important;
+  background-color: inherit;
+}
+
+/* Employee Form - Tag list of combobox */
+.form__content--right .tag-list {
+    max-width: 512px;
+}
+  
+.form__content--bottom .tag-list {
+    max-width: 780px;
+}
+
+.tag-list .icon-x {
+  z-index: 1;
+  cursor: pointer;
 }
 
 .dropdown__option.showOpt {
@@ -210,7 +253,4 @@ input:focus+.tag-list {
   z-index: 1;
 }
 
-::-webkit-scrollbar-track {
-  margin-top: 34px;
-}
 </style>

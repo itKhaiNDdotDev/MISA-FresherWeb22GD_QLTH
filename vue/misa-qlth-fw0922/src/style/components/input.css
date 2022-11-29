@@ -8,6 +8,7 @@
 
 .m-input {
     height: 32px;
+    width: 100%;
     border-radius: 4px;
     border: 1px solid #CCCCCC;
     outline: none;
@@ -40,6 +41,9 @@ input.m-input {
     display: none;
 }
 .m-input:hover+.m-error-message {
+    display: block;
+}
+.m-input:focus+.m-error-message {
     display: block;
 }
 .m-error-message .error-arrow {
@@ -93,6 +97,10 @@ input.m-input {
     position: absolute;
     right: 41px;
     z-index: 1;
+}
+
+.m-input-date {
+    max-width: 132px;
 }
 
 ::-webkit-calendar-picker-indicator {

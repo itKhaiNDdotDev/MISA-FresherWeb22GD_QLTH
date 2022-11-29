@@ -9,15 +9,10 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
     /// <summary>
     /// BaseEntity chứa các trường thông tin tái sử dụng ở nhiều Entity
     /// </summary>
-    /// Author: KhaiND (17/11/2022)
+    /// Created By: KhaiND (17/11/2022)
     public class BaseEntity
     {
         #region Property
-
-        /// <summary>
-        /// Người tạo bản ghi
-        /// </summary>
-        public string? CreatedBy { get; set; } //= Resource.DefaultUser;
 
         /// <summary>
         /// Thời gian tọa bản ghi
@@ -25,14 +20,19 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         public DateTime CreatedDate { get; set; } //= DateTime.Now;
 
         /// <summary>
-        /// Người chỉnh sửa bản ghi lần gần nhất
+        /// Người tạo bản ghi
         /// </summary>
-        public string? ModifiedBy { get; set; } //= Resource.DefaultUser;
+        public string? CreatedBy { get; set; } //= Resource.DefaultUser;
 
         /// <summary>
         /// Thời gian chỉnh sửa bản ghi lần gần nhất
         /// </summary>
         public DateTime ModifiedDate { get; set; } //= DateTime.Now;
+
+        /// <summary>
+        /// Người chỉnh sửa bản ghi lần gần nhất
+        /// </summary>
+        public string? ModifiedBy { get; set; } //= Resource.DefaultUser;
 
         #endregion
     }

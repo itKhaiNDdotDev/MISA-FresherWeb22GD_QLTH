@@ -22,7 +22,7 @@ namespace MISA.FW0922GD.QLTH.Common {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MISA.FW0922GD.QLTH.Common {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MISA.FW0922GD.QLTH.Common.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MISA.FW0922GD.QLTH.Common {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,72 @@ namespace MISA.FW0922GD.QLTH.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete to database return 0.
+        /// </summary>
+        public static string DeleteFailed_DevMsg {
+            get {
+                return ResourceManager.GetString("DeleteFailed_DevMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/6.
+        /// </summary>
+        public static string DeleteFailed_MoreInfo {
+            get {
+                return ResourceManager.GetString("DeleteFailed_MoreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xóa không thành công..
+        /// </summary>
+        public static string DeleteFailed_UserMsg {
+            get {
+                return ResourceManager.GetString("DeleteFailed_UserMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ! Vui lòng kiểm tra lại..
+        /// </summary>
+        public static string Email_InvalidMessage {
+            get {
+                return ResourceManager.GetString("Email_InvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số hiệu cán bộ đã tồn tại! Vui lòng kiểm tra lại.
+        /// </summary>
+        public static string EmployeeCode_DuplicateMessage {
+            get {
+                return ResourceManager.GetString("EmployeeCode_DuplicateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số hiệu cán bộ không được phép để trống..
+        /// </summary>
+        public static string EmployeeCode_RequiredMessage {
+            get {
+                return ResourceManager.GetString("EmployeeCode_RequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Họ và tên không được phép để trống..
+        /// </summary>
+        public static string EmployeeName_RequiredMessage {
+            get {
+                return ResourceManager.GetString("EmployeeName_RequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catched an exception..
         /// </summary>
-        internal static string Exception_DevMsg {
+        public static string Exception_DevMsg {
             get {
                 return ResourceManager.GetString("Exception_DevMsg", resourceCulture);
             }
@@ -72,7 +135,7 @@ namespace MISA.FW0922GD.QLTH.Common {
         /// <summary>
         ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/1.
         /// </summary>
-        internal static string Exception_MoreInfo {
+        public static string Exception_MoreInfo {
             get {
                 return ResourceManager.GetString("Exception_MoreInfo", resourceCulture);
             }
@@ -81,9 +144,99 @@ namespace MISA.FW0922GD.QLTH.Common {
         /// <summary>
         ///   Looks up a localized string similar to Có lỗi xảy ra! Vui lòng liên hệ MISA..
         /// </summary>
-        internal static string Exception_UserMsg {
+        public static string Exception_UserMsg {
             get {
                 return ResourceManager.GetString("Exception_UserMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert to database return 0.
+        /// </summary>
+        public static string InsertFailed_DevMsg {
+            get {
+                return ResourceManager.GetString("InsertFailed_DevMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/4.
+        /// </summary>
+        public static string InsertFailed_MoreInfo {
+            get {
+                return ResourceManager.GetString("InsertFailed_MoreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm mới dữ liệu thất bại..
+        /// </summary>
+        public static string InsertFailed_UserMsg {
+            get {
+                return ResourceManager.GetString("InsertFailed_UserMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One or more validation errors occurred..
+        /// </summary>
+        public static string Invalid_DevMsg {
+            get {
+                return ResourceManager.GetString("Invalid_DevMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/3.
+        /// </summary>
+        public static string Invalid_MoreInfo {
+            get {
+                return ResourceManager.GetString("Invalid_MoreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dữ liệu đầu vào không hợp lệ..
+        /// </summary>
+        public static string Invalid_UserMsg {
+            get {
+                return ResourceManager.GetString("Invalid_UserMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ! Vui lòng kiểm tra lại..
+        /// </summary>
+        public static string Phone_InvalidMessage {
+            get {
+                return ResourceManager.GetString("Phone_InvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update to database return 0.
+        /// </summary>
+        public static string UpdateFailed_DevMsg {
+            get {
+                return ResourceManager.GetString("UpdateFailed_DevMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://openapi.misa.com.vn/errorcode/5.
+        /// </summary>
+        public static string UpdateFailed_MoreInfo {
+            get {
+                return ResourceManager.GetString("UpdateFailed_MoreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật thông tin thất bại..
+        /// </summary>
+        public static string UpdateFailed_UserMsg {
+            get {
+                return ResourceManager.GetString("UpdateFailed_UserMsg", resourceCulture);
             }
         }
     }

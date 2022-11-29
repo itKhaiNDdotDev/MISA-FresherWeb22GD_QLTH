@@ -1,9 +1,14 @@
+.mask-upper {
+    z-index: 3;
+}
+
 .m-dialog {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #FFFFFF;
+    z-index: 100;
 }
 
 .dialog__header {
@@ -27,7 +32,7 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    padding-right: 16px;
+    padding: 0px 16px;
 }
 
 .m-dialog .icon-close {

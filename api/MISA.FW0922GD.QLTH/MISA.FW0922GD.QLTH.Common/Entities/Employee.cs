@@ -1,4 +1,5 @@
-﻿using MISA.FW0922GD.QLTH.Common.Enums;
+﻿using MISA.FW0922GD.QLTH.Common.Constants;
+using MISA.FW0922GD.QLTH.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +13,7 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
     /// <summary>
     /// Thông tin cán bộ, giáo viên
     /// </summary>
-    /// Author: KhaiND (17/11/2022)
+    /// Created By: KhaiND (17/11/2022)
     [Table("employee")]
     public class Employee : BaseEntity
     {
@@ -27,27 +28,31 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Số hiệu cán bộ
         /// </summary>
+        [Required(ErrorMessage = Mesage.EMPLOYEE_CODE_REQUIRED)]
         public string EmployeeCode { get; set; }
 
         /// <summary>
         /// Họ và tên cán bộ, giáo viên
         /// </summary>
+        [Required(ErrorMessage = Mesage.EMPLOYEE_NAME_REQUIRED)]
         public string EmployeeName { get; set; }
 
         /// <summary>
         /// Đường dẫn đến nơi lưu ảnh đại diện của cán bộ, giáo viên
         /// </summary>
-        public string EmployeeImageUrl { get; set; }
+        public string? EmployeeImageUrl { get; set; }
 
         /// <summary>
         /// Số điện thoại của cán bộ, giáo viên
         /// </summary>
-        public string EmployeePhoneNumber { get; set; }
+        [Phone(ErrorMessage = Mesage.PHONE_INVALID)]
+        public string? EmployeePhoneNumber { get; set; }
 
         /// <summary>
         /// Email của cán bộ, giáo viên
         /// </summary>
-        public string EmployeeEmail { get; set; }
+        [EmailAddress(ErrorMessage = Mesage.EMAIL_INVALID)]
+        public string? EmployeeEmail { get; set; }
 
         /// <summary>
         /// Khóa ngoại tham chiếu đến Tổ bộ môn của cán bộ, giáo viên
@@ -57,17 +62,27 @@ namespace MISA.FW0922GD.QLTH.Common.Entities
         /// <summary>
         /// Trình độ nghiệp vụ quản lý thiết bị
         /// </summary>
-        public IsDeviceManager EmployeeIsDeviceManager { get; set; }
+        public bool EmployeeIsDeviceManager { get; set; }
 
         /// <summary>
         /// Trạng thái có còn làm việc hay không
         /// </summary>
-        public WorkingStatus EmployeeWorkingStatus { get; set; }
+        public bool EmployeeWorkingStatus { get; set; }
 
         /// <summary>
         /// Ngày nghỉ việc
         /// </summary>
-        public DateTime? DaEmployeeQuitDateyOff { get; set; }
+        public DateTime? EmployeeQuitDate { get; set; }
+
+        /// <summary>
+        /// Danh sách ID của Môn học được phân công
+        /// </summary>
+        public List<Guid>? SubjectIDs {get; set;}
+
+        /// <summary>
+        /// Danh sách ID của Kho, phòng được phân công
+        /// </summary>
+        public List<Guid>? RoomIDs { get; set; }
 
         #endregion
     }

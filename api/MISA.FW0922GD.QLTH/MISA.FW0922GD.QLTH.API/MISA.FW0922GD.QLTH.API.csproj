@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -14,10 +15,6 @@
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.BL\MISA.FW0922GD.QLTH.BL.csproj" />
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.Common\MISA.FW0922GD.QLTH.Common.csproj" />
     <ProjectReference Include="..\MISA.FW0922GD.QLTH.DL\MISA.FW0922GD.QLTH.DL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

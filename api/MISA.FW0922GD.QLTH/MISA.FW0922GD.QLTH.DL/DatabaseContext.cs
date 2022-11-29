@@ -8,10 +8,12 @@ namespace MISA.FW0922GD.QLTH.DL
 {
     public class DatabaseContext
     {
+
         #region Field
 
         public static string ConnectionString = "";
 
         #endregion
+
     }
 }

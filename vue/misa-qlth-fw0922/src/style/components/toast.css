@@ -1,7 +1,7 @@
 .toasts-container {
     position: fixed;
     bottom: 40px;
-    right: 80px;
+    right: 64px;
     z-index: 4;
 }
 
@@ -39,15 +39,15 @@
     padding-right: 18px;
 }
 
-.toast-message-fail {
+.toastFail {
     border-color: red;
 }
-.toast-message-success {
+.toastSuccess {
     border-color: green;
 }
-.toast-message-info {
+.toastInfo {
     border-color: blue;
 }
-.toast-message-warning {
+.toastWarning {
     border-color: yellow;
 }
